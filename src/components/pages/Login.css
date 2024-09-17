@@ -1,0 +1,42 @@
+.login-container{
+    width: 100%;
+    display: flex;
+    margin-top: 5%;
+}
+
+.login-content{
+    width: 50%;
+    height: 650px;
+    margin-left: 10%;
+    border-radius: 5px;
+    color:black;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-login{
+    font-size: 60px;
+    font-weight: lighter;
+    margin-bottom:5%;
+}
+
+.form-control{
+    border: 0px;
+    border-bottom: 1px solid gray;
+    padding: 5px;
+    width: 58%;
+    margin-bottom: 5%;
+}
+
+.custom-button-login{
+    background-color: green;
+    color: white;
+    margin-top: 5%;
+    font-size: 15px;
+}
+
+.register-link{
+    margin-top: 2%;
+}
+

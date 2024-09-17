@@ -1,0 +1,122 @@
+.container-signup{
+    width: 100%;
+    display: flex;
+}
+
+.content-signup{
+    width: 50%;
+    height: 650px;
+    margin-left: 10%;
+    border-radius: 5px;
+    color:black;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-signup{
+    font-size: 60px;
+    font-weight: lighter;
+    margin-bottom: 5%;
+    margin-top: 10%;
+
+}
+
+.text-signup{
+    margin-top: 50px;
+    width: 80%;
+}
+
+.form-control{
+    border: 0px;
+    border-bottom: 1px solid gray;
+    padding: 5px;
+    width: 58%;
+    margin-bottom: 3%;
+}
+
+.custom-button{
+    margin-top: 10%;
+    background-color: green;
+    color: white;
+}
+
+.avatar{
+    display: flex;
+    align-items: center;
+}
+
+
+.avatar img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.login{
+    margin-top: 2%;
+}
+
+.custom-file {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    height: calc(1.5em + .75rem + 2px);
+    margin-bottom: 0;
+    margin-left: 1%;
+}
+
+.custom-file-input {
+    position: relative;
+    z-index: 2;
+    width: 50%;
+    height: calc(1.5em + .75rem + 2px);
+    margin: 0;
+    opacity: 0;
+}
+
+.custom-file-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.custom-file-input:focus ~ .custom-file-label {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+    content: "Choose file";
+}
+
+.custom-file-input:lang(en):focus ~ .custom-file-label::after {
+    content: "Change file";
+}
+
+.custom-file-label::after {
+    content: "Browse";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: block;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #e9ecef;
+    border-left: inherit;
+    border-radius: 0 .25rem .25rem 0;
+}

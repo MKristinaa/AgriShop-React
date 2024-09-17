@@ -1,0 +1,29 @@
+.footer {
+    background-image: url('../images/footer3.png');
+    background-position: center;
+    background-size: cover;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    bottom: 0;
+    z-index: 999;
+    color: white;
+    font-weight: lighter;
+    padding-top: 50px;
+}
+
+.containt{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 20px;
+    flex-direction: row;
+}
+
+.item{
+    margin-right: 100px;
+}
+
+

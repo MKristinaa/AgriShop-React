@@ -1,0 +1,58 @@
+.container{
+    width: 100%;
+}
+
+.top{
+    width: 100%;
+    height: 350px;
+    margin-top: -5.5%;
+    background-image: url('../../images/top.jpg');
+    background-position: center;
+    background-size: cover;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+    padding: 140px;
+}
+
+.top-text{
+    font-size: 60px;
+    padding-top: 50px;
+}
+
+.content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    /* background-color: red; */
+    height: 500px;
+
+}
+
+.left-side{
+    width: 80%;
+    /* background-color: blue; */
+    height: 500px;
+}
+
+.right-side{
+    width: 20%;
+    padding: 2%;
+    height: 500px;
+}
+
+.search-bar{
+    margin-bottom: 50px;
+}
+
+.line{
+    width: 1px;
+    height: 80%;
+    background-color: black;
+}
+
+.title-categories{
+    margin-bottom: 10px;
+}
