@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <Router>
-        
+
         <Navbar/>
         <Routes>
           <Route path='/' exact Component={Home}/>
@@ -42,10 +42,11 @@ function App() {
           <Route path='/cart' exact Component={Cart}/>
           <Route path='/login/shipping' Component={Shipping}/>
           <Route path='/order/confirm' Component={ConfirmOrder}/>
-        </Routes>  
-        <Footer/>
+        </Routes>
+        <Footer/>  
+        
       </Router>
-      
+
     </>
   );
 }

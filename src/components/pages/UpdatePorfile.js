@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { updateProfile, loadUser } from '../../actions/userActions'; // Uverite se da je loadUser dostupna
 import Cookies from 'js-cookie';
+import { Navbar } from 'react-bootstrap';
 
 function UpdateProfile() {
   const [user, setUser] = useState(null);
@@ -30,6 +31,8 @@ function UpdateProfile() {
     };
 
     fetchUserData();
+    
+    
   }, []);
 
   const convertToBase64 = async (url) => {
