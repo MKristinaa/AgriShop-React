@@ -12,6 +12,10 @@ import Login from './components/pages/Login';
 import ProductDetails from './components/pages/ProductDetails';
 import Profile from './components/pages/Profile';
 import UpdatePorfile from './components/pages/UpdatePorfile';
+import UpdatePassword from './components/pages/UpdatePassword';
+import Cart from './components/cart/Cart';
+import Shipping from './components/cart/Shipping';
+import ConfirmOrder from './components/cart/ConfirmOrder';
 
 function App() {
 
@@ -34,6 +38,10 @@ function App() {
           <Route path='/search/:keyword' exact Component={Product}/>
           <Route path='/me' exact Component={Profile}/>
           <Route path='/me/update' exact Component={UpdatePorfile}/>
+          <Route path='/password/update' exact Component={UpdatePassword}/>
+          <Route path='/cart' exact Component={Cart}/>
+          <Route path='/login/shipping' Component={Shipping}/>
+          <Route path='/order/confirm' Component={ConfirmOrder}/>
         </Routes>  
         <Footer/>
       </Router>

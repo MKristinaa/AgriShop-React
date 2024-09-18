@@ -11,10 +11,9 @@ export const login = async (email, password) => {
         }
 
         const { data } = await axios.post('http://localhost:4000/api/login', {email, password}, config);
-
-        console.log(data);
+        
         // Sačuvaj token i korisnika u kolačiće
-        Cookies.set('authToken', data.token, { expires: 7 }); 
+        Cookies.set('token', data.token, { expires: 7 }); 
         Cookies.set('user', JSON.stringify(data.user), { expires: 7 });
 
         return data;
@@ -44,9 +43,9 @@ export const register = async (formData) => {
 
 
 //Load user
-export const loadUser = async () => {
+export const loadUser = async (user) => {
     try {
-        const { data } = await axios.get('http://localhost:4000/api/me', { withCredentials: true });
+        const { data } = await axios.get(`http://localhost:4000/api/me/`,  { withCredentials: true });
         return data;
     } catch (error) {
         console.error(error.response.data.message);
@@ -66,16 +65,13 @@ export const loggoutUser = async () => {
 
 
 
+
+// Update profile function without token
 export const updateProfile = async (formData) => {
   try {
-    // Retrieve authToken from cookies
-    const authToken = Cookies.get('authToken'); // Adjust the cookie name if different
-
-    // Set up the request configuration
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${authToken}`, // Include the token in the headers
       },
     };
 
@@ -85,6 +81,29 @@ export const updateProfile = async (formData) => {
 
   } catch (error) {
     console.error('Error updating profile:', error.response ? error.response.data.message : error.message);
+    return error.response ? error.response.data.message : error.message;
+  }
+};
+
+
+// Update password
+export const updatePassword = async (passwords) => {
+  try {
+
+    const token = Cookies.get('token');
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    };
+
+    const { data } = await axios.put('http://localhost:4000/api/password/update', passwords, config);
+    return data;
+
+  } catch (error) {
+    console.error('Error updating password:', error.response ? error.response.data.message : error.message);
     return error.response ? error.response.data.message : error.message;
   }
 };

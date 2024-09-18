@@ -4,6 +4,7 @@ import { updateProfile } from '../../actions/userActions';
 
 function UpdateProfile() {
   const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState(''); // Change to empty string to handle Base64
@@ -14,6 +15,7 @@ function UpdateProfile() {
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setUser(parsedUser);
+      setUserId(parsedUser._id);
       setName(parsedUser.name);
       setEmail(parsedUser.email);
       setAvatarPreview(parsedUser.avatar ? parsedUser.avatar.url : '/images/default_avatar.jpg');
@@ -21,21 +23,45 @@ function UpdateProfile() {
     }
   }, []);
 
+  const convertToBase64 = async (url) => {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = () => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(xhr.response);
+      };
+      xhr.onerror = reject;
+      xhr.responseType = 'blob';
+      xhr.open('GET', url);
+      xhr.send();
+    });
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.set('name', name);
-    formData.set('email', email);
+    let avatarData = avatar;
 
-    if (avatar) {
-      formData.set('avatar', avatar); // Include Base64 string for avatar
+    if (avatar && !avatar.startsWith('data:image')) {
+      try {
+        avatarData = await convertToBase64(avatar);
+      } catch (error) {
+        console.error('Error converting avatar to Base64:', error);
+        return;
+      }
     }
 
-    console.log(avatar)
+    const data = {
+      "name": name,
+      "email": email,
+      "user": userId,
+      "avatar": avatarData
+    }
+    console.log(data);
 
     try {
-      const response = await updateProfile(formData);
+      const response = await updateProfile(data);
       console.log('Profile updated successfully:', response);
       // Optionally handle success here
     } catch (error) {
@@ -62,7 +88,7 @@ function UpdateProfile() {
     <div>
       <div className="row wrapper">
         <div className="col-10 col-lg-5">
-          <form className="shadow-lg" onSubmit={submitHandler} encType="multipart/form-data">
+          <form className="shadow-lg" onSubmit={submitHandler}>
             <h1 className="mt-2 mb-5">Update Profile</h1>
 
             <div className="form-group">
