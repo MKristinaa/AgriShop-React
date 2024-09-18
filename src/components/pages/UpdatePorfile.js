@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { updateProfile, loadUser } from '../../actions/userActions'; // Uverite se da je loadUser dostupna
 import Cookies from 'js-cookie';
-import { updateProfile } from '../../actions/userActions';
 
 function UpdateProfile() {
   const [user, setUser] = useState(null);
@@ -11,16 +11,25 @@ function UpdateProfile() {
   const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg');
 
   useEffect(() => {
-    const storedUser = Cookies.get('user');
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setUser(parsedUser);
-      setUserId(parsedUser._id);
-      setName(parsedUser.name);
-      setEmail(parsedUser.email);
-      setAvatarPreview(parsedUser.avatar ? parsedUser.avatar.url : '/images/default_avatar.jpg');
-      setAvatar(parsedUser.avatar ? parsedUser.avatar.url : ''); // Ensure avatar is set
-    }
+    const fetchUserData = async () => {
+      const storedUser = Cookies.get('user');
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        try {
+          const userData = await loadUser(parsedUser._id);
+          setUser(userData.user); 
+          setUserId(userData.user._id);
+          setName(userData.user.name);
+          setEmail(userData.user.email);
+          setAvatarPreview(userData.user.avatar ? userData.user.avatar.url : '/images/default_avatar.jpg');
+          setAvatar(userData.user.avatar ? userData.user.avatar.url : '');
+        } catch (error) {
+          console.error('Error loading user data:', error);
+        }
+      }
+    };
+
+    fetchUserData();
   }, []);
 
   const convertToBase64 = async (url) => {

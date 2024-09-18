@@ -3,7 +3,7 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { Button } from './Button';
 import Cookies from 'js-cookie';
-import { loggoutUser } from '../actions/userActions';
+import { loadUser, loggoutUser } from '../actions/userActions';
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -29,11 +29,20 @@ function Navbar() {
   };
 
   useEffect(() => {
-    const storedUser = Cookies.get('user');
-    console.log('Stored user:', storedUser); // Proverite šta se vraća
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const fetchUserData = async () => {
+      const storedUser = Cookies.get('user');
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        try {
+          const userData = await loadUser(parsedUser._id);
+          setUser(userData.user); 
+        } catch (error) {
+          console.error('Error loading user data:', error);
+        }
+      }
+    };
+
+    fetchUserData();
     showButton();
   }, []);
 

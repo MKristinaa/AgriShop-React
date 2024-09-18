@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import Cookies from 'js-cookie';
 
+
 export const login = async (email, password) => {
     try {
         const config = {
@@ -43,9 +44,9 @@ export const register = async (formData) => {
 
 
 //Load user
-export const loadUser = async (user) => {
+export const loadUser = async (id) => {
     try {
-        const { data } = await axios.get(`http://localhost:4000/api/me/`,  { withCredentials: true });
+        const { data } = await axios.get(`http://localhost:4000/api/me/${id}`,  { withCredentials: true });
         return data;
     } catch (error) {
         console.error(error.response.data.message);
@@ -56,7 +57,7 @@ export const loadUser = async (user) => {
 //Loggout user
 export const loggoutUser = async () => {
   try {
-      await axios.get('http://localhost:4000/logout');
+      await axios.get('http://localhost:4000/api/logout');
   } catch (error) {
       console.error(error.response.data.message);
       return error.response.data.message;

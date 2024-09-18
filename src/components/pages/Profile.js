@@ -2,22 +2,42 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import './Profile.css'; // Import CSS
+import { loadUser } from '../../actions/userActions';
 
 function Profile() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = Cookies.get('user');
+    const fetchUserData = async () => {
+      const storedUser = Cookies.get('user');
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        try {
+          const userData = await loadUser(parsedUser._id);
+          setUser(userData.user); 
+        } catch (error) {
+          console.error('Failed to load user data:', error);
+        }
+      }
+      setLoading(false);
+    };
 
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    fetchUserData();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="profile-container">
+        <h2 className="profile-header">Loading...</h2>
+      </div>
+    );
+  }
 
   if (!user) {
     return (
       <div className="profile-container">
-        <h2 className="profile-header">Loading...</h2>
+        <h2 className="profile-header">User not found</h2>
       </div>
     );
   }
