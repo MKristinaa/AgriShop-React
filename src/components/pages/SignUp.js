@@ -31,7 +31,9 @@ function SignUp({ history }) {
     formData.set('password', password);
     formData.set('avatar', avatar);
 
-console.log(avatar)
+
+
+console.log("pojhgujthfxgfhhj;k';jlfjdcghfkl",avatar)
     register(formData);
   }
 

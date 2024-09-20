@@ -30,7 +30,70 @@ export const getProductDetails = async (id) => {
         return data;
         
     } catch (error) {
-        console.log(error.response.data.message);
-        return error.response.data.message;
+        console.log(error.response?.data?.message || error.message);
+        return error.response?.data?.message || error.message;
     }
 }
+
+
+// Delete product (Admin)
+
+
+export const deleteProduct = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:4000/api/product/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                // Dodaj bilo koji drugi potreban header
+            }
+        });
+
+        return await response.json(); // Vraća JSON koji sadrži 'success'
+    } catch (error) {
+        console.error('Error deleting product:', error);
+        return { success: false }; // U slučaju greške, vrati false
+    }
+}
+
+
+//Add new product
+export const newProduct = async (productData) => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        const { data } = await axios.post(`http://localhost:4000/api/product/new`, productData, config);
+
+        return {
+            success: true,
+            data,
+        };
+    } catch (error) {
+        
+        return {
+            success: false,
+            message: error.response?.data?.message || 'An error occurred',
+        };
+    }
+};
+
+
+export const updateProduct = async (id, productData) => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        const { data } = await axios.put(`http://localhost:4000/api/product/update/${id}`, productData, config);
+
+        return data.success;
+    } catch (error) {
+        throw new Error(error.response.data.message);
+    }
+};

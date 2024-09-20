@@ -20,9 +20,9 @@ export const createOrder = async (order) => {
 }
 
 // Dohvati narudžbine trenutno prijavljenog korisnika
-export const myOrders = async () => {
+export const myOrders = async (id) => {
     try {
-        const { data } = await axios.get('http://localhost:4000/api/orders/me');
+        const { data } = await axios.get(`http://localhost:4000/api/orders/me/${id}`,  { withCredentials: true });
         return data.orders;
 
     } catch (error) {
@@ -84,3 +84,4 @@ export const deleteOrder = async (id) => {
         return error.response.data.message;
     }
 }
+

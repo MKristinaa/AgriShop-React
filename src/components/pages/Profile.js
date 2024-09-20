@@ -15,6 +15,7 @@ function Profile() {
         const parsedUser = JSON.parse(storedUser);
         try {
           const userData = await loadUser(parsedUser._id);
+
           setUser(userData.user); 
         } catch (error) {
           console.error('Failed to load user data:', error);

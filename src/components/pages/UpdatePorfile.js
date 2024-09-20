@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { updateProfile, loadUser } from '../../actions/userActions'; // Uverite se da je loadUser dostupna
+import { updateProfile, loadUser } from '../../actions/userActions'; 
 import Cookies from 'js-cookie';
-import { Navbar } from 'react-bootstrap';
 
 function UpdateProfile() {
   const [user, setUser] = useState(null);
   const [userId, setUserId] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [avatar, setAvatar] = useState(''); // Change to empty string to handle Base64
+  const [avatar, setAvatar] = useState(''); 
   const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg');
 
   useEffect(() => {

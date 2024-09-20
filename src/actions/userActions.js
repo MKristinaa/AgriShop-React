@@ -108,3 +108,54 @@ export const updatePassword = async (passwords) => {
     return error.response ? error.response.data.message : error.message;
   }
 };
+
+
+// Get all users
+export const allUsers = async () => {
+    try {
+        const { data } = await axios.get('http://localhost:4000/api/admin/users');
+        return data.users;
+    } catch (error) {
+      console.log(error.response?.data?.message || error.message);
+      return error.response?.data?.message || error.message;
+    }
+};
+
+// Update user - ADMIN
+export const updateUser = (id, userData) => async () => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        const { data } = await axios.put(`http://localhost:4000/api/admin/user/${id}`, userData, config);
+        return data.success;
+    } catch (error) {
+      console.log(error.response?.data?.message || error.message);
+      return error.response?.data?.message || error.message;
+    }
+};
+
+// Get user details - ADMIN
+export const getUserDetails = (id) => async () => {
+    try {
+        const { data } = await axios.get(`http://localhost:4000/api/admin/user/${id}`);
+        return data.user;
+    } catch (error) {
+      console.log(error.response?.data?.message || error.message);
+      return error.response?.data?.message || error.message;
+    }
+};
+
+// Delete user - ADMIN
+export const deleteUser = (id) => async () => {
+    try {
+        const { data } = await axios.delete(`http://localhost:4000/api/admin/user/${id}`);
+        return data.success;
+    } catch (error) {
+      console.log(error.response?.data?.message || error.message);
+      return error.response?.data?.message || error.message;
+    }
+};
+
