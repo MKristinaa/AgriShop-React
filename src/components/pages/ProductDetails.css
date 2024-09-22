@@ -1,0 +1,120 @@
+.container {
+    width: 100%;
+}
+
+
+.product-details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    padding: 2%;
+}
+
+.product-image {
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+}
+
+.product-info {
+    flex: 1;
+    padding: 20px;
+}
+
+.rating-outer {
+    display: inline-block;
+    width: 60px;
+    height: 12px;
+    background-color: #ccc;
+    position: relative;
+}
+
+.rating-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 12px;
+    background-color: #ffcc00;
+}
+
+.stockCounter {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    width: 170px;
+}
+
+.btn {
+    cursor: pointer;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.minus {
+    background-color: red;
+    color: white;
+}
+
+.plus {
+    background-color: green;
+    color: white;
+}
+
+.add-to-cart {
+    background-color: green;
+    color: white;
+    margin-top: 10px;
+}
+
+.greenColor {
+    color: green;
+}
+
+.redColor {
+    color: red;
+}
+
+.border{
+    margin-bottom: 20px;
+    margin-top: 10px;
+    width: 500px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-left: 20px; /* Postavlja marginu da dugme nije uz ivicu */
+    width: 50px;
+    height: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .back-button::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+  
+  .back-button:hover::before {
+    border-color: gray; /* Dodaj boju za hover efekat ako želiš */
+  }
+  

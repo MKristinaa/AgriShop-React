@@ -144,3 +144,7 @@ button:hover{
     height: 330px;
 }
 
+.category-links{
+    color: black;
+    text-decoration: none;
+}

@@ -55,6 +55,7 @@ const NewProduct = ({ history }) => {
             image: image,  
             category: category,
             user: userId,
+            stocks: stock
         }
 
         console.log(data);

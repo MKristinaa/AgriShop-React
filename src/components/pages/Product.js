@@ -10,16 +10,19 @@ function Product() {
   const [currentPage, setCurrentPage] = useState(1);
   const [resPerPage, setResPerPage] = useState(0);
   const [productsCount, setProductsCount] = useState(0);
-  const [category, setCategory] = useState('');
-  const [filtereProductsCount, setFilteredProducetsCount] = useState(0);
+  const [filteredProductsCount, setFilteredProductsCount] = useState(0);
 
-  const categories= [
-        'Vegetables',
-        'Fruits',
-        'Grains'
-  ]
+  const categories = [
+    'Vegetables',
+    'Fruits',
+    'Grains'
+  ];
 
   const { keyword } = useParams();
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+  const category = searchParams.get('category');
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -28,114 +31,107 @@ function Product() {
         setProducts(data.products); 
         setResPerPage(data.resPerPage);
         setProductsCount(data.productCount);
-        setFilteredProducetsCount(data.filtereProductsCount);
+        setFilteredProductsCount(data.filteredProductsCount);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
 
     fetchProducts(); 
+
   }, [currentPage, keyword, category]);
 
-  function setCurrentPageNo(pageNumber){
+  function setCurrentPageNo(pageNumber) {
     setCurrentPage(pageNumber);
   }
 
   let count = productsCount;
-  if(keyword){
-    count = filtereProductsCount;
+  if (keyword) {
+    count = filteredProductsCount;
   }
-
 
   return (
     <div className='container'>
-        
-        <div className='top'>
-          <div className='top-text'>Products</div>
-        </div>
+      <div className='top'>
+        <div className='top-text'>Products</div>
+      </div>
 
-        <div className='content'>
-          <div className='left-side'>
+      <div className='content'>
+        <div className='left-side'>
 
-          </div>
-          
-          <div className='line'></div>
-
-          <div className='right-side'>
-
-              <div className='search-bar'>
-                <Search />
-              </div>
-
-
-                <h3 className='title-categories'>
-                    Categories
-                </h3>
-
-                <ul className="pl-0">
-                    {categories.map(category => (
-                        <li
-                            style={{
-                                cursor: 'pointer',
-                                listStyleType: 'none'
-                            }}
-                            key={category}
-                            onClick={() => setCategory(category)}
-                        >
-                            {category}
-                        </li>
-                    ))}
-                </ul>
-
-          </div>
-        </div>
-
-        
-
+        <div className="product-grid">
         {products && products.map((product) => (
-          <div className={`col-sm-12 col-md-6 my-3`} key={product._id}>
-            <div className="card p-3 rounded">
-              <img
-                className="card-img-top mx-auto"
-                src={product.image}
-                alt={product.name}
-              />
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">
-                  <Link to={`/product/${product._id}`}>{product.name}</Link>
-                </h5>
-                <div className="ratings mt-auto">
-                  <div className="rating-outer">
-                    <div
-                      className="rating-inner"
-                      style={{ width: `${(product.ratings / 5) * 100}%` }}
-                    ></div>
-                  </div>
-                  <span id="no_of_reviews">({product.numOfReviews} Reviews)</span>
+          <div className="product-card" key={product._id}>
+            <img
+              className="product-img"
+              src={product.image.url}
+              alt={product.name}
+              width={150}
+            />
+            <div className="product-body">
+              <h5 className="product-title">
+                <Link to={`/product/${product._id}`}>{product.name}</Link>
+              </h5>
+              <div className="ratings">
+                <div className="rating-outer">
+                  <div
+                    className="rating-inner"
+                    style={{ width: `${(product.ratings / 5) * 100}%` }}
+                  ></div>
                 </div>
-                <p className="card-text">${product.price}</p>
-                <Link to={`/product/${product._id}`} id="view_btn" className="btn btn-block">View Details</Link>
+                <span id="no_of_reviews">({product.numOfReviews} Reviews)</span>
               </div>
+              <p className="product-price">${product.price}</p>
+              <Link to={`/product/${product._id}`} className="view-btn">View Details</Link>
             </div>
           </div>
         ))}
+      </div>
 
-        {resPerPage <= count && (
-          <div className='d-flex justify-content-center mt-5'>
-            <Pagination 
-              activePage={currentPage}
-              itemsCountPerPage={resPerPage}
-              totalItemsCount={productsCount}
-              onChange={setCurrentPageNo}
-              nextPageText={'Next'}
-              prevPageText={'Prev'}
-              firstPageText={'First'}
-              lastPageText={'Last'}
-              itemClass='page-item'
-              linkClass='page-item'
-            />
+      {resPerPage <= count && (
+        <div className='pagination'>
+          <Pagination 
+            activePage={currentPage}
+            itemsCountPerPage={resPerPage}
+            totalItemsCount={productsCount}
+            onChange={setCurrentPageNo}
+            nextPageText={'Next'}
+            prevPageText={'Prev'}
+            firstPageText={'First'}
+            lastPageText={'Last'}
+            itemClass='page-item'
+            linkClass='page-link'
+          />
+        </div>
+      )}
+
+        </div>
+        <div className='line'></div>
+        <div className='right-side'>
+          <div className='search-bar'>
+            <Search />
           </div>
-        )}
+
+          <h3 className='title-categories'>Categories</h3>
+          <ul>
+            {categories.map(category => (
+              <li
+                style={{
+                  cursor: 'pointer',
+                  listStyleType: 'none'
+                }}
+                key={category}
+              >
+                <Link to={`/product?category=${category}`} className="category">
+                  {category}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      
     </div>
   );
 }

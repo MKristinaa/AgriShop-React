@@ -152,7 +152,7 @@ export const getUserDetails = (id) => async () => {
 export const deleteUser = (id) => async () => {
     try {
         const { data } = await axios.delete(`http://localhost:4000/api/admin/user/${id}`);
-        return data.success;
+        return data;
     } catch (error) {
       console.log(error.response?.data?.message || error.message);
       return error.response?.data?.message || error.message;

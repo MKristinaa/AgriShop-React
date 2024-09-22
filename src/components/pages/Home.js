@@ -93,42 +93,47 @@ function Home() {
     </div>
 
     <div className='home-products'>
-      <b><h1>Some Of Our Products</h1></b><br></br>
+      <b><h1>Category Of Our Products</h1></b><br></br>
       <p>Discover our selection of fresh, locally-sourced products that bring the farm to your table.</p>
 
       <div className='products'> 
-        <div className='container-2-item'>
+
+
+          <Link to={`/product?category=Fruits`} className='container-2-item category-links'>
+              <div className='product2'>
+                <img src={require('../../images/product-2.jpg')}></img>
+              </div>
+              <div>
+                Fruits
+              </div>
+          </Link>
+
+
+          <Link to={`/product?category=Vegetables`} className='container-2-item category-links'>
             <div className='product1'>
-              <img src={require('../../images/product-1.jpg')}/>
+              <img src={require('../../images/tomato2.jpg')} width={170}/>
             </div>
             <div>
-              Musk Melon
+              Vegetables
             </div>
-          </div>
+          </Link>
 
-          <div className='container-2-item'>
-            <div className='product2'>
-              <img src={require('../../images/product-2.jpg')}></img>
-            </div>
-            <div>
-              Orange
-            </div>
-          </div>
-
-          <div className='container-2-item'>
+          <Link to={`/product?category=Grains`} className='container-2-item category-links'>
             <div className='product3'>
-              <img src={require('../../images/product-3.jpg')}/>
+              <img src={require('../../images/grain3.png')} width={170}/>
             </div>
             <div>
-              Apple
+              Grains
             </div>
-          </div>
+          </Link>
+
+
           <div className='container-2-item'>
             <div className='producit4'>
-              <img src={require('../../images/product-4.jpg')}></img>
+              <img src={require('../../images/product-1.jpg')}></img>
             </div>
             <div>
-              Dragon
+              other
             </div>
         </div>
       </div>

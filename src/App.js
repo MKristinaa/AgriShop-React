@@ -23,6 +23,9 @@ import ProductsList from './components/layout/ProductsList';
 import NewProduct from './components/layout/NewProduct';
 import UpdateProduct from './components/layout/UpdateProduct';
 import OrdersList from './components/layout/OrdersList';
+import ProcessOrder from './components/layout/ProcessOrder';
+import UsersList from './components/layout/UsersList';
+import UpdateUser from './components/layout/UpdateUser';
 
 function App() {
 
@@ -58,8 +61,11 @@ function App() {
           
           
           <Route path='/admin/orders' Component={OrdersList}/>
+          <Route path='/admin/users' Component={UsersList}/>
+          <Route path='/admin/order/:id' Component={ProcessOrder}/>
           <Route path='/orders/me' Component={ListOrders}/>
           <Route path='/order/:id' Component={OrderDetails}/>
+          <Route path='/admin/user/:id' Component={UpdateUser}/>
           
           <Route path='/dashboard' Component={Dashboard}/>
         </Routes>
