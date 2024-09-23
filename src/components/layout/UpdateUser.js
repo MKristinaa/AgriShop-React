@@ -1,8 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import { useParams, useNavigate } from 'react-router-dom';
-import { updateUser, getUserDetails, clearErrors } from '../../actions/userActions';
-import { useAlert } from 'react-alert';
+import { updateUser, getUserDetails } from '../../actions/userActions';
 
 const UpdateUser = () => {
     const { id: userId } = useParams();
@@ -12,14 +11,19 @@ const UpdateUser = () => {
     const [email, setEmail] = useState('');
     const [role, setRole] = useState('');
 
-
     useEffect(() => {
         const fetchUserDetails = async () => {
-            const userDetails = await getUserDetails(userId);
-            if (userDetails) {
-                setName(userDetails.name || '');
-                setEmail(userDetails.email || '');
-                setRole(userDetails.role || 'user');
+            try {
+                const userDetails = await getUserDetails(userId);
+                console.log("User details:", userDetails);
+
+                if (userDetails) {
+                    setName(userDetails.user.name || '');
+                    setEmail(userDetails.user.email || '');
+                    setRole(userDetails.user.role || 'user');
+                }
+            } catch (error) {
+                console.error("Error fetching user details:", error);
             }
         };
 

@@ -122,7 +122,7 @@ export const allUsers = async () => {
 };
 
 // Update user - ADMIN
-export const updateUser = (id, userData) => async () => {
+export const updateUser =  async (id, userData) => {
     try {
         const config = {
             headers: {
@@ -138,18 +138,19 @@ export const updateUser = (id, userData) => async () => {
 };
 
 // Get user details - ADMIN
-export const getUserDetails = (id) => async () => {
-    try {
-        const { data } = await axios.get(`http://localhost:4000/api/admin/user/${id}`);
-        return data.user;
-    } catch (error) {
-      console.log(error.response?.data?.message || error.message);
-      return error.response?.data?.message || error.message;
-    }
+
+export const getUserDetails = async (id) => {
+  try {
+    const { data } = await axios.get(`http://localhost:4000/api/admin/user/${id}`);
+    return data;
+  } catch (error) {
+    console.error("Error fetching user details:", error);
+    throw error;
+  }
 };
 
 // Delete user - ADMIN
-export const deleteUser = (id) => async () => {
+export const deleteUser = async (id) => {
     try {
         const { data } = await axios.delete(`http://localhost:4000/api/admin/user/${id}`);
         return data;

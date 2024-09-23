@@ -18,8 +18,8 @@ export const addItemToCart = async (id, quantity) => {
                 product: product._id,
                 name: product.name,
                 price: product.price,
-                image: product.images[0].url,
-                stock: product.stock,
+                image: product.image.url,
+                stock: product.stocks,
                 quantity
             });
         }
