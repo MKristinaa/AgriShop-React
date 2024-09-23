@@ -59,8 +59,11 @@ function Profile() {
           </Link>
         </div>
         <div className="user-details">
-          <h4>Full Name</h4>
+          <h4>First Name</h4>
           <p>{user.name || 'N/A'}</p>
+
+          <h4>Last Name</h4>
+          <p>{user.lastname || 'N/A'}</p>
 
           <h4>Email Address</h4>
           <p>{user.email || 'N/A'}</p>

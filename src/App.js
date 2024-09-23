@@ -26,6 +26,7 @@ import OrdersList from './components/layout/OrdersList';
 import ProcessOrder from './components/layout/ProcessOrder';
 import UsersList from './components/layout/UsersList';
 import UpdateUser from './components/layout/UpdateUser';
+import MyProducts from './components/seller/MyProducts';
 
 function App() {
 
@@ -66,6 +67,8 @@ function App() {
           <Route path='/orders/me' Component={ListOrders}/>
           <Route path='/order/:id' Component={OrderDetails}/>
           <Route path='/admin/user/:id' Component={UpdateUser}/>
+          
+          <Route path='/seller/products' Component={MyProducts}/>
           
           <Route path='/dashboard' Component={Dashboard}/>
         </Routes>

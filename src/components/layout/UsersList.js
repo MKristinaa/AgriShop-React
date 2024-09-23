@@ -2,28 +2,41 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MDBDataTable } from 'mdbreact'
 
+import Cookies from 'js-cookie';
 import Sidebar from './Sidebar'
 import { allUsers, deleteUser } from '../../actions/userActions'
 
 const UsersList = () => {
     const [users, setUsers] = useState([]);
+    const [userId, setUserId] = useState(0);
     const navigate = useNavigate()
 
     useEffect(() => {
-        const fetchUsers = async () => {
-            const fetchedUsers = await allUsers();
-            setUsers(fetchedUsers);
-        }
-
-        fetchUsers();
-    }, [])
-
+        const fetchUserData = async () => {
+            const storedUser = Cookies.get('user');
+            if (storedUser) {
+                const parsedUser = JSON.parse(storedUser);
+                try {
+                    const fetchedUsers = await allUsers();
+    
+                    const filteredUsers = fetchedUsers.filter(user => user._id !== parsedUser._id);
+                    setUsers(filteredUsers);
+    
+                } catch (error) {
+                    console.error('Error loading user data:', error);
+                }
+            }
+        };
+    
+        fetchUserData();
+    }, []);
+    
 
     const deleteUserHandler = async (id) => {
         if (window.confirm('Are you sure you want to delete this user?')) {
             try {
 
-                const deletUser = await deleteUser(id); // Zameni sa pravim API endpointom
+                const deletUser = await deleteUser(id); 
                 if(deletUser){
                     alert("Deleted successfully")
                     setUsers(users.filter(user => user._id !== id));
@@ -49,6 +62,11 @@ const UsersList = () => {
                     sort: 'asc'
                 },
                 {
+                    label: 'Lastname',
+                    field: 'lastname',
+                    sort: 'asc'
+                },
+                {
                     label: 'Email',
                     field: 'email',
                     sort: 'asc'
@@ -66,10 +84,11 @@ const UsersList = () => {
             rows: []
         }
 
-        users.forEach(user => {
+        users.forEach(user  => {
             data.rows.push({
                 id: user._id,
                 name: user.name,
+                lastname: user.lastname,
                 email: user.email,
                 role: user.role,
 

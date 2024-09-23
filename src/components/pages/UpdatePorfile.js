@@ -6,6 +6,7 @@ function UpdateProfile() {
   const [user, setUser] = useState(null);
   const [userId, setUserId] = useState(null);
   const [name, setName] = useState('');
+  const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState(''); 
   const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg');
@@ -20,6 +21,7 @@ function UpdateProfile() {
           setUser(userData.user); 
           setUserId(userData.user._id);
           setName(userData.user.name);
+          setName(userData.user.lastname);
           setEmail(userData.user.email);
           setAvatarPreview(userData.user.avatar ? userData.user.avatar.url : '/images/default_avatar.jpg');
           setAvatar(userData.user.avatar ? userData.user.avatar.url : '');
@@ -65,6 +67,7 @@ function UpdateProfile() {
 
     const data = {
       "name": name,
+      "lastname": lastname,
       "email": email,
       "user": userId,
       "avatar": avatarData
@@ -111,6 +114,18 @@ function UpdateProfile() {
                 name="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="lastname_field">Lastname</label>
+              <input
+                type="text"
+                id="lastname_field"
+                className="form-control"
+                name="lastname"
+                value={lastname}
+                onChange={(e) => setLastname(e.target.value)}
               />
             </div>
 

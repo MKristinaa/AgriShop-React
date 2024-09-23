@@ -9,11 +9,13 @@ function SignUp({ history }) {
 
   const [user, setUser] = useState({
     name: '',
+    lastname: '',
     email: '',
-    password:''
+    password:'',
+    role: 'user',
   })
 
-  const {name, email, password} = user;
+  const {name, lastname, email, password, role} = user;
 
   const [avatar, setAvatar] = useState('');
   const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg');
@@ -27,13 +29,14 @@ function SignUp({ history }) {
 
     const formData = new FormData();
     formData.set('name', name);
+    formData.set('lastname', lastname);
     formData.set('email', email);
     formData.set('password', password);
     formData.set('avatar', avatar);
+    formData.set('role', role);
 
 
 
-console.log("pojhgujthfxgfhhj;k';jlfjdcghfkl",avatar)
     register(formData);
   }
 
@@ -79,6 +82,18 @@ console.log("pojhgujthfxgfhhj;k';jlfjdcghfkl",avatar)
 
               <div className="form-group">
                   <input
+                      type="lastname"
+                      id="lastname_field"
+                      placeholder='LASTNAME' 
+                      className="form-control"
+                      name='lastname'
+                      value={lastname}
+                      onChange={onChange}
+                  />
+              </div>
+
+              <div className="form-group">
+                  <input
                       type="email"
                       id="email_field"
                       placeholder='EMAIL'
@@ -100,6 +115,21 @@ console.log("pojhgujthfxgfhhj;k';jlfjdcghfkl",avatar)
                       onChange={onChange}
                   />
               </div>
+
+              <div className='form-group'>
+                <label htmlFor='role_field'>Role</label>
+                <select
+                id='role_field'
+                className='form-control'
+                name='role'
+                value={role}
+                onChange={onChange}
+                >
+                <option value='user'>User</option>
+                <option value='seller'>Seller</option>
+                <option value='admin'>Admin</option>
+                </select>
+            </div>
 
               <div className='form-group'>
                   <div className='avatar'>

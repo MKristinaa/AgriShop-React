@@ -24,7 +24,6 @@ function Navbar() {
   const logoutHandler = () => {
     loggoutUser();
     Cookies.remove('user');
-    setUser(null);
     alert('Logged out successfully.');
   };
 
@@ -33,11 +32,15 @@ function Navbar() {
       const storedUser = Cookies.get('user');
       if (storedUser) {
         const parsedUser = JSON.parse(storedUser);
-        try {
-          const userData = await loadUser(parsedUser._id);
-          setUser(userData.user); 
-        } catch (error) {
-          console.error('Error loading user data:', error);
+        if (parsedUser) { 
+          try {
+            const userData = await loadUser(parsedUser._id);
+            setUser(userData.user);
+          } catch (error) {
+            console.error('Error loading user data:', error);
+          }
+        } else {
+          console.error('No user ID found in stored user data.');
         }
       }
     };
@@ -45,6 +48,7 @@ function Navbar() {
     fetchUserData();
     showButton();
   }, []);
+
 
   
 
@@ -60,27 +64,41 @@ function Navbar() {
         <div className='menu-icon' onClick={handleClick}>
           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
+
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>
             <Link to='/' className='nav-links' onClick={closeMobileMenu}>
               Home
             </Link>
           </li>
+
           <li className='nav-item'>
             <Link to='/product' className='nav-links' onClick={closeMobileMenu}>
               Product
             </Link>
           </li>
+
+          {user && user.role === 'seller'  && (
+          <li className='nav-item'>
+            <Link to='/seller/products' className='nav-links' onClick={closeMobileMenu}>
+              MyProducts
+            </Link>
+          </li>
+          )}
           <li className='nav-item'>
             <Link to='/contact' className='nav-links' onClick={closeMobileMenu}>
               Contact
             </Link>
           </li>
+          
+          {user && user.role !== 'admin' || user === null && (
           <li className='nav-item'>
             <Link to='/cart' className='nav-links' onClick={closeMobileMenu}>
               Cart
             </Link>
           </li>
+          )}
+          
           <li className='nav-item'>
             {user ? (
               <div className='dropdown'>
@@ -99,9 +117,11 @@ function Navbar() {
                       Dashboard
                     </Link>
                   )}
-                  <Link className='dropdown-item' to='/orders/me'>
-                    Orders
-                  </Link>
+                  {user && user.role !== 'admin' && (
+                    <Link className='dropdown-item' to='/orders/me'>
+                      Orders
+                    </Link>
+                  )}
                   <Link className='dropdown-item' to='/me'>
                     Profile
                   </Link>
@@ -111,14 +131,14 @@ function Navbar() {
                 </div>
               </div>
             ) : (
-              <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
+              
+              <Link to='/sign-up' className='nav-links' onClick={closeMobileMenu}>
                 Sign Up
               </Link>
             )}
 
           </li>
         </ul>
-        {button && !user && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
       </div>
     </nav>
   );

@@ -97,3 +97,23 @@ export const updateProduct = async (id, productData) => {
         throw new Error(error.response.data.message);
     }
 };
+
+
+// Fetch products by user ID
+export const getProductsByUserId = async (userId) => {
+    try {
+        const response = await axios.get(`http://localhost:4000/api/products/user/${userId}`);
+        const { data } = response;
+        
+        return {
+            success: true,
+            products: data.products
+        };
+    } catch (error) {
+        console.error('Error fetching products by user:', error.response?.data?.message || error.message);
+        return {
+            success: false,
+            message: error.response?.data?.message || error.message
+        };
+    }
+};

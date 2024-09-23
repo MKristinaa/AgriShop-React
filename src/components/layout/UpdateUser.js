@@ -8,6 +8,7 @@ const UpdateUser = () => {
     const navigate = useNavigate();
 
     const [name, setName] = useState('');
+    const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [role, setRole] = useState('');
 
@@ -19,6 +20,7 @@ const UpdateUser = () => {
 
                 if (userDetails) {
                     setName(userDetails.user.name || '');
+                    setLastname(userDetails.user.lastname || '');
                     setEmail(userDetails.user.email || '');
                     setRole(userDetails.user.role || 'user');
                 }
@@ -35,6 +37,7 @@ const UpdateUser = () => {
 
         const data = {
             name,
+            lastname,
             email,
             role,
         };
@@ -63,6 +66,16 @@ const UpdateUser = () => {
                                         className="form-control"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="lastname_field">Lastname</label>
+                                    <input
+                                        type="text"
+                                        id="lastname_field"
+                                        className="form-control"
+                                        value={lastname}
+                                        onChange={(e) => setLastname(e.target.value)}
                                     />
                                 </div>
                                 <div className="form-group">
