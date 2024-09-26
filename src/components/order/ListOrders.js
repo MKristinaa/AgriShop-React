@@ -5,6 +5,7 @@ import { myOrders } from '../../actions/orderActions';
 import Cookies from 'js-cookie';
 
 const ListOrders = () => {
+    const [user, setUser] = useState(null);
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
@@ -12,6 +13,7 @@ const ListOrders = () => {
             const storedUser = Cookies.get('user');
             if (storedUser) {
               const parsedUser = JSON.parse(storedUser);
+              setUser(parsedUser);
               console.log(parsedUser._id)
               try {
                 const response = await myOrders(parsedUser._id);
@@ -79,6 +81,16 @@ const ListOrders = () => {
 
     return (
         <Fragment>
+             {/* CART */}
+            {(user === null || user.role === 'seller' || user.role === 'user' ) && (
+            <li className='nav-item'>
+                <div className='cart'>
+                    <Link to='/cart' className='linkkkk'>
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    </Link>
+                </div>
+            </li>
+            )}
             <h1 className="my-5">My Orders</h1>
 
             {orders && orders.length > 0 ? (

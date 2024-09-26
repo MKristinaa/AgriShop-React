@@ -24,6 +24,7 @@ function Navbar() {
   const logoutHandler = () => {
     loggoutUser();
     Cookies.remove('user');
+    window.location.href = '/';
     alert('Logged out successfully.');
   };
 
@@ -91,13 +92,13 @@ function Navbar() {
             </Link>
           </li>
           
-          {user && user.role !== 'admin' || user === null && (
+          {/* {(user === null || user.role === 'seller' || user.role === 'user' ) && (
           <li className='nav-item'>
             <Link to='/cart' className='nav-links' onClick={closeMobileMenu}>
               Cart
             </Link>
           </li>
-          )}
+          )} */}
           
           <li className='nav-item'>
             {user ? (

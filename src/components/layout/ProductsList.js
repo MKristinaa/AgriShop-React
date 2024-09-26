@@ -6,7 +6,7 @@ import { getProducts, deleteProduct } from '../../actions/productActons';
 
 const ProductsList = ({ history }) => {
     const [products, setProducts] = useState([]);
-    const [message, setMessage] = useState(null); // Za poruku
+    const [message, setMessage] = useState(null); 
 
     useEffect(() => {
         const fetchProducts = async () => {

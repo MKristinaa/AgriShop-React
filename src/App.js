@@ -50,7 +50,7 @@ function App() {
           <Route path='/admin/product/:id' exact  Component={UpdateProduct}/>  
           <Route path='/admin/product' exact  Component={NewProduct}/>  
           <Route path='/admin/products' exact  Component={ProductsList}/>         
-          <Route path='/product/:id' exact Component={ProductDetails}/>
+          <Route path='/product/:id' exact Component={ProductDetails}/>     
           <Route path='/search/:keyword' exact Component={Product}/>
 
           <Route path='/me' exact Component={Profile}/>

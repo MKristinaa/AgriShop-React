@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Contact.css';
+import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie'; 
 
 function Contact() {
+  
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const storedUser = Cookies.get('user');
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        if (parsedUser) { 
+          setUser(parsedUser);
+        } else {
+          console.error('No user ID found in stored user data.');
+        }
+      }
+    };
+
+    fetchUserData();
+  },[])
+
   return (
     <div className='container'>
+      {/* CART */}
+      {(user === null || user.role === 'seller' || user.role === 'user' ) && (
+          <li className='nav-item'>
+              <div className='cart'>
+                <Link to='/cart' className='linkkkk'>
+                    <i class="fa-solid fa-basket-shopping"></i>
+                </Link>
+              </div>
+          </li>
+          )}
+
       <div className='top'>
             <div className='top-text'>Contact</div>
       </div>

@@ -5,7 +5,7 @@
 .top {
     width: 100%;
     height: 350px;
-    margin-top: -5.5%;
+    margin-top: -9.5%;
     background-image: url('../../images/top.jpg');
     background-position: center;
     background-size: cover;
@@ -15,9 +15,33 @@
     padding: 140px;
 }
 
+.cart {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: orange;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 110px;
+    right: 70px; 
+    z-index: 1000;
+    border: none; /* Ako je dodata ivica */
+}
+
+.cart i {
+    color: orangered;
+    font-size: 45px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+
 .top-text {
     font-size: 60px;
-    padding-top: 50px;
+    /* padding-top: 50px; */
 }
 
 .content {

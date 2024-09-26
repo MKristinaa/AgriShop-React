@@ -18,10 +18,10 @@ function Login() {
 
   // Check for user token in cookies
   useEffect(() => {
-    const userToken = Cookies.get('user'); // Assumes the token is stored as 'user'
-    if (userToken) {
-      navigate(redirect); // If user is logged in, redirect to the desired page
-    }
+    // const userToken = Cookies.get('user'); 
+    // if (userToken) {
+    //   navigate(redirect); 
+    // }
   }, [navigate, redirect]);
 
   const submitHandler = async (e) => {
@@ -32,9 +32,12 @@ function Login() {
       const response = await login(email, password); // Pretpostavka da je login asinhrona funkcija
 
       if (response.success) {
-        navigate(redirect); // Ako je uspešno, preusmeri korisnika
+        
+      window.location.href = '/';
+
+
       } else {
-        setError(response.message); // Ako postoji greška, postavi poruku o grešci
+        setError(response.message); 
       }
     } catch (error) {
       setError('An error occurred. Please try again.');

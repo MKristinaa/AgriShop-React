@@ -11,7 +11,7 @@
 }
 
 .product-image {
-    width: 40%;
+    width: 50%;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -60,18 +60,12 @@
 }
 
 .minus {
-    background-color: gray;
+    background-color: red;
     color: white;
 }
 
-.minus:hover {
-    background-color: white;
-    color: red;
-    border: 1px solid red;
-}
-
 .plus {
-    background-color: gray;
+    background-color: green;
     color: white;
 }
 
@@ -121,82 +115,6 @@
   }
   
   .back-button:hover::before {
-    border-color: gray; 
-  }
-  
-  .seller-image{
-    width: 60px;
-    height: 60px;
-    border-radius: 100px;
-  }
-
-  .seller-container {
-    text-align: left;
-  }
-  
-  .seller-info {
-    display: flex;
-    justify-content: left; 
-    align-items: center;    
-    gap: 10px; 
-  }
-  
-  .seller-image {
-    width: 50px; /* Širina slike */
-    height: 50px; /* Visina slike */
-    border-radius: 50%; /* Da slika bude okrugla */
-  }
-  
-  .seller-name {
-    font-size: 18px;
-    display: inline-block;
-    vertical-align: middle; /* Vertikalno poravnavanje */
-  }
-  
-  .name{
-    font-size: 40px;
-    font-weight: bold;
-  }
-
-  .description{
-    width: 500px;
-  }
-
-
-  .my-product-section {
-    width: 75%;
-    background-color: #f9f9f9; /* Svetla pozadina */
-    padding: 15px;
-    border: 1px solid #ccc; /* Tanka ivica */
-    border-radius: 8px; /* Zaobljeni uglovi */
-    text-align: center; /* Centriraj sadržaj */
-    margin-bottom: 20px; /* Razmak ispod sekcije */
-  }
-  
-  .my-product-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .my-product-actions {
-    display: flex;
-    justify-content: center;
-    gap: 10px; /* Razmak između dugmića */
-  }
-  
-  .update-btn {
-    background-color: #007bff; /* Boja za dugme za ažuriranje */
-    color: white;
-  }
-  
-  .delete-btn {
-    background-color: #dc3545; /* Boja za dugme za brisanje */
-    color: white;
-  }
-  
-  .update-btn:hover, .delete-btn:hover {
-    opacity: 0.9; /* Efekat na hover */
+    border-color: gray; /* Dodaj boju za hover efekat ako želiš */
   }
   

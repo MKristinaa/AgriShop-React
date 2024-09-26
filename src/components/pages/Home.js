@@ -1,13 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../App.js';
 import './Home.css';
+
+import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 
 
 function Home() {
+  
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const storedUser = Cookies.get('user');
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        if (parsedUser) { 
+          setUser(parsedUser);
+        } else {
+          console.error('No user ID found in stored user data.');
+        }
+      }
+    };
+
+    fetchUserData();
+  }, []);
   return (
     <>
     <div className='home-container'>
+      
+      {/* CART */}
+      {(user === null || user.role === 'seller' || user.role === 'user' ) && (
+          <li className='nav-item'>
+              <div className='cart'>
+                <Link to='/cart'>
+                    <i class="fa-solid fa-basket-shopping"></i>
+                </Link>
+              </div>
+          </li>
+          )}
+
       <div className='home-content'>
         
         <div className='home-title'>
@@ -15,7 +47,7 @@ function Home() {
         </div>
 
         <div className='home-text-1'>
-        Fresh & Natural Farm Food
+        Fresh & Natural Farm Food  
         </div>
 
         <div className='home-text-2'>
@@ -25,6 +57,9 @@ function Home() {
         <Link to='/product'>
             <button className='order-button'>Order Online</button>
         </Link>
+
+        
+
       </div>
 
     </div>

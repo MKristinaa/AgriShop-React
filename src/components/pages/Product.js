@@ -4,8 +4,10 @@ import { getProducts } from '../../actions/productActons';
 import { Link, useParams, useLocation } from 'react-router-dom';
 import Pagination from 'react-js-pagination';
 import Search from './Search';
+import Cookies from 'js-cookie';
 
 function Product() {
+  const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [resPerPage, setResPerPage] = useState(0);
@@ -25,6 +27,19 @@ function Product() {
   const category = searchParams.get('category');
 
   useEffect(() => {
+    const fetchUserData = async () => {
+      const storedUser = Cookies.get('user');
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        if (parsedUser) { 
+          setUser(parsedUser);
+        } else {
+          console.error('No user ID found in stored user data.');
+        }
+      }
+    };
+
+    fetchUserData();
     const fetchProducts = async () => {
       try {
         const data = await getProducts(keyword, currentPage, category); 
@@ -52,6 +67,19 @@ function Product() {
 
   return (
     <div className='container'>
+
+      {/* CART */}
+      {(user === null || user.role === 'seller' || user.role === 'user' ) && (
+          <li className='nav-item'>
+              <div className='cart'>
+                <Link to='/cart' className='linkkkk'>
+                    <i class="fa-solid fa-basket-shopping"></i>
+                </Link>
+              </div>
+          </li>
+          )}
+
+          
       <div className='top'>
         <div className='top-text'>Products</div>
       </div>
@@ -72,15 +100,6 @@ function Product() {
               <h5 className="product-title">
                 <Link to={`/product/${product._id}`}>{product.name}</Link>
               </h5>
-              <div className="ratings">
-                <div className="rating-outer">
-                  <div
-                    className="rating-inner"
-                    style={{ width: `${(product.ratings / 5) * 100}%` }}
-                  ></div>
-                </div>
-                <span id="no_of_reviews">({product.numOfReviews} Reviews)</span>
-              </div>
               <p className="product-price">${product.price}</p>
               <Link to={`/product/${product._id}`} className="view-btn">View Details</Link>
             </div>
@@ -106,6 +125,8 @@ function Product() {
       )}
 
         </div>
+
+        
         <div className='line'></div>
         <div className='right-side'>
           <div className='search-bar'>
