@@ -2,27 +2,31 @@ import axios from 'axios';
 
 import Cookies from 'js-cookie';
 
-
 export const login = async (email, password) => {
-    try {
-        const config = {
-            header: {
-                'Content-Type': 'application/json'
-            }
-        }
+  try {
+      const config = {
+          header: {
+              'Content-Type': 'application/json'
+          }
+      }
 
-        const { data } = await axios.post('http://localhost:4000/api/login', {email, password}, config);
-        
-        // Sačuvaj token i korisnika u kolačiće
-        Cookies.set('token', data.token, { expires: 7 }); 
-        Cookies.set('user', JSON.stringify(data.user), { expires: 7 });
+      const { data } = await axios.post('http://localhost:4000/api/login', { email, password }, config);
+      
+      Cookies.set('token', data.token, { expires: 7 });
+      Cookies.set('user', JSON.stringify(data.user), { expires: 7 });
 
-        return data;
-    } catch (error) {
-        console.log(error.reesponse.data.message)
-        return error.reesponse.data.message
-    }
+      return { success: true, ...data };
+  } catch (error) {
+      const message = error.response && error.response.data && error.response.data.message
+          ? error.response.data.message
+          : 'An error occurred. Please try again.';
+
+      return { success: false, message };
+  }
 }
+
+
+
 
 //Register
 export const register = async (formData) => {

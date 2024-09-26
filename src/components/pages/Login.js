@@ -27,22 +27,20 @@ function Login() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    // Pokušaj logovanja i uhvati greške
     try {
-      const response = await login(email, password); // Pretpostavka da je login asinhrona funkcija
+        const response = await login(email, password);
 
-      if (response.success) {
-        
-      window.location.href = '/';
-
-
-      } else {
-        setError(response.message); 
-      }
+        if (response.success) {
+            window.location.href = '/'; 
+        } else {
+            setError(response.message); 
+        }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+        setError('An error occurred. Please try again.'); 
     }
-  };
+};
+
+
 
   return (
     <div className='login-container'>
@@ -50,7 +48,7 @@ function Login() {
         <form onSubmit={submitHandler}>
           <h1 className='title-login'>LOGIN</h1>
 
-          {error && <p className='error-message'>{error}</p>} {/* Prikaz poruke o grešci */}
+         
 
           <div className="form-group">
             <input 
@@ -63,6 +61,7 @@ function Login() {
             />
           </div>
 
+
           <div className="form-group">
             <input 
               type="password"
@@ -73,6 +72,9 @@ function Login() {
               className='form-control'
             />
           </div>
+
+
+          {error && <p className='error-message'>{error}</p>} {/* Prikaz poruke o grešci */}
 
           <button type='submit' className='btn btn-block custom-button-login'>
             LOGIN
