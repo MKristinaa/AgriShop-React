@@ -80,7 +80,7 @@ function Login() {
             LOGIN
           </button>
 
-          <div className='register-link'>
+          <div className='link-sign-up'>
             <p>
               Don't have an account? <Link to="/sign-up">Register here</Link>.
             </p>

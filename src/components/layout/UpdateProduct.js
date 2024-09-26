@@ -1,20 +1,22 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { updateProduct, getProductDetails } from '../../actions/productActons';
-import { useParams, useNavigate } from 'react-router-dom';
-import './UpdateProduct.css';  // Assuming you'll create a custom CSS file for styling
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import './UpdateProduct.css';
 
 const UpdateProduct = () => {
     const { id: productId } = useParams();
     const navigate = useNavigate();
-    
+
     const [name, setName] = useState('');
+    const [base64Image, setBase64Image] = useState("");
+    const [user, setUser] = useState(null);
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
-    const [stocks, setStocks] = useState(0); // Changed from ratings to stocks
+    const [stocks, setStocks] = useState(0);
     const [imageURL, setImageURL] = useState('');
-    const [oldImages, setOldImages] = useState([]);
-    const [imagesPreview, setImagesPreview] = useState([]);
+    const [oldImage, setOldImage] = useState(''); 
+    const [imagesPreview, setImagesPreview] = useState('');
 
     const categories = [
         'Vegetables',
@@ -22,37 +24,58 @@ const UpdateProduct = () => {
         'Grains'
     ];
 
+    const convertUrlToBase64 = async (imageUrl) => {
+        const response = await fetch(imageUrl); 
+        const blob = await response.blob(); 
+        const reader = new FileReader();
+    
+        return new Promise((resolve, reject) => {
+          reader.onloadend = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob); 
+        });
+      };
+
     useEffect(() => {
         const fetchProductDetails = async () => {
             const productDetails = await getProductDetails(productId);
             if (productDetails) {
-                setName(productDetails.product.name || '');  
+                setName(productDetails.product.name || '');
                 setPrice(productDetails.product.price || 0);
                 setDescription(productDetails.product.description || '');
                 setCategory(productDetails.product.category || '');
-                setStocks(productDetails.product.stocks || 0); // Changed from ratings to stocks
-                setOldImages([productDetails.product.image] || []);
+                setStocks(productDetails.product.stocks || 0);
+                setOldImage(productDetails.product.image || '');
             }
         };
         fetchProductDetails();
-    }, [productId]);
+
+        if (oldImage && oldImage.url) {
+            convertUrlToBase64(oldImage.url).then((base64) => {
+              setBase64Image(base64); 
+            });
+          }
+
+
+    }, [productId, oldImage.url]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
-
+    
         const data = {
             name,
             price,
             description,
-            stocks, // Changed from ratings to stocks
-            image: imageURL || oldImages[0]?.url,  // Keep old image if no new image is provided
-            category
+            stocks,
+            category,
+            image: imageURL || base64Image
         };
-
+    
         await updateProduct(productId, data);
         alert("Product successfully updated!");
-        navigate('/admin/products');
+        navigate(`/product/${productId}`);
     };
+    
 
     const onChange = (e) => {
         const file = e.target.files[0];
@@ -60,8 +83,8 @@ const UpdateProduct = () => {
             const reader = new FileReader();
             reader.onload = () => {
                 if (reader.readyState === 2) {
-                    setImagesPreview([reader.result]);  // Preview image
-                    setImageURL(reader.result);         // Store the image URL as a string
+                    setImagesPreview(reader.result);
+                    setImageURL(reader.result);
                 }
             };
             reader.readAsDataURL(file);
@@ -71,16 +94,14 @@ const UpdateProduct = () => {
     return (
         <Fragment>
             <div className='top'>
-                <div className='top-text'>Update Product</div>
+                <div className='top-text update-top'>Update Product</div>
             </div>
 
-            <div className="row">
-                <div className="col-content">
-                    <div className="form-wrapper">
-
-                        <form className="form-container" onSubmit={submitHandler}>
-
-                            <div className="form-group">
+            <div className="update-product-row">
+                <div className="update-product-content">
+                    <div className="update-product-form-wrapper">
+                        <form className="update-product-form-container" onSubmit={submitHandler}>
+                            <div className="update-product-form-group">
                                 <label htmlFor="name_field">Name</label>
                                 <input
                                     type="text"
@@ -91,7 +112,7 @@ const UpdateProduct = () => {
                                 />
                             </div>
 
-                            <div className="form-group">
+                            <div className="update-product-form-group">
                                 <label htmlFor="price_field">Price</label>
                                 <input
                                     type="number"
@@ -102,7 +123,7 @@ const UpdateProduct = () => {
                                 />
                             </div>
 
-                            <div className="form-group">
+                            <div className="update-product-form-group">
                                 <label htmlFor="description_field">Description</label>
                                 <textarea
                                     id="description_field"
@@ -113,7 +134,7 @@ const UpdateProduct = () => {
                                 ></textarea>
                             </div>
 
-                            <div className="form-group">
+                            <div className="update-product-form-group">
                                 <label htmlFor="category_field">Category</label>
                                 <select
                                     id="category_field"
@@ -129,36 +150,42 @@ const UpdateProduct = () => {
                                 </select>
                             </div>
 
-                            <div className="form-group">
+                            <div className="update-product-form-group">
                                 <label htmlFor="stocks_field">Stocks</label>
                                 <input
                                     type="number"
                                     id="stocks_field"
-                                    value={stocks} // Changed from ratings to stocks
+                                    value={stocks}
                                     onChange={(e) => setStocks(e.target.value)}
                                     required
                                 />
                             </div>
 
-                            <div className='form-group'>
-                                <label>Image</label>
-                                <input
-                                    type='file'
-                                    name='product_image'
-                                    id='product_image'
-                                    onChange={onChange}
-                                />
-                                {oldImages && oldImages.map(img => (
-                                    <img key={img.public_id} src={img.url} alt={img.public_id} width="55" height="52" />
-                                ))}
-                                {imagesPreview.map(img => (
-                                    <img src={img} key={img} alt="Image Preview" width="55" height="52" />
-                                ))}
+                            <div className='update-product-form-group'>
+                                <div className='avatar'>
+                                    <div className='update-product-form-group-image-preview'>
+                                        {oldImage && <img src={oldImage.url} alt="Old Image" />}
+                                        {imagesPreview && <img src={imagesPreview} alt="Image Preview" />}
+                                    </div>
+                                    <div className='custom-file'>
+                                        <input
+                                            type='file'
+                                            name='avatar'
+                                            className='custom-file-input'
+                                            id='customFile'
+                                            accept='image/*'
+                                            onChange={onChange}
+                                        />
+                                        <p className='custom-file-label' htmlFor='customFile'>
+                                            Choose Image
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                             <button
                                 type="submit"
-                                className="update-button"
+                                className="update-product-button"
                             >
                                 UPDATE
                             </button>

@@ -6,7 +6,7 @@
 
 .login-content{
     width: 50%;
-    height: 650px;
+    height: 390px;
     margin-left: 10%;
     border-radius: 5px;
     color:black;
@@ -36,10 +36,9 @@
     font-size: 15px;
 }
 
-.register-link{
-    margin-top: 2%;
+.link-sign-up{
+    margin-top: 20px;
 }
-
 
 .error-message{
     color: red;

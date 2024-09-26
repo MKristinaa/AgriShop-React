@@ -86,11 +86,11 @@ function Navbar() {
             </Link>
           </li>
           )}
-          <li className='nav-item'>
+          {/* <li className='nav-item'>
             <Link to='/contact' className='nav-links' onClick={closeMobileMenu}>
               Contact
             </Link>
-          </li>
+          </li> */}
           
           {/* {(user === null || user.role === 'seller' || user.role === 'user' ) && (
           <li className='nav-item'>

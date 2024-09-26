@@ -5,7 +5,6 @@
 
 .content-signup{
     width: 50%;
-    height: 650px;
     margin-left: 10%;
     border-radius: 5px;
     color:black;
@@ -32,13 +31,15 @@
     border-bottom: 1px solid gray;
     padding: 5px;
     width: 58%;
-    margin-bottom: 3%;
 }
 
 .custom-button{
-    margin-top: 10%;
     background-color: green;
     color: white;
+}
+
+.button-div{
+    margin-top: 50px;
 }
 
 .avatar{
@@ -119,4 +120,14 @@
     background-color: #e9ecef;
     border-left: inherit;
     border-radius: 0 .25rem .25rem 0;
+}
+
+
+.select-role{
+    margin-left: 5px;
+    width: 52%;
+}
+
+.role-div{
+    margin-bottom: 20px;
 }
