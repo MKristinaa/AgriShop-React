@@ -108,8 +108,11 @@ export const updatePassword = async (passwords) => {
     return data;
 
   } catch (error) {
-    console.error('Error updating password:', error.response ? error.response.data.message : error.message);
-    return error.response ? error.response.data.message : error.message;
+    const message = error.response && error.response.data && error.response.data.message
+        ? error.response.data.message
+        : 'An error occurred. Please try again.';
+
+    return { success: false, message };
   }
 };
 

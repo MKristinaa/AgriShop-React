@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom'; // Importuj useParams
+import { Link, useParams } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import { getOrderDetails, updateOrder } from '../../actions/orderActions'; // Importovano prema tvojoj potrebi
-import { compose } from 'redux';
+import { getOrderDetails, updateOrder } from '../../actions/orderActions';
+import './ProcessOrder.css'
 
 const ProcessOrder = () => {
     const [status, setStatus] = useState('');
@@ -11,12 +11,12 @@ const ProcessOrder = () => {
     const [order, setOrder] = useState({});
     const [isUpdated, setIsUpdated] = useState(false);
 
-    const { id: orderId } = useParams(); // Uzimanje orderId iz URL-a koristeći useParams
+    const { id: orderId } = useParams();
 
     useEffect(() => {
         const fetchOrderDetails = async () => {
             try {
-                const response = await getOrderDetails(orderId); 
+                const response = await getOrderDetails(orderId);
                 setOrder(response);
                 setLoading(false);
             } catch (err) {
@@ -44,11 +44,9 @@ const ProcessOrder = () => {
         try {
             const response = await updateOrder(id, formData);
 
-            console.log("ojihugifythfg",response);
-
             if (response) {
                 setIsUpdated(true);
-                alert("Order updated successfully!")
+                alert("Order updated successfully!");
             } else {
                 console.log('Failed to update order');
             }
@@ -62,56 +60,53 @@ const ProcessOrder = () => {
 
     return (
         <Fragment>
-            <div className="row">
-                <div className="col-12 col-md-2">
+            <div className="process-order-container">
+                <div className="process-order-sidebar">
                     <Sidebar />
                 </div>
 
-                <div className="col-12 col-md-10">
+                <div className="process-order-main">
                     <Fragment>
                         {loading ? (
                             <p>Loading...</p>
                         ) : (
-                            <div className="row d-flex justify-content-around">
-                                <div className="col-12 col-lg-7 order-details">
-                                    <h2 className="my-5">Order # {order._id}</h2>
+                            <div className="process-order-details-wrapper">
+                                <div className="process-order-details">
+                                    <h1 className="process-order-title">Order #{order._id}</h1>
 
-                                    <h4 className="mb-4">Shipping Info</h4>
+                                    <h4 className="process-order-heading">Shipping Info</h4>
                                     <p><b>Name:</b> {order.user && order.user.name}</p>
-                                    <p><b>Phone:</b> {order.shippingInfo && order.shippingInfo.phoneNo}</p>
-                                    <p className="mb-4"><b>Address:</b>{shippingDetails}</p>
+                                    <p><b>Phone:</b> {order.shippingInfo && order.shippingInfo.phone}</p>
+                                    <p className="process-order-address"><b>Address:</b>{shippingDetails}</p>
                                     <p><b>Amount:</b> ${order.totalPrice}</p>
 
                                     <hr />
 
-                                    <h4 className="my-4">Payment</h4>
-                                    <p className={isPaid ? "greenColor" : "redColor"}><b>{isPaid ? "PAID" : "NOT PAID"}</b></p>
+                                    {/* <h4 className="process-order-heading">Payment</h4>
+                                    <p className={isPaid ? "process-order-paid" : "process-order-not-paid"}><b>{isPaid ? "PAID" : "NOT PAID"}</b></p> */}
 
-                                    <h4 className="my-4">Stripe ID</h4>
-                                    <p><b>{order.paymentInfo && order.paymentInfo.id}</b></p>
+                                    <h4 className="process-order-heading">Order Status:</h4>
+                                    <p className={order.orderStatus && order.orderStatus.includes('Delivered') ? "process-order-delivered" : "process-order-pending"} ><b>{order.orderStatus}</b></p>
 
-                                    <h4 className="my-4">Order Status:</h4>
-                                    <p className={order.orderStatus && order.orderStatus.includes('Delivered') ? "greenColor" : "redColor"} ><b>{order.orderStatus}</b></p>
+                                    <h4 className="process-order-heading margin">Order Items:</h4>
 
-                                    <h4 className="my-4">Order Items:</h4>
-
-                                    <hr />
-                                    <div className="cart-item my-1">
+                                    <hr/>
+                                    <div className="process-order-items">
                                         {order.orderItems && order.orderItems.map(item => (
-                                            <div key={item.product} className="row my-5">
-                                                <div className="col-4 col-lg-2">
+                                            <div key={item.product} className="process-order-item">
+                                                <div className="process-order-item-image">
                                                     <img src={item.image} alt={item.name} height="45" width="65" />
                                                 </div>
 
-                                                <div className="col-5 col-lg-5">
+                                                <div className="process-order-item-name">
                                                     <Link to={`/products/${item.product}`}>{item.name}</Link>
                                                 </div>
 
-                                                <div className="col-4 col-lg-2 mt-4 mt-lg-0">
+                                                <div className="process-order-item-price">
                                                     <p>${item.price}</p>
                                                 </div>
 
-                                                <div className="col-4 col-lg-3 mt-4 mt-lg-0">
+                                                <div className="process-order-item-quantity">
                                                     <p>{item.quantity} Piece(s)</p>
                                                 </div>
                                             </div>
@@ -120,12 +115,11 @@ const ProcessOrder = () => {
                                     <hr />
                                 </div>
 
-                                <div className="col-12 col-lg-3 mt-5">
-                                    <h4 className="my-4">Status</h4>
+                                <div className="process-order-status-update">
+                                    <h4 className="process-order-heading">Status</h4>
 
-                                    <div className="form-group">
+                                    <div className="process-order-status-select">
                                         <select
-                                            className="form-control"
                                             name='status'
                                             value={status}
                                             onChange={(e) => setStatus(e.target.value)}
@@ -136,7 +130,7 @@ const ProcessOrder = () => {
                                         </select>
                                     </div>
 
-                                    <button className="btn btn-primary btn-block" onClick={() => updateOrderHandler(order._id)}>
+                                    <button className="process-order-update-btn" onClick={() => updateOrderHandler(order._id)}>
                                         Update Status
                                     </button>
                                 </div>
@@ -146,7 +140,6 @@ const ProcessOrder = () => {
                     </Fragment>
                 </div>
             </div>
-
         </Fragment>
     );
 };

@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import { useParams, useNavigate } from 'react-router-dom';
 import { updateUser, getUserDetails } from '../../actions/userActions';
+import './UpdateUser.css'; // Uvezi jedinstvenu CSS datoteku
 
 const UpdateUser = () => {
     const { id: userId } = useParams();
@@ -10,14 +11,12 @@ const UpdateUser = () => {
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
-    const [role, setRole] = useState('');
+    const [role, setRole] = useState('user');
 
     useEffect(() => {
         const fetchUserDetails = async () => {
             try {
                 const userDetails = await getUserDetails(userId);
-                console.log("User details:", userDetails);
-
                 if (userDetails) {
                     setName(userDetails.user.name || '');
                     setLastname(userDetails.user.lastname || '');
@@ -49,50 +48,50 @@ const UpdateUser = () => {
 
     return (
         <Fragment>
-            <div className="row">
-                <div className="col-12 col-md-2">
+            <div className="updateuser-page-container">
+                <div className="updateuser-sidebar-container">
                     <Sidebar />
                 </div>
-                <div className="col-12 col-md-10">
+                <div className="updateuser-content-container">
                     <Fragment>
-                        <div className="wrapper my-5">
-                            <form className="shadow-lg" onSubmit={submitHandler}>
-                                <h1 className="mb-4">Update User</h1>
-                                <div className="form-group">
+                        <div className="updateuser-form-wrapper">
+                            <form className="updateuser-form" onSubmit={submitHandler}>
+                                <h1 className="updateuser-heading">Update User</h1>
+                                <div className="updateuser-form-group">
                                     <label htmlFor="name_field">Name</label>
                                     <input
                                         type="text"
                                         id="name_field"
-                                        className="form-control"
+                                        className="updateuser-input"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
                                     />
                                 </div>
-                                <div className="form-group">
+                                <div className="updateuser-form-group">
                                     <label htmlFor="lastname_field">Lastname</label>
                                     <input
                                         type="text"
                                         id="lastname_field"
-                                        className="form-control"
+                                        className="updateuser-input"
                                         value={lastname}
                                         onChange={(e) => setLastname(e.target.value)}
                                     />
                                 </div>
-                                <div className="form-group">
+                                <div className="updateuser-form-group">
                                     <label htmlFor="email_field">Email</label>
                                     <input
                                         type="email"
                                         id="email_field"
-                                        className="form-control"
+                                        className="updateuser-input"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </div>
-                                <div className="form-group">
+                                <div className="updateuser-form-group">
                                     <label htmlFor="role_field">Role</label>
                                     <select
                                         id="role_field"
-                                        className="form-control"
+                                        className="updateuser-input"
                                         value={role}
                                         onChange={(e) => setRole(e.target.value)}
                                     >
@@ -100,7 +99,7 @@ const UpdateUser = () => {
                                         <option value="admin">Admin</option>
                                     </select>
                                 </div>
-                                <button type="submit" className="btn update-btn btn-block mt-4 mb-3">
+                                <button type="submit" className="updateuser-submit-btn">
                                     Update
                                 </button>
                             </form>

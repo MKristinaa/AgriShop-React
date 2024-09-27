@@ -34,7 +34,7 @@ function Home() {
           <li className='nav-item'>
               <div className='cart'>
                 <Link to='/cart'>
-                    <i class="fa-solid fa-basket-shopping"></i>
+                    <i className="fa-solid fa-basket-shopping"></i>
                 </Link>
               </div>
           </li>

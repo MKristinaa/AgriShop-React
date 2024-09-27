@@ -82,7 +82,7 @@ function MyProducts() {
           <li className='nav-item'>
               <div className='cart'>
                 <Link to='/cart' className='linkkkk'>
-                    <i class="fa-solid fa-basket-shopping"></i>
+                    <i className="fa-solid fa-basket-shopping"></i>
                 </Link>
               </div>
           </li>

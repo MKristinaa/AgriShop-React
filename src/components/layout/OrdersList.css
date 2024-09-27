@@ -1,0 +1,80 @@
+.orderslist-container {
+    display: flex;
+    height: 436px;
+}
+
+.sidebar-container {
+    width: 20%;
+}
+
+.orders-content-container {
+    width: 80%;
+    padding: 20px;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.orders-table th, 
+.orders-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.orders-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.order-status {
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.order-status.delivered {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.order-status.pending {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.view-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-btn:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}

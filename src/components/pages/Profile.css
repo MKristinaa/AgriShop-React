@@ -1,99 +1,111 @@
-/* Profile.css */
+.position{
+  height: 450px;
+  padding-top: 50px;
+}
+
 
 .profile-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  .profile-header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .profile-header h2 {
-    font-size: 2rem;
-    color: #333;
-  }
-  
-  .user-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .avatar-profile {
-    text-align: center;
-  }
-  
-  .avatar-profile img {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border: 2px solid #ddd;
-  }
-  
-  .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .btn-danger:hover {
-    background-color: #c82333;
-  }
-  
-  .user-details {
-    margin-left: 20px;
-  }
-  
-  .user-details h4 {
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .user-details p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 10px;
-  }
-  
-  .register-link {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .register-link p {
-    font-size: 1rem;
-  }
-  
-  .register-link a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .register-link a:hover {
-    text-decoration: underline;
-  }
-  
+  width: 800px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; 
+  margin-bottom: 80px;
+}
+
+.profile-card {
+  background-color: #f9f9f9; 
+  border-radius: 8px;
+}
+
+
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-header h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.avatar-column {
+  text-align: center;
+  flex: 1;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.avatar-profile img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.edit-profile-btn {
+  margin-top: 20px;
+}
+
+.user-details-column {
+  flex: 2;
+  text-align: left;
+  padding: 20px;
+}
+
+.user-details h4 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.user-details p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+

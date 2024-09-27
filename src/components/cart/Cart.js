@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -43,7 +44,13 @@ const Cart = () => {
     };
 
     const checkoutHandler = () => {
-        navigate('/login?redirect=shipping');  // Use navigate to programmatically go to the login page
+        const token = Cookies.get('token');
+
+        if (token) {
+            navigate('/login/shipping');
+        } else {
+            navigate('/login');
+        }
     };
 
     return (

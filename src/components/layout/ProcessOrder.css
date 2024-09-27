@@ -1,0 +1,98 @@
+.process-order-container {
+    display: flex;
+    height: 100%;
+}
+
+.process-order-sidebar {
+    width: 20%;
+    background-color: #f8f9fa;
+}
+
+.process-order-main {
+    width: 80%;
+    padding: 20px;
+}
+
+.process-order-details-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.process-order-details {
+    width: 65%;
+}
+
+.process-order-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.process-order-heading {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.process-order-address, .process-order-items {
+    margin-bottom: 20px;
+}
+
+.process-order-paid {
+    color: green;
+}
+
+.process-order-not-paid {
+    color: red;
+}
+
+.process-order-delivered {
+    color: green;
+}
+
+.process-order-pending {
+    color: red;
+}
+
+.process-order-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.process-order-item-image {
+    margin-right: 10px;
+}
+
+.process-order-item-name {
+    flex: 1;
+}
+
+.process-order-item-price, .process-order-item-quantity {
+    text-align: right;
+    width: 100px;
+}
+
+.process-order-status-update {
+    width: 30%;
+    margin-top: 40px;
+}
+
+.process-order-status-select {
+    margin-bottom: 20px;
+}
+
+.process-order-update-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.process-order-update-btn:hover {
+    background-color: #0056b3;
+}
+
+.margin{
+    margin-top: 50px;
+}

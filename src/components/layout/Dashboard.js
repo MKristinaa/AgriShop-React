@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { allOrders } from '../../actions/orderActions';
 import { allUsers } from '../../actions/userActions';
 import Sidebar from './Sidebar';
+import './Dashboard.css'; // Uvezi CSS datoteku
 
 const Dashboard = () => {
     const [orders, setOrders] = useState([]);
@@ -31,45 +32,38 @@ const Dashboard = () => {
 
     return (
         <Fragment>
-            <div className="row">
-                <div className="col-12 col-md-2">
-                    <Sidebar />
-                </div>
+            <div className="dashboard-layout">
+                <Sidebar />
+                <div className="dashboard-content">
+                    <h1 className="dashboard-heading">Dashboard</h1>
 
-                <div className="col-12 col-md-10">
-                    <h1 className="my-4">Dashboard</h1>
-
-                    <div className="row pr-4">
-                        <div className="col-xl-6 col-sm-12 mb-3">
-                            <div className="card text-white bg-danger o-hidden h-100">
-                                <div className="card-body">
-                                    <div className="text-center card-font-size">
-                                        Orders<br /> <b>{orders.length}</b>
-                                    </div>
+                    <div className="dashboard-cards">
+                        <div className="dashboard-card dashboard-card-danger">
+                            <div className="dashboard-card-body">
+                                <div className="dashboard-card-text">
+                                    Orders<br /> <b>{orders.length}</b>
                                 </div>
-                                <Link className="card-footer text-white clearfix small z-1" to="/admin/orders">
-                                    <span className="float-left">View Details</span>
-                                    <span className="float-right">
-                                        <i className="fa fa-angle-right"></i>
-                                    </span>
-                                </Link>
                             </div>
+                            <Link className="dashboard-card-footer" to="/admin/orders">
+                                <span className="float-left">View Details</span>
+                                <span className="float-right">
+                                    <i className="fa fa-angle-right"></i>
+                                </span>
+                            </Link>
                         </div>
 
-                        <div className="col-xl-6 col-sm-12 mb-3">
-                            <div className="card text-white bg-info o-hidden h-100">
-                                <div className="card-body">
-                                    <div className="text-center card-font-size">
-                                        Users<br /> <b>{users.length}</b>
-                                    </div>
+                        <div className="dashboard-card dashboard-card-info">
+                            <div className="dashboard-card-body">
+                                <div className="dashboard-card-text">
+                                    Users<br /> <b>{users.length - 1}</b>
                                 </div>
-                                <Link className="card-footer text-white clearfix small z-1" to="/admin/users">
-                                    <span className="float-left">View Details</span>
-                                    <span className="float-right">
-                                        <i className="fa fa-angle-right"></i>
-                                    </span>
-                                </Link>
                             </div>
+                            <Link className="dashboard-card-footer" to="/admin/users">
+                                <span className="float-left">View Details</span>
+                                <span className="float-right">
+                                    <i className="fa fa-angle-right"></i>
+                                </span>
+                            </Link>
                         </div>
                     </div>
                 </div>

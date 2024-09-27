@@ -1,0 +1,32 @@
+.sidebar-wrapper {
+    width: 250px; /* Širina sidebar-a */
+    background-color: rgba(3,38,44,255); 
+    height: 100vh;
+    position: fixed; 
+    overflow-y: auto; 
+}
+
+#sidebar {
+    padding: 20px; /* Unutrašnji razmak */
+}
+
+.sidebar-list {
+    list-style: none; /* Uklanja tačkice iz liste */
+    padding: 0; /* Uklanja podrazumevani razmak */
+}
+
+.sidebar-link {
+    text-decoration: none; /* Uklanja podvlačenje linkova */
+    color: white; /* Boja teksta */
+    display: block; /* Linkovi zauzimaju celu širinu */
+    padding: 10px 15px; /* Unutrašnji razmak za linkove */
+    transition: background-color 0.3s; /* Glatka promena pozadine */
+}
+
+.sidebar-link:hover {
+    background-color: #495057; /* Pozadina pri hover-u */
+}
+
+.sidebar-link i {
+    margin-right: 10px; /* Razmak između ikone i teksta */
+}

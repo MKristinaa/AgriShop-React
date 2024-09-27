@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { updateProfile, loadUser } from '../../actions/userActions'; 
 import Cookies from 'js-cookie';
+import './UpdateProfile.css';
+import { useNavigate } from 'react-router-dom';
 
 function UpdateProfile() {
+  const navigate = useNavigate()
   const [user, setUser] = useState(null);
   const [userId, setUserId] = useState(null);
   const [name, setName] = useState('');
@@ -10,6 +13,7 @@ function UpdateProfile() {
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState(''); 
   const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg');
+  const [oldAvatar, setOldAvatar] = useState('/images/default_avatar.jpg');
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -18,10 +22,11 @@ function UpdateProfile() {
         const parsedUser = JSON.parse(storedUser);
         try {
           const userData = await loadUser(parsedUser._id);
+          console.log(userData)
           setUser(userData.user); 
           setUserId(userData.user._id);
           setName(userData.user.name);
-          setName(userData.user.lastname);
+          setLastname(userData.user.lastname);
           setEmail(userData.user.email);
           setAvatarPreview(userData.user.avatar ? userData.user.avatar.url : '/images/default_avatar.jpg');
           setAvatar(userData.user.avatar ? userData.user.avatar.url : '');
@@ -76,11 +81,10 @@ function UpdateProfile() {
 
     try {
       const response = await updateProfile(data);
-      console.log('Profile updated successfully:', response);
-      // Optionally handle success here
+      alert('Profile updated successfully!');
+      navigate('/me')
     } catch (error) {
       console.error('Error updating profile:', error);
-      // Optionally handle error here
     }
   };
 
@@ -99,83 +103,77 @@ function UpdateProfile() {
   };
 
   return (
-    <div>
-      <div className="row wrapper">
-        <div className="col-10 col-lg-5">
-          <form className="shadow-lg" onSubmit={submitHandler}>
-            <h1 className="mt-2 mb-5">Update Profile</h1>
-
-            <div className="form-group">
-              <label htmlFor="name_field">Name</label>
-              <input
-                type="text"
-                id="name_field"
-                className="form-control"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="lastname_field">Lastname</label>
-              <input
-                type="text"
-                id="lastname_field"
-                className="form-control"
-                name="lastname"
-                value={lastname}
-                onChange={(e) => setLastname(e.target.value)}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email_field">Email</label>
-              <input
-                type="email"
-                id="email_field"
-                className="form-control"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="avatar_upload">Avatar</label>
-              <div className="d-flex align-items-center">
-                <div>
-                  <figure className="avatar mr-3 item-rtl">
-                    <img
-                      src={avatarPreview}
-                      className="rounded-circle"
-                      alt="Avatar Preview"
-                    />
-                  </figure>
-                </div>
-                <div className="custom-file">
-                  <input
-                    type="file"
-                    name="avatar"
-                    className="custom-file-input"
-                    id="customFile"
-                    accept="image/*"
-                    onChange={onChange}
-                  />
-                  <label className="custom-file-label" htmlFor="customFile">
-                    Choose Avatar
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <button type="submit" className="btn update-btn btn-block mt-4 mb-3">
-              Update
-            </button>
-          </form>
-        </div>
+    <div className="update-profile-container">
+  <div className="update-profile-card">
+    <form className="shadow-lg" onSubmit={submitHandler}>
+      <h1 className="update-profile-header">Update Profile</h1>
+      <div className="update-profile-form-group">
+        <label htmlFor="name_field">Name</label>
+        <input
+          type="text"
+          id="name_field"
+          className="form-control"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       </div>
+      <div className="update-profile-form-group">
+        <label htmlFor="lastname_field">Lastname</label>
+        <input
+          type="text"
+          id="lastname_field"
+          className="form-control"
+          name="lastname"
+          value={lastname}
+          onChange={(e) => setLastname(e.target.value)}
+        />
+      </div>
+      <div className="update-profile-form-group">
+        <label htmlFor="email_field">Email</label>
+        <input
+          type="email"
+          id="email_field"
+          className="form-control"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+
+    <div className="update-profile-avatar-upload">
+    <label className="avatar_upload">Avatar</label>
+    <div className="update-profile-avatar-container d-flex align-items-center">
+      <div>
+        <figure className="update-profile-avatar-preview mr-3 item-rtl">
+          {avatarPreview && <img src={avatarPreview} className="rounded-circle update-profile-avatar-image-preview" alt="Avatar Preview" />}
+        </figure>
+      </div>
+      <div className="update-profile-custom-file-upload">
+        <input
+          type="file"
+          name="avatar"
+          className="update-profile-custom-file-input-upload"
+          id="customFile"
+          accept="image/*"
+          onChange={onChange}
+        />
+        <label className="update-profile-custom-file-label-upload" htmlFor="customFile">
+          Choose Avatar
+        </label>
     </div>
+  </div>
+</div>
+
+
+
+      <button type="submit" className="update-profile-button">
+        Update
+      </button>
+    </form>
+  </div>
+</div>
+
   );
 }
 
