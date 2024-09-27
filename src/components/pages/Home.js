@@ -168,7 +168,7 @@ function Home() {
               <img src={require('../../images/product-1.jpg')}></img>
             </div>
             <div>
-              other
+              Other
             </div>
         </div>
       </div>

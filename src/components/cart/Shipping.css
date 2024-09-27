@@ -1,0 +1,71 @@
+/* Shipping page styles */
+.shipping-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    /* background-color: #f4f4f4; */
+}
+
+.shipping-form-container {
+    width: 100%;
+    margin: 50px;
+    max-width: 600px;
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.shipping-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.shipping-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.shipping-form-group {
+    margin-bottom: 15px;
+}
+
+.shipping-form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.shipping-input, .shipping-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.shipping-input:focus, .shipping-select:focus {
+    border-color: #007bff;
+}
+
+.shipping-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.shipping-button:hover {
+    background-color: #0056b3;
+}

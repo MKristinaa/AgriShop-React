@@ -1,0 +1,74 @@
+.order-details-title {
+    font-size: 2rem;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.order-details-card {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.card-section {
+    margin-bottom: 20px;
+}
+
+.shipping-info p, 
+.payment-info p, 
+.order-status-info p, 
+.order-items .order-item {
+    margin: 10px 0;
+}
+
+.status-paid {
+    color: green;
+}
+
+.status-not-paid {
+    color: red;
+}
+
+.status-delivered {
+    color: green;
+}
+
+.status-pending {
+    color: red;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.order-item-image {
+    height: 45px;
+    width: 65px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.order-item-name {
+    flex: 1;
+    margin-left: 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.order-item-price, 
+.order-item-quantity {
+    margin-left: 10px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}

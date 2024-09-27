@@ -1,78 +1,84 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { getOrderDetails } from '../../actions/orderActions'
-import { useParams } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { getOrderDetails } from '../../actions/orderActions';
+import './OrderDetails.css'; // Custom CSS file
 
-const OrderDetails = ({ }) => {
+const OrderDetails = () => {
     const [order, setOrder] = useState({});
     const { id } = useParams();
     const { shippingInfo, orderItems, paymentInfo, user, totalPrice, orderStatus } = order;
 
-
     useEffect(() => {
         const fetchProduct = async () => {
-          try {
-            const data = await getOrderDetails(id);
-            setOrder(data);
-
-          } catch (error) {
-            console.error("Error fetching product:", error);
-          }
+            try {
+                const data = await getOrderDetails(id);
+                setOrder(data);
+            } catch (error) {
+                console.error("Error fetching product:", error);
+            }
         };
-    
-        fetchProduct();
-      }, [id]);
 
+        fetchProduct();
+    }, [id]);
 
     const shippingDetails = shippingInfo && `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.postalCode}, ${shippingInfo.country}`;
-    const isPaid = paymentInfo && paymentInfo.status === 'succeeded' ? true : false;
-
+    const isPaid = paymentInfo && paymentInfo.status === 'succeeded';
 
     return (
         <Fragment>
-            <h1 className="my-5">Order # {order._id}</h1>
-            <div className="row d-flex justify-content-between">
-                <div className="col-12 col-lg-8 mt-5 order-details">
-                    <h4 className="mb-4">Shipping Info</h4>
-                    <p><b>Name:</b> {user && user.name}</p>
-                    <p><b>Phone:</b> {shippingInfo && shippingInfo.phone}</p>
-                    <p className="mb-4"><b>Address:</b> {shippingDetails}</p>
-                    <p><b>Amount:</b> ${totalPrice}</p>
+            <h1 className="order-details-title">Order #{order._id}</h1>
+            <div className="order-details-card">
+                <div className="shipping-info card-section">
+                    <h2>Shipping Info</h2>
+                    <p><strong>Name:</strong> {user && user.name}</p>
+                    <p><strong>Email:</strong> {user && user.email}</p>
+                    <p><strong>Phone:</strong> {shippingInfo && shippingInfo.phone}</p>
+                    <p><strong>Address:</strong> {shippingInfo && shippingInfo.address}</p>
+                    <p><strong>Country:</strong> {shippingInfo && shippingInfo.country}</p>
+                    <p><strong>City:</strong> {shippingInfo && shippingInfo.city}</p>
+                    <p><strong>Postal Code:</strong> {shippingInfo && shippingInfo.postalCode}</p>
+                    <p><strong>Amount:</strong> ${totalPrice}</p>
+                </div>
+{/* 
+                <hr />
 
-                    <hr />
+                <div className="payment-info card-section">
+                    <h4>Payment</h4>
+                    <p className={isPaid ? "status-paid" : "status-not-paid"}><strong>{isPaid ? "PAID" : "NOT PAID"}</strong></p>
+                </div> */}
 
-                    <h4 className="my-4">Payment</h4>
-                    <p className={isPaid ? "greenColor" : "redColor"}><b>{isPaid ? "PAID" : "NOT PAID"}</b></p>
+                <hr />
 
-                    <h4 className="my-4">Order Status:</h4>
-                    <p className={orderStatus && String(orderStatus).includes('Delivered') ? "greenColor" : "redColor"}><b>{orderStatus}</b></p>
+                <div className="order-status-info card-section">
+                    <h4>Order Status:</h4>
+                    <p className={orderStatus && orderStatus.includes('Delivered') ? "status-delivered" : "status-pending"}>
+                        <strong>{orderStatus}</strong>
+                    </p>
+                </div>
 
-                    <h4 className="my-4">Order Items:</h4>
+                <hr />
 
-                    <hr />
-                    <div className="cart-item my-1">
-                        {orderItems && orderItems.map(item => (
-                            <div key={item.product} className="row my-5">
-                                <div className="col-4 col-lg-2">
-                                    <img src={item.image} alt={item.name} height="45" width="65" />
-                                </div>
-                                <div className="col-5 col-lg-5">
-                                    <Link to={`/product/${item.product}`}>{item.name}</Link>
-                                </div>
-                                <div className="col-4 col-lg-2 mt-4 mt-lg-0">
-                                    <p>${item.price}</p>
-                                </div>
-                                <div className="col-4 col-lg-3 mt-4 mt-lg-0">
-                                    <p>{item.quantity} Piece(s)</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <hr />
+                <div className="order-items card-section">
+                    <h4>Order Items:</h4>
+                    {orderItems && orderItems.map(item => (
+                        <div key={item.product} className="order-item">
+                            <img src={item.image} alt={item.name} className="order-item-image" />
+                            <Link to={`/product/${item.product}`} className="order-item-name">{item.name}</Link>
+                            <p className="order-item-price">${item.price}</p>
+                            <p className="order-item-quantity">{item.quantity} Piece(s)</p>
+                        </div>
+                    ))}
                 </div>
             </div>
+                <li className='nav-item'>
+                    <div className='cart'>
+                        <Link to='/cart' className='link-cart'>
+                            <i className="fa-solid fa-basket-shopping"></i>
+                        </Link>
+                    </div>
+                </li>
         </Fragment>
-    )
-}
+    );
+};
 
 export default OrderDetails;

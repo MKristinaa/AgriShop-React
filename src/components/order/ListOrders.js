@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MDBDataTable } from 'mdbreact';
 import { myOrders } from '../../actions/orderActions';
 import Cookies from 'js-cookie';
+import './ListOrders.css'; // Uverite se da ste kreirali ovaj CSS fajl
 
 const ListOrders = () => {
     const [user, setUser] = useState(null);
@@ -12,21 +12,17 @@ const ListOrders = () => {
         const fetchUserData = async () => {
             const storedUser = Cookies.get('user');
             if (storedUser) {
-              const parsedUser = JSON.parse(storedUser);
-              setUser(parsedUser);
-              console.log(parsedUser._id)
-              try {
-                const response = await myOrders(parsedUser._id);
-                setOrders(response); 
-
-              } catch (error) {
-                console.error('Failed to load user data:', error);
-              }
+                const parsedUser = JSON.parse(storedUser);
+                setUser(parsedUser);
+                try {
+                    const response = await myOrders(parsedUser._id);
+                    setOrders(response);
+                } catch (error) {
+                    console.error('Failed to load user data:', error);
+                }
             }
-    
         }
         fetchUserData();
-
     }, []);
 
     const setOrdersData = () => {
@@ -67,10 +63,10 @@ const ListOrders = () => {
                 numOfItems: order.orderItems.length,
                 amount: `$${order.totalPrice}`,
                 status: order.orderStatus && String(order.orderStatus).includes('Delivered')
-                    ? <p style={{ color: 'green' }}>{order.orderStatus}</p>
-                    : <p style={{ color: 'red' }}>{order.orderStatus}</p>,
+                    ? <p className='order-status-success'>{order.orderStatus}</p>
+                    : <p className='order-status-failed'>{order.orderStatus}</p>,
                 actions:
-                    <Link to={`/order/${order._id}`} className="btn btn-primary">
+                    <Link to={`/order/${order._id}`} className="order-action-btn">
                         <i className="fa fa-eye"></i>
                     </Link>
             });
@@ -81,29 +77,48 @@ const ListOrders = () => {
 
     return (
         <Fragment>
-             {/* CART */}
-            {(user === null || user.role === 'seller' || user.role === 'user' ) && (
-            <li className='nav-item'>
-                <div className='cart'>
-                    <Link to='/cart' className='linkkkk'>
-                        <i className="fa-solid fa-basket-shopping"></i>
-                    </Link>
+        {(user === null || user.role === 'seller' || user.role === 'user') && (
+                <li className='nav-item'>
+                    <div className='cart'>
+                        <Link to='/cart' className='link-cart'>
+                            <i className="fa-solid fa-basket-shopping"></i>
+                        </Link>
+                    </div>
+                </li>
+            )}
+            <div className='top'>
+                <div className='top-text myorders-top'>My Orders</div>
+            </div>
+            <div className='myorders-container'>
+                <div className='myorders-table'>
+                    {orders && orders.length > 0 ? (
+                        <table className="orders-table">
+                            <thead>
+                                <tr>
+                                    {setOrdersData().columns.map(column => (
+                                        <th key={column.field}>{column.label}</th>
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {setOrdersData().rows.map((row, index) => (
+                                    <tr key={index}>
+                                        <td>{row.id}</td>
+                                        <td>{row.numOfItems}</td>
+                                        <td>{row.amount}</td>
+                                        <td>{row.status}</td>
+                                        <td>{row.actions}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <p>No orders found.</p>
+                    )}
                 </div>
-            </li>
-            )}
-            <h1 className="my-5">My Orders</h1>
+            </div>
 
-            {orders && orders.length > 0 ? (
-                <MDBDataTable
-                    data={setOrdersData()}
-                    className="px-3"
-                    bordered
-                    striped
-                    hover
-                />
-            ) : (
-                <p>No orders found.</p> 
-            )}
+            
         </Fragment>
     );
 };

@@ -24,6 +24,11 @@ function Navbar() {
   const logoutHandler = () => {
     loggoutUser();
     Cookies.remove('user');
+    Cookies.remove('token');
+
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('shippingInfo');
+
     window.location.href = '/';
     alert('Logged out successfully.');
   };

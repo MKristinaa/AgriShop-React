@@ -17,6 +17,7 @@ const ProcessOrder = () => {
         const fetchOrderDetails = async () => {
             try {
                 const response = await getOrderDetails(orderId);
+                console.log("fdsa", response);
                 setOrder(response);
                 setLoading(false);
             } catch (err) {
@@ -43,6 +44,8 @@ const ProcessOrder = () => {
 
         try {
             const response = await updateOrder(id, formData);
+
+            
 
             if (response) {
                 setIsUpdated(true);
@@ -74,10 +77,13 @@ const ProcessOrder = () => {
                                 <div className="process-order-details">
                                     <h1 className="process-order-title">Order #{order._id}</h1>
 
-                                    <h4 className="process-order-heading">Shipping Info</h4>
-                                    <p><b>Name:</b> {order.user && order.user.name}</p>
-                                    <p><b>Phone:</b> {order.shippingInfo && order.shippingInfo.phone}</p>
-                                    <p className="process-order-address"><b>Address:</b>{shippingDetails}</p>
+                                    <h2 className="process-order-heading">Shipping Info</h2>
+                                    <p><b>Name: </b> {order.user && order.user.name}</p>
+                                    <p><b>Phone: </b> {order.shippingInfo && order.shippingInfo.phone}</p>
+                                    <p><b>Address: </b>{order.shippingInfo.address}</p>
+                                    <p><b>Country: </b> {order.shippingInfo && order.shippingInfo.country}</p>
+                                    <p><b>City: </b> {order.shippingInfo && order.shippingInfo.city}</p>
+                                    <p  className="process-order-address"><b>Postal Code:</b> {order.shippingInfo && order.shippingInfo.postalCode}</p>
                                     <p><b>Amount:</b> ${order.totalPrice}</p>
 
                                     <hr />
@@ -99,7 +105,7 @@ const ProcessOrder = () => {
                                                 </div>
 
                                                 <div className="process-order-item-name">
-                                                    <Link to={`/products/${item.product}`}>{item.name}</Link>
+                                                    <Link to={`/product/${item.product}`}>{item.name}</Link>
                                                 </div>
 
                                                 <div className="process-order-item-price">

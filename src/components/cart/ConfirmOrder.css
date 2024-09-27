@@ -1,0 +1,75 @@
+.confirm-order-page-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin-bottom: 100px;
+}
+
+.confirm-order-details-section {
+    width: 60%;
+    margin-top: 40px;
+}
+
+.confirm-order-details-section h4 {
+    margin-bottom: 10px;
+}
+
+.confirm-order-cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.confirm-order-cart-item img {
+    height: 45px;
+    width: 65px;
+    margin-right: 10px;
+}
+
+.confirm-order-summary-section {
+    width: 35%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-order-title{
+    margin-bottom: 40px;
+}
+
+.confirm-order-summary-section h4 {
+    margin-bottom: 10px;
+}
+
+.confirm-order-summary-section p {
+    margin: 5px 0;
+}
+
+.confirm-order-summary-value {
+    float: right;
+    font-weight: bold;
+}
+
+.confirm-order-checkout-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.confirm-order-checkout-btn:hover {
+    background-color: #218838;
+}
+
+.confirm-order-item-total {
+    margin-left: auto;
+    text-align: right;
+    width: 100%;
+}

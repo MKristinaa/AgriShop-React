@@ -146,15 +146,17 @@ function ProductDetails() {
 
           <p>Status: <span id="stock_status" className={product.stocks > 0 ? 'greenColor' : 'redColor'}>{product.stocks > 0 ? 'In Stock' : 'Out of Stock'}</span></p>
           
-          <div className="stockCounter">
-            <button className="btn minus" onClick={decreaseQty}><i className="fas fa-minus"></i></button>
-            <input type="number" className="form-control count" value={quantity} readOnly />
-            <button className="btn plus" onClick={increaseQty}><i className="fas fa-plus"></i></button>
-          </div>
-          <button type="button" id="cart_btn" className="btn add-to-cart" disabled={product.stocks === 0} onClick={addToCart}>Add to Cart</button>
           
-
-          
+      {(user === null || user.role === 'seller' || user.role === 'user' ) && (
+          <>
+            <div className="stockCounter">
+              <button className="btn minus" onClick={decreaseQty}><i className="fas fa-minus"></i></button>
+              <input type="number" className="form-control count" value={quantity} readOnly />
+              <button className="btn plus" onClick={increaseQty}><i className="fas fa-plus"></i></button>
+            </div>
+            <button type="button" id="cart_btn" className="btn add-to-cart" disabled={product.stocks === 0} onClick={addToCart}>Add to Cart</button>
+          </>
+        )}
         </div>
       </div>
       {/* CART */}

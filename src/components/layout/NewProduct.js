@@ -1,12 +1,14 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { newProduct } from '../../actions/productActons'; // Pretpostavka da postoji funkcija createProduct
 import { useNavigate } from 'react-router-dom';
 import './NewProduct.css';
+import Cookies from 'js-cookie';
 
 const NewProduct = () => {
     const navigate = useNavigate();
 
     const [name, setName] = useState('');
+    const [user, setUser] = useState(0);
     const [base64Image, setBase64Image] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
@@ -22,6 +24,14 @@ const NewProduct = () => {
         'Fruits',
         'Grains'
     ];
+
+    useEffect(() => {
+        const storedUser = Cookies.get('user');
+        if (storedUser) {
+            const parsedUser = JSON.parse(storedUser);
+            setUser(parsedUser._id);
+        }
+    }, [])
 
     const validateFields = () => {
         const newErrors = {};
@@ -45,6 +55,7 @@ const NewProduct = () => {
         }
 
         const data = {
+            user,
             name,
             price,
             description,
@@ -55,7 +66,7 @@ const NewProduct = () => {
 
         await newProduct(data); // Kreiraj novi proizvod koristeći createProduct funkciju
         alert("Product successfully created!");
-        navigate('/products'); // Preusmeri korisnika na listu proizvoda ili gde god želiš nakon kreiranja
+        navigate('/seller/products'); // Preusmeri korisnika na listu proizvoda ili gde god želiš nakon kreiranja
     };
 
     const onChange = (e) => {
