@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { allOrders } from '../../actions/orderActions';
 import { allUsers } from '../../actions/userActions';
 import Sidebar from './Sidebar';
-import './Dashboard.css'; // Uvezi CSS datoteku
+import './Dashboard.css'; 
 
 const Dashboard = () => {
     const [orders, setOrders] = useState([]);
@@ -16,7 +16,7 @@ const Dashboard = () => {
                 const orderResponse = await allOrders();
                 const userResponse = await allUsers();
 
-                setOrders(orderResponse.orders); // Pristup nizu porudžbina
+                setOrders(orderResponse.orders); 
                 setUsers(userResponse);
             } catch (err) {
                 console.error('Failed to load dashboard data:', err);

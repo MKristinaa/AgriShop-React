@@ -1,119 +1,114 @@
-/* Profile.css */
-
 .profile-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-  }
-
-  .left-side {
-    width: 80%;
-    margin-top: 50px;
-    margin-left: 100px;
-    margin-bottom: 100px;
-    margin-right: 100px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-  
-  .profile-header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .profile-header h2 {
-    font-size: 2rem;
-    color: #333;
-  }
-  
-  .user-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .avatar-profile {
-    text-align: center;
-  }
-  
-  .avatar-profile img {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border: 2px solid #ddd;
-  }
-  
-  .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .btn-danger:hover {
-    background-color: #c82333;
-  }
-  
-  .user-details {
-    margin-left: 20px;
-  }
-  
-  .user-details h4 {
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .user-details p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 10px;
-  }
-  
-  .register-link {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .register-link p {
-    font-size: 1rem;
-  }
-  
-  .register-link a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .register-link a:hover {
-    text-decoration: underline;
-  }
-  
+.left-side {
+  width: 80%;
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-bottom: 100px;
+  margin-right: 100px;
+}
 
-  
+.profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-header h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.user-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.avatar-profile {
+  text-align: center;
+}
+
+.avatar-profile img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.user-details {
+  margin-left: 20px;
+}
+
+.user-details h4 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.user-details p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-link p {
+  font-size: 1rem;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
 .right-side {
   width: 20%;
   padding: 1%;
   margin-top: 40px;
   display: flex;
-  flex-direction: column; /* Sadržaj vertikalno */
+  flex-direction: column;
 }
 
 .search-bar {
@@ -122,7 +117,7 @@
 
 .line {
   width: 1px;
-  height: 350px; 
+  height: 350px;
   background-color: black;
   margin-top: 70px;
 }
@@ -230,7 +225,6 @@
   border: 1px solid yellowgreen;
 }
 
-/* Pagination styles */
 .pagination {
   display: flex;
   justify-content: center;
@@ -250,21 +244,20 @@
   text-decoration: none;
 }
 
-.add-link{
+.add-link {
   background-color: green;
   color: white;
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
-  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.7); */
 }
 
-.add-link:hover{
+.add-link:hover {
   background-color: white;
   border: 1px solid green;
   color: green;
 }
 
-.add-div{
+.add-div {
   margin-top: 50px;
 }

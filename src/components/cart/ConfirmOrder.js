@@ -14,8 +14,8 @@ const ConfirmOrder = ({ history }) => {
     useEffect(() => {
         const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         const storedShippingInfo = JSON.parse(localStorage.getItem('shippingInfo')) || {};
-        const storedUserCookie = Cookies.get('user'); // Uzmi korisničke podatke iz Cookie-a
-        const storedUser = storedUserCookie ? JSON.parse(storedUserCookie) : {}; // Parsiraj Cookie podatke
+        const storedUserCookie = Cookies.get('user'); 
+        const storedUser = storedUserCookie ? JSON.parse(storedUserCookie) : {}; 
         
         setCartItems(storedCartItems);
         setShippingInfo(storedShippingInfo);

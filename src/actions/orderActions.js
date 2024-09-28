@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Kreiraj narudžbinu
 export const createOrder = async (order) => {
     try {
         const config = {
@@ -19,7 +18,6 @@ export const createOrder = async (order) => {
     }
 }
 
-// Dohvati narudžbine trenutno prijavljenog korisnika
 export const myOrders = async (id) => {
     try {
         const { data } = await axios.get(`http://localhost:4000/api/orders/me/${id}`,  { withCredentials: true });
@@ -31,7 +29,6 @@ export const myOrders = async (id) => {
     }
 }
 
-// Dohvati detalje narudžbine
 export const getOrderDetails = async (id) => {
     try {
         const { data } = await axios.get(`http://localhost:4000/api/order/${id}`);
@@ -43,7 +40,6 @@ export const getOrderDetails = async (id) => {
     }
 }
 
-// Dohvati sve narudžbine - ADMIN
 export const allOrders = async () => {
     try {
         const { data } = await axios.get(`http://localhost:4000/api/admin/orders`);
@@ -55,7 +51,6 @@ export const allOrders = async () => {
     }
 }
 
-// Ažuriraj narudžbinu - ADMIN
 export const updateOrder = async (id, orderData) => {
     try {
         const config = {
@@ -73,7 +68,6 @@ export const updateOrder = async (id, orderData) => {
     }
 }
 
-// Obriši narudžbinu - ADMIN
 export const deleteOrder = async (id) => {
     try {
         const { data } = await axios.delete(`http://localhost:4000/api/admin/order/${id}`);

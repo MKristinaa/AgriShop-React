@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import { useParams, useNavigate } from 'react-router-dom';
 import { updateUser, getUserDetails } from '../../actions/userActions';
-import './UpdateUser.css'; // Uvezi jedinstvenu CSS datoteku
+import './UpdateUser.css'; 
 
 const UpdateUser = () => {
     const { id: userId } = useParams();

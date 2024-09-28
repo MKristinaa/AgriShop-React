@@ -1,15 +1,14 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import './Cart.css'; // Custom CSS file
+import './Cart.css'; 
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
 
-    const navigate = useNavigate();  // Using useNavigate instead of history
+    const navigate = useNavigate(); 
 
     useEffect(() => {
-        // Read cart items from localStorage
         const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         setCartItems(storedCartItems);
     }, []);

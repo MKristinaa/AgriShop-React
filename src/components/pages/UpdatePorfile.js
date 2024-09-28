@@ -94,7 +94,7 @@ function UpdateProfile() {
     reader.onload = () => {
       if (reader.readyState === 2) {
         setAvatarPreview(reader.result);
-        setAvatar(reader.result); // Store as Base64 string
+        setAvatar(reader.result); 
       }
     };
     if (file) {

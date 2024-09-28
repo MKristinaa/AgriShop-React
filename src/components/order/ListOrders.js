@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { myOrders } from '../../actions/orderActions';
 import Cookies from 'js-cookie';
-import './ListOrders.css'; // Uverite se da ste kreirali ovaj CSS fajl
+import './ListOrders.css';
 
 const ListOrders = () => {
     const [user, setUser] = useState(null);

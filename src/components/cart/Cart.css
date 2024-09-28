@@ -1,4 +1,4 @@
-/* Cart container styles */
+
 .cart-container {
     display: flex;
     justify-content: space-between;
@@ -21,7 +21,7 @@
     border-radius: 10px;
 }
 
-/* Cart item styles */
+
 .cart-item {
     display: flex;
     align-items: center;
@@ -89,7 +89,7 @@
     border: 1px solid #eee;
 }
 
-/* Summary styles */
+
 .summary-box {
     background-color: #fff;
     padding: 20px;
@@ -115,7 +115,7 @@
     background-color: #0056b3;
 }
 
-/* General styles */
+
 .cart-title {
     margin-top: 20px;
     font-size: 24px;

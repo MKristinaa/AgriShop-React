@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getOrderDetails } from '../../actions/orderActions';
-import './OrderDetails.css'; // Custom CSS file
+import './OrderDetails.css'; 
 
 const OrderDetails = () => {
     const [order, setOrder] = useState({});

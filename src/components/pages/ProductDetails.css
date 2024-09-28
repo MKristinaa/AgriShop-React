@@ -97,7 +97,7 @@
 
 .back-button {
     display: inline-block;
-    margin-left: 20px; /* Postavlja marginu da dugme nije uz ivicu */
+    margin-left: 20px; 
     width: 50px;
     height: 30px;
     border: none;
@@ -142,15 +142,15 @@
   }
   
   .seller-image {
-    width: 50px; /* Širina slike */
-    height: 50px; /* Visina slike */
-    border-radius: 50%; /* Da slika bude okrugla */
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
   }
   
   .seller-name {
     font-size: 18px;
     display: inline-block;
-    vertical-align: middle; /* Vertikalno poravnavanje */
+    vertical-align: middle;
   }
   
   .name{
@@ -165,12 +165,12 @@
 
   .my-product-section {
     width: 75%;
-    background-color: #f9f9f9; /* Svetla pozadina */
+    background-color: #f9f9f9; 
     padding: 15px;
-    border: 1px solid #ccc; /* Tanka ivica */
-    border-radius: 8px; /* Zaobljeni uglovi */
-    text-align: center; /* Centriraj sadržaj */
-    margin-bottom: 20px; /* Razmak ispod sekcije */
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    text-align: center;
+    margin-bottom: 20px;
   }
   
   .my-product-title {
@@ -183,20 +183,20 @@
   .my-product-actions {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Razmak između dugmića */
+    gap: 10px; 
   }
   
   .update-btn {
-    background-color: #007bff; /* Boja za dugme za ažuriranje */
+    background-color: #007bff; 
     color: white;
   }
   
   .delete-btn {
-    background-color: #dc3545; /* Boja za dugme za brisanje */
+    background-color: #dc3545;
     color: white;
   }
   
   .update-btn:hover, .delete-btn:hover {
-    opacity: 0.9; /* Efekat na hover */
+    opacity: 0.9;
   }
   

@@ -1,30 +1,27 @@
-/* Container for search bar */
 .search-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px; /* Adds some spacing above the search bar */
+    margin-top: 20px;
   }
   
-  /* Input field styles */
   .search-container input {
     width: 300px;
     height: 40px;
     padding: 10px 15px;
     font-size: 16px;
-    /* border: 2px solid #ccc; */
     border: 1px solid black;
     border-radius: 20px;
     outline: none;
     transition: border-color 0.3s ease;
   }
   
-  /* Add focus effect on input */
+
   .search-container input:focus {
-    border-color: #007bff; /* Changes border color when focused */
+    border-color: #007bff; 
   }
   
-  /* Styles for search icon */
+
   .search-container img {
     margin-right: 10px;
     cursor: pointer;
@@ -32,6 +29,6 @@
   }
   
   .search-container img:hover {
-    transform: scale(1.1); /* Slight zoom-in on hover */
+    transform: scale(1.1); 
   }
   

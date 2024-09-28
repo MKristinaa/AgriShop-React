@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './MyProducts.css';
-import { getProductsByUserId } from '../../actions/productActons'; // Nova funkcija
+import { getProductsByUserId } from '../../actions/productActons'; 
 import { Link, useParams, useLocation  } from 'react-router-dom';
 import Pagination from 'react-js-pagination';
 import Search from '../pages/Search';
@@ -27,7 +27,7 @@ function MyProducts() {
   const searchParams = new URLSearchParams(location.search);
   const category = searchParams.get('category');
 
-  // Uzimanje korisnika iz kolačića
+  
   const storedUser = Cookies.get('user');
   const loggedInUser = storedUser ? JSON.parse(storedUser) : null;
   const userId = loggedInUser ? loggedInUser._id : null;

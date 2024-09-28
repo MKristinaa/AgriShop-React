@@ -50,15 +50,14 @@ function ProductDetails() {
 
   const deleteProductHandler = async (id) => {
     const response = await deleteProduct(id);
-    console.log(response); // Proveri odgovor
+    console.log(response);
 
     if (response.success) {
       setMessage('Korisnik je uspešno obrisan!');
-      // Ponovo učitaj proizvode
       const productsData = await getProducts();
       setProducts(productsData.products);
     } else {
-      setMessage('Greška prilikom brisanja korisnika.'); // Postavi grešku
+      setMessage('Greška prilikom brisanja korisnika.'); 
     }
   };
 
@@ -82,7 +81,7 @@ function ProductDetails() {
   };
 
   const handleBackButton = () => {
-    navigate(-1); // Vraća na prethodnu stranicu
+    navigate(-1); 
   };
 
   if (!product) return <div>Loading...</div>;

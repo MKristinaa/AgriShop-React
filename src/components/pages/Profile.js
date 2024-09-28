@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import './Profile.css'; // Import CSS
+import './Profile.css'; 
 import { loadUser } from '../../actions/userActions';
 
 function Profile() {

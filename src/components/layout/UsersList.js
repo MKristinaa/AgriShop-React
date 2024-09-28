@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import Sidebar from './Sidebar';
 import { allUsers, deleteUser } from '../../actions/userActions';
-import './UsersList.css'; // Uvezi jedinstvenu CSS datoteku
+import './UsersList.css'; 
 
 const UsersList = () => {
     const [users, setUsers] = useState([]);

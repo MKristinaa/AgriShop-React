@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import { allOrders, deleteOrder } from '../../actions/orderActions';
-import './OrdersList.css'; // Uvezi jedinstvenu CSS datoteku
+import './OrdersList.css';
 
 const OrdersList = () => {
     const navigate = useNavigate();

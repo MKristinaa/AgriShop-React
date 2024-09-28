@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Funkcija za dodavanje stavke u korpu
 export const addItemToCart = async (id, quantity) => {
     try {
 

@@ -1,4 +1,3 @@
-/* Stilovi za UsersList stranicu */
 
 .userslist-page-container {
     display: flex;
@@ -19,7 +18,6 @@
     margin-bottom: 20px;
 }
 
-/* Stilovi za tabelu */
 .userslist-table {
     width: 100%;
     border-collapse: collapse;
@@ -46,7 +44,7 @@
     background-color: #f9f9f9;
 }
 
-/* Stilovi za akcione dugmiće */
+
 .userslist-edit-btn {
     background-color: #007bff;
     color: white;

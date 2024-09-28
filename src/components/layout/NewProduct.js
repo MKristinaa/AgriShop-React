@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { newProduct } from '../../actions/productActons'; // Pretpostavka da postoji funkcija createProduct
+import { newProduct } from '../../actions/productActons'; 
 import { useNavigate } from 'react-router-dom';
 import './NewProduct.css';
 import Cookies from 'js-cookie';
@@ -64,9 +64,9 @@ const NewProduct = () => {
             image: imageURL || base64Image
         };
 
-        await newProduct(data); // Kreiraj novi proizvod koristeći createProduct funkciju
+        await newProduct(data); 
         alert("Product successfully created!");
-        navigate('/seller/products'); // Preusmeri korisnika na listu proizvoda ili gde god želiš nakon kreiranja
+        navigate('/seller/products'); 
     };
 
     const onChange = (e) => {

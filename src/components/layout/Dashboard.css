@@ -20,14 +20,14 @@
 .dashboard-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Razmak između kartica */
+    gap: 20px; 
     width: 50%;
     align-items: right;
 }
 
 .dashboard-card {
-    flex: 1; /* Kartice zauzimaju prostor */
-    min-width: 250px; /* Minimalna širina kartice */
+    flex: 1; 
+    min-width: 250px; 
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -45,11 +45,11 @@
 }
 
 .dashboard-card-danger {
-    background-color: #dc3545; /* Crvena */
+    background-color: #dc3545; 
 }
 
 .dashboard-card-info {
-    background-color: #17a2b8; /* Plava */
+    background-color: #17a2b8; 
 }
 
 .dashboard-card-footer {

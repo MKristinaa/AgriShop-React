@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { updatePassword } from '../../actions/userActions';
-import './UpdatePassword.css'; // Učitavanje CSS fajla
+import './UpdatePassword.css'; 
 import Cookies from 'js-cookie';
 
 function UpdatePassword() {
     const [oldPassword, setOldPassword] = useState('');
     const [password, setPassword] = useState('');
     const [userId, setUserId] = useState(null);
-    const [error, setError] = useState(null); // Dodaj stanje za greške
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const storedUser = Cookies.get('user');
@@ -29,16 +29,15 @@ function UpdatePassword() {
         try {
             const response = await updatePassword(data);
 
-            // Resetuj greške
             setError(null);
 
             if (response.success) {
                 alert('Password updated successfully!');
             } else {
-                setError(response.message); // Postavi grešku iz odgovora
+                setError(response.message); 
             }
         } catch (err) {
-            setError('An error occurred. Please try again.'); // Postavi grešku za hvatanje izuzetaka
+            setError('An error occurred. Please try again.'); 
         }
     };
 

@@ -94,7 +94,7 @@ function SignUp({ history }) {
               value={name}
               onChange={onChange}
             />
-            {errors.name && <p className='error-message'>{errors.name}</p>} {/* Prikaz greške */}
+            {errors.name && <p className='error-message'>{errors.name}</p>} 
           </div>
 
           <div className='form-group'>
@@ -107,7 +107,7 @@ function SignUp({ history }) {
               value={lastname}
               onChange={onChange}
             />
-            {errors.lastname && <p className='error-message'>{errors.lastname}</p>} {/* Prikaz greške */}
+            {errors.lastname && <p className='error-message'>{errors.lastname}</p>} 
           </div>
 
           <div className='form-group'>
@@ -120,7 +120,7 @@ function SignUp({ history }) {
               value={email}
               onChange={onChange}
             />
-            {errors.email && <p className='error-message'>{errors.email}</p>} {/* Prikaz greške */}
+            {errors.email && <p className='error-message'>{errors.email}</p>}
           </div>
 
           <div className='form-group'>
@@ -133,7 +133,7 @@ function SignUp({ history }) {
               value={password}
               onChange={onChange}
             />
-            {errors.password && <p className='error-message'>{errors.password}</p>} {/* Prikaz greške */}
+            {errors.password && <p className='error-message'>{errors.password}</p>} 
           </div>
 
           <div className='form-group role-div'>
@@ -170,7 +170,7 @@ function SignUp({ history }) {
                 <label className='custom-file-label' htmlFor='customFile'>
                   Choose Avatar
                 </label>
-                {errors.avatar && <p className='error-message'>{errors.avatar}</p>} {/* Prikaz greške */}
+                {errors.avatar && <p className='error-message'>{errors.avatar}</p>} 
               </div>
             </div>
           </div>

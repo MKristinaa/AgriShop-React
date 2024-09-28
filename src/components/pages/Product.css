@@ -28,7 +28,7 @@
     top: 110px;
     right: 70px; 
     z-index: 1000;
-    border: none; /* Ako je dodata ivica */
+    border: none; 
 }
 
 .cart i {
@@ -50,7 +50,7 @@
     flex-direction: row;
     padding: 0;
     margin: 0;
-    align-items: flex-start; /* Poravnava sadržaja na vrh */
+    align-items: flex-start; 
 }
 
 .left-side {
@@ -66,7 +66,7 @@
     padding: 1%;
     margin-top: 40px;
     display: flex;
-    flex-direction: column; /* Sadržaj vertikalno */
+    flex-direction: column; 
 }
 
 .search-bar {
@@ -183,7 +183,7 @@
     border: 1px solid green;
 }
 
-/* Pagination styles */
+
 .pagination {
     display: flex;
     justify-content: center;

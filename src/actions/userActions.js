@@ -1,6 +1,7 @@
 import axios from 'axios';
-
 import Cookies from 'js-cookie';
+
+
 
 export const login = async (email, password) => {
   try {
@@ -28,7 +29,6 @@ export const login = async (email, password) => {
 
 
 
-//Register
 export const register = async (formData) => {
     try {
       const config = {
@@ -47,7 +47,7 @@ export const register = async (formData) => {
   };
 
 
-//Load user
+
 export const loadUser = async (id) => {
     try {
         const { data } = await axios.get(`http://localhost:4000/api/me/${id}`,  { withCredentials: true });
@@ -58,7 +58,8 @@ export const loadUser = async (id) => {
     }
 };
 
-//Loggout user
+
+
 export const loggoutUser = async () => {
   try {
       await axios.get('http://localhost:4000/api/logout');
@@ -71,7 +72,6 @@ export const loggoutUser = async () => {
 
 
 
-// Update profile function without token
 export const updateProfile = async (formData) => {
   try {
     const config = {
@@ -80,7 +80,6 @@ export const updateProfile = async (formData) => {
       },
     };
 
-    // Make the PUT request to update the profile
     const { data } = await axios.put('http://localhost:4000/api/me/update', formData, config);
     return data;
 
@@ -91,7 +90,8 @@ export const updateProfile = async (formData) => {
 };
 
 
-// Update password
+
+
 export const updatePassword = async (passwords) => {
   try {
 
@@ -117,7 +117,7 @@ export const updatePassword = async (passwords) => {
 };
 
 
-// Get all users
+
 export const allUsers = async () => {
     try {
         const { data } = await axios.get('http://localhost:4000/api/admin/users');
@@ -128,7 +128,8 @@ export const allUsers = async () => {
     }
 };
 
-// Update user - ADMIN
+
+
 export const updateUser =  async (id, userData) => {
     try {
         const config = {
@@ -144,7 +145,7 @@ export const updateUser =  async (id, userData) => {
     }
 };
 
-// Get user details - ADMIN
+
 
 export const getUserDetails = async (id) => {
   try {
@@ -156,7 +157,8 @@ export const getUserDetails = async (id) => {
   }
 };
 
-// Delete user - ADMIN
+
+
 export const deleteUser = async (id) => {
     try {
         const { data } = await axios.delete(`http://localhost:4000/api/admin/user/${id}`);

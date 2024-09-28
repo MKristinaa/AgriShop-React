@@ -36,28 +36,23 @@ export const getProductDetails = async (id) => {
 }
 
 
-// Delete product (Admin)
-
-
 export const deleteProduct = async (id) => {
     try {
         const response = await fetch(`http://localhost:4000/api/product/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                // Dodaj bilo koji drugi potreban header
             }
         });
 
-        return await response.json(); // Vraća JSON koji sadrži 'success'
+        return await response.json(); 
     } catch (error) {
         console.error('Error deleting product:', error);
-        return { success: false }; // U slučaju greške, vrati false
+        return { success: false }; 
     }
 }
 
 
-//Add new product
 export const newProduct = async (productData) => {
     try {
         const config = {
@@ -99,7 +94,6 @@ export const updateProduct = async (id, productData) => {
 };
 
 
-// Fetch products by user ID
 export const getProductsByUserId = async (userId) => {
     try {
         const response = await axios.get(`http://localhost:4000/api/products/user/${userId}`);

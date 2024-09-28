@@ -3,25 +3,20 @@ import { login } from '../../actions/userActions';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Cookies from 'js-cookie'; // You can use the js-cookie library for easier cookie handling
+import Cookies from 'js-cookie'; 
 import './Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null); // Dodaj stanje za greške
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
-  // Check for user token in cookies
   useEffect(() => {
-    // const userToken = Cookies.get('user'); 
-    // if (userToken) {
-    //   navigate(redirect); 
-    // }
   }, [navigate, redirect]);
 
   const submitHandler = async (e) => {
@@ -74,7 +69,7 @@ function Login() {
           </div>
 
 
-          {error && <p className='error-message'>{error}</p>} {/* Prikaz poruke o grešci */}
+          {error && <p className='error-message'>{error}</p>} 
 
           <button type='submit' className='btn btn-block custom-button-login'>
             LOGIN
