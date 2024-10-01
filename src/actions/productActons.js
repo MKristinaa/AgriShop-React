@@ -5,10 +5,10 @@ export const getProducts = async (keyword = '', currentPage = 1, category = '') 
         let data;
 
         if (category) {
-            const response = await axios.get(`http://localhost:4000/api/products?keyword=${keyword}&page=${currentPage}&category=${category}`);
+            const response = await axios.get(`https://agrishop-nodejs.onrender.com/api/products?keyword=${keyword}&page=${currentPage}&category=${category}`);
             data = response.data;
         } else {
-            const response = await axios.get(`http://localhost:4000/api/products?keyword=${keyword}&page=${currentPage}`);
+            const response = await axios.get(`https://agrishop-nodejs.onrender.com/api/products?keyword=${keyword}&page=${currentPage}`);
             data = response.data;
         }
 
@@ -23,7 +23,7 @@ export const getProducts = async (keyword = '', currentPage = 1, category = '') 
 export const getProductDetails = async (id) => {
     try {
 
-        const { data } = await axios.get(`http://localhost:4000/api/product/${id}`)
+        const { data } = await axios.get(`https://agrishop-nodejs.onrender.com/api/product/${id}`)
 
         console.log(data.product);
 
@@ -38,7 +38,7 @@ export const getProductDetails = async (id) => {
 
 export const deleteProduct = async (id) => {
     try {
-        const response = await fetch(`http://localhost:4000/api/product/delete/${id}`, {
+        const response = await fetch(`https://agrishop-nodejs.onrender.com/api/product/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ export const newProduct = async (productData) => {
             },
         };
 
-        const { data } = await axios.post(`http://localhost:4000/api/product/new`, productData, config);
+        const { data } = await axios.post(`https://agrishop-nodejs.onrender.com/api/product/new`, productData, config);
 
         return {
             success: true,
@@ -85,7 +85,7 @@ export const updateProduct = async (id, productData) => {
             }
         };
 
-        const { data } = await axios.put(`http://localhost:4000/api/product/update/${id}`, productData, config);
+        const { data } = await axios.put(`https://agrishop-nodejs.onrender.com/api/product/update/${id}`, productData, config);
 
         return data.success;
     } catch (error) {
@@ -96,7 +96,7 @@ export const updateProduct = async (id, productData) => {
 
 export const getProductsByUserId = async (userId) => {
     try {
-        const response = await axios.get(`http://localhost:4000/api/products/user/${userId}`);
+        const response = await axios.get(`https://agrishop-nodejs.onrender.com/api/products/user/${userId}`);
         const { data } = response;
         
         return {

@@ -37,7 +37,7 @@ export const register = async (formData) => {
         },
       };
   
-      const { data } = await axios.post('http://localhost:4000/api/register', formData, config);
+      const { data } = await axios.post('https://agrishop-nodejs.onrender.com/api/register', formData, config);
   
       return data;
     } catch (error) {
@@ -50,7 +50,7 @@ export const register = async (formData) => {
 
 export const loadUser = async (id) => {
     try {
-        const { data } = await axios.get(`http://localhost:4000/api/me/${id}`,  { withCredentials: true });
+        const { data } = await axios.get(`https://agrishop-nodejs.onrender.com/api/me/${id}`,  { withCredentials: true });
         return data;
     } catch (error) {
         console.error(error.response.data.message);
@@ -62,7 +62,7 @@ export const loadUser = async (id) => {
 
 export const loggoutUser = async () => {
   try {
-      await axios.get('http://localhost:4000/api/logout');
+      await axios.get('https://agrishop-nodejs.onrender.com/api/logout');
   } catch (error) {
       console.error(error.response.data.message);
       return error.response.data.message;
@@ -80,7 +80,7 @@ export const updateProfile = async (formData) => {
       },
     };
 
-    const { data } = await axios.put('http://localhost:4000/api/me/update', formData, config);
+    const { data } = await axios.put('https://agrishop-nodejs.onrender.com/api/me/update', formData, config);
     return data;
 
   } catch (error) {
@@ -104,7 +104,7 @@ export const updatePassword = async (passwords) => {
       },
     };
 
-    const { data } = await axios.put('http://localhost:4000/api/password/update', passwords, config);
+    const { data } = await axios.put('https://agrishop-nodejs.onrender.com/api/password/update', passwords, config);
     return data;
 
   } catch (error) {
@@ -120,7 +120,7 @@ export const updatePassword = async (passwords) => {
 
 export const allUsers = async () => {
     try {
-        const { data } = await axios.get('http://localhost:4000/api/admin/users');
+        const { data } = await axios.get('https://agrishop-nodejs.onrender.com/api/admin/users');
         return data.users;
     } catch (error) {
       console.log(error.response?.data?.message || error.message);
@@ -137,7 +137,7 @@ export const updateUser =  async (id, userData) => {
                 'Content-Type': 'application/json'
             }
         };
-        const { data } = await axios.put(`http://localhost:4000/api/admin/user/${id}`, userData, config);
+        const { data } = await axios.put(`https://agrishop-nodejs.onrender.com/api/admin/user/${id}`, userData, config);
         return data.success;
     } catch (error) {
       console.log(error.response?.data?.message || error.message);
@@ -149,7 +149,7 @@ export const updateUser =  async (id, userData) => {
 
 export const getUserDetails = async (id) => {
   try {
-    const { data } = await axios.get(`http://localhost:4000/api/admin/user/${id}`);
+    const { data } = await axios.get(`https://agrishop-nodejs.onrender.com/api/admin/user/${id}`);
     return data;
   } catch (error) {
     console.error("Error fetching user details:", error);
@@ -161,7 +161,7 @@ export const getUserDetails = async (id) => {
 
 export const deleteUser = async (id) => {
     try {
-        const { data } = await axios.delete(`http://localhost:4000/api/admin/user/${id}`);
+        const { data } = await axios.delete(`https://agrishop-nodejs.onrender.com/api/admin/user/${id}`);
         return data;
     } catch (error) {
       console.log(error.response?.data?.message || error.message);

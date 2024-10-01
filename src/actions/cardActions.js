@@ -3,7 +3,7 @@ import axios from 'axios';
 export const addItemToCart = async (id, quantity) => {
     try {
 
-        const { data } = await axios.get(`http://localhost:4000/api/product/${id}`);
+        const { data } = await axios.get(`https://agrishop-nodejs.onrender.com/api/product/${id}`);
         const product = data.product;
 
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
