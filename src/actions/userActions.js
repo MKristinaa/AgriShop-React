@@ -11,7 +11,7 @@ export const login = async (email, password) => {
           }
       }
 
-      const { data } = await axios.post('http://localhost:4000/api/login', { email, password }, config);
+      const { data } = await axios.post('https://agrishop-nodejs.onrender.com/api/login', { email, password }, config);
       
       Cookies.set('token', data.token, { expires: 7 });
       Cookies.set('user', JSON.stringify(data.user), { expires: 7 });
