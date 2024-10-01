@@ -3,4 +3,4 @@ services:
     name: agri-shop
     env: static
     staticPublishPath: build
-    buildCommand: npm install && npm run build
+    buildCommand: npm install --legacy-peer-deps && npm run build
