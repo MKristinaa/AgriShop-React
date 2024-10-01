@@ -97,6 +97,14 @@
   align-items: center;
 }
 
+.dropbtn:hover {
+  background-color: rgba(3,38,44,255);
+  border: none;
+  margin: none;
+  color: white;
+  font-size: 20px;
+}
+
 .avatar-nav {
   display: flex;
   align-items: center;
@@ -133,10 +141,10 @@
   display: block;
 }
 
-.dropdown:hover .dropbtn {
+/* .dropdown:hover .dropbtn {
   width: 120px;
   border-radius: 2px;
-}
+} */
 
 .nav-links-mobile {
   display: none;
@@ -176,11 +184,11 @@
       display: table;
     }
   
-    .nav-links:hover {
+    /* .nav-links:hover {
       background-color: #fff;
       color: #242424;
       border-radius: 0;
-    }
+    } */
   
     .navbar-logo {
       position: absolute;

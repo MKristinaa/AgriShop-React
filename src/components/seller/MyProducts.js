@@ -23,6 +23,7 @@ function MyProducts() {
 
   const { keyword } = useParams();
   const location = useLocation();
+  const productName = location.state?.productName;
 
   const searchParams = new URLSearchParams(location.search);
   const category = searchParams.get('category');
@@ -163,10 +164,13 @@ function MyProducts() {
           <div className='add-div'>
             <Link to={'/admin/product'} className='add-link'>Add New Product</Link>
           </div>
+
+          
+        {/* <div>
+            {productName && <h1>Product created: {productName}</h1>}
+        </div> */}
         </div>
       </div>
-
-      
       
     </div>
   );

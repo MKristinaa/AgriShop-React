@@ -66,7 +66,7 @@ const NewProduct = () => {
 
         await newProduct(data); 
         alert("Product successfully created!");
-        navigate('/seller/products'); 
+        navigate('/seller/products', { state: { productName: name } });
     };
 
     const onChange = (e) => {
