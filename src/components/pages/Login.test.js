@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Login from './Login'; // pošto se zove Login.js
+import Login from './Login'; 
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
@@ -20,7 +20,7 @@ describe('Login component', () => {
 
     const emailInput = screen.getByPlaceholderText('EMAIL');
     const passwordInput = screen.getByPlaceholderText('PASSWORD');
-    const loginButton = screen.getByRole('button', { name: /login/i }); // Menjamo na getByRole umesto getByText
+    const loginButton = screen.getByRole('button', { name: /login/i }); 
 
     expect(emailInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe('Login component', () => {
       target: { value: 'password123' },
     });
 
-    fireEvent.click(screen.getByRole('button', { name: /login/i })); // Menjamo na getByRole
+    fireEvent.click(screen.getByRole('button', { name: /login/i })); 
 
     expect(await login).toHaveBeenCalledWith('test@example.com', 'password123');
   });

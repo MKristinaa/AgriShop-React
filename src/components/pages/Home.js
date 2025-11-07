@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../App.js';
 import './Home.css';
+import * as Sentry from '@sentry/react'; 
 
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
@@ -24,6 +25,14 @@ function Home() {
     };
 
     fetchUserData();
+
+      // <-- Testna greška za Sentry
+    try {
+      throw new Error("Test greška u Home.js za Sentry");
+    } catch (error) {
+      Sentry.captureException(error);
+    }
+
   }, []);
   return (
     <>
