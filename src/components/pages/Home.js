@@ -26,7 +26,7 @@ function Home() {
 
     fetchUserData();
 
-      // <-- Testna greška za Sentry
+    //Testna greška za Sentry
     try {
       throw new Error("Test greška u Home.js za Sentry");
     } catch (error) {
