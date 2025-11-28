@@ -9,10 +9,10 @@ function Footer() {
         <div className='item'>
             <i className="fa fa-house"></i> Novi Pazar, Serbia 
         </div>
-        <div>
+        <div className='item'>
             <i className="fa-solid fa-envelope"></i> agrishop.organic@gmail.com
         </div>
-        <div className='item'>
+        <div >
             <i className="fa-solid fa-phone"></i> +381 613000896
         </div>
       </div>
