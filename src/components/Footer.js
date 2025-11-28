@@ -13,7 +13,7 @@ function Footer() {
             <i className="fa-solid fa-phone"></i> +381 613000896
         </div>
         <div>
-            <i className="fa-solid fa-envelope"></i> agrishop@gmail.com
+            <i className="fa-solid fa-envelope"></i> agrishop.organic@gmail.com
         </div>
       </div>
       <div>
