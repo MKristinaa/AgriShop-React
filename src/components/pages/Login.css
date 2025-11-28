@@ -1,46 +1,110 @@
-.login-container{
-    width: 100%;
-    display: flex;
-    margin-top: 5%;
+/* Container i centriranje */
+.login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 67vh;
 }
 
-.login-content{
-    width: 50%;
-    height: 390px;
-    margin-left: 10%;
-    border-radius: 5px;
-    color:black;
-    align-items: left;
-    display: flex;
-    flex-direction: column;
+/* Kartica */
+.login-content {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fdfdfd;
+  border-radius: 15px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
-.title-login{
-    font-size: 60px;
-    font-weight: lighter;
-    margin-bottom:5%;
+/* Naslov */
+.title-login {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 35px;
+  color: #333;
+  text-align: center; 
 }
 
-.form-control{
-    border: 0px;
-    border-bottom: 1px solid gray;
-    padding: 5px;
-    width: 58%;
-    margin-bottom: 5%;
+/* Form control */
+.login-form {
+  width: 100%;
+  box-sizing: border-box; 
 }
 
-.custom-button-login{
-    background-color: green;
-    color: white;
-    margin-top: 5%;
-    font-size: 15px;
+.login-form .form-group {
+  width: 100%;
+  margin-bottom: 15px;
+  box-sizing: border-box; 
 }
 
-.link-sign-up{
-    margin-top: 20px;
+.login-form .form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  display: block;
+  transition: all 0.2s ease;
+  box-sizing: border-box; 
 }
 
-.error-message{
-    color: red;
-    margin-bottom: 10px;
+.login-form .form-control:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Button */
+.login-form .custom-button-login {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.login-form .custom-button-login:focus {
+  outline: none; 
+}
+
+.login-form .custom-button-login:hover {
+  background-color: #43a047;
+}
+
+/* Poruke */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+/* Link za registraciju */
+.link-sign-up {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.link-sign-up a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-sign-up a:hover {
+  text-decoration: underline;
 }

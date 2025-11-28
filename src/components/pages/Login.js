@@ -1,9 +1,6 @@
 import { login } from '../../actions/userActions';
-
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate, useLocation } from 'react-router-dom';
-import Cookies from 'js-cookie'; 
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
@@ -11,39 +8,30 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate();
   const location = useLocation();
-
   const redirect = location.search ? location.search.split('=')[1] : '/';
-
-  useEffect(() => {
-  }, [navigate, redirect]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
-        const response = await login(email, password);
+      const response = await login(email, password);
 
-        if (response.success) {
-            window.location.href = '/'; 
-        } else {
-            setError(response.message); 
-        }
-    } catch (error) {
-        setError('An error occurred. Please try again.'); 
+      if (response.success) {
+        window.location.href = redirect;
+      } else {
+        setError(response.message);
+      }
+    } catch {
+      setError('An error occurred. Please try again.');
     }
-};
-
-
+  };
 
   return (
     <div className='login-container'>
       <div className='login-content'>
-        <form onSubmit={submitHandler}>
+        <form className='login-form' onSubmit={submitHandler}>
           <h1 className='title-login'>LOGIN</h1>
-
-         
 
           <div className="form-group">
             <input 
@@ -56,7 +44,6 @@ function Login() {
             />
           </div>
 
-
           <div className="form-group">
             <input 
               type="password"
@@ -68,12 +55,11 @@ function Login() {
             />
           </div>
 
-
-          {error && <p className='error-message'>{error}</p>} 
-
-          <button type='submit' className='btn btn-block custom-button-login'>
+          <button type='submit' className='custom-button-login'>
             LOGIN
           </button>
+
+          {error && <p className='error-message'>{error}</p>}
 
           <div className='link-sign-up'>
             <p>

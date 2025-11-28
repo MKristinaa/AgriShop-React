@@ -9,7 +9,8 @@ export const createOrder = async (order) => {
             withCredentials: true
         }
 
-        const { data } = await axios.post('https://agrishop-nodejs.onrender.com/api/order/new', order, config);
+        // const { data } = await axios.post('https://agrishop-nodejs.onrender.com/api/order/new', order, config);
+        const { data } = await axios.post('http://localhost:4000/api/order/new', order, config);
         return data; 
 
     } catch (error) {
@@ -20,7 +21,8 @@ export const createOrder = async (order) => {
 
 export const myOrders = async (id) => {
     try {
-        const { data } = await axios.get(`https://agrishop-nodejs.onrender.com/api/orders/me/${id}`,  { withCredentials: true });
+        // const { data } = await axios.get(`https://agrishop-nodejs.onrender.com/api/orders/me/${id}`,  { withCredentials: true });
+        const { data } = await axios.get(`http://localhost:4000/api/orders/me/${id}`,  { withCredentials: true });
         return data.orders;
 
     } catch (error) {
@@ -31,7 +33,8 @@ export const myOrders = async (id) => {
 
 export const getOrderDetails = async (id) => {
     try {
-        const { data } = await axios.get(`https://agrishop-nodejs.onrender.com/api/order/${id}`);
+        // const { data } = await axios.get(`https://agrishop-nodejs.onrender.com/api/order/${id}`);
+        const { data } = await axios.get(`http://localhost:4000/api/order/${id}`);
         return data.order;
 
     } catch (error) {
@@ -42,7 +45,8 @@ export const getOrderDetails = async (id) => {
 
 export const allOrders = async () => {
     try {
-        const { data } = await axios.get(`https://agrishop-nodejs.onrender.com/api/admin/orders`);
+        // const { data } = await axios.get(`https://agrishop-nodejs.onrender.com/api/admin/orders`);
+        const { data } = await axios.get(`http://localhost:4000/api/admin/orders`);
         return data; 
 
     } catch (error) {
@@ -59,7 +63,8 @@ export const updateOrder = async (id, orderData) => {
             }
         }
 
-        const { data } = await axios.put(`https://agrishop-nodejs.onrender.com/api/admin/order/${id}`, orderData, config);
+        // const { data } = await axios.put(`https://agrishop-nodejs.onrender.com/api/admin/order/${id}`, orderData, config);
+        const { data } = await axios.put(`http://localhost:4000/api/admin/order/${id}`, orderData, config);
         return data.success; 
 
     } catch (error) {
@@ -70,7 +75,8 @@ export const updateOrder = async (id, orderData) => {
 
 export const deleteOrder = async (id) => {
     try {
-        const { data } = await axios.delete(`https://agrishop-nodejs.onrender.com/api/admin/order/${id}`);
+        // const { data } = await axios.delete(`https://agrishop-nodejs.onrender.com/api/admin/order/${id}`);
+        const { data } = await axios.delete(`http://localhost:4000/api/admin/order/${id}`);
         return data.success; 
 
     } catch (error) {
@@ -78,4 +84,3 @@ export const deleteOrder = async (id) => {
         return error.response.data.message;
     }
 }
-

@@ -80,7 +80,7 @@ function Navbar() {
 
           <li className='nav-item'>
             <Link to='/product' className='nav-links' onClick={closeMobileMenu}>
-              Product
+              Products
             </Link>
           </li>
 

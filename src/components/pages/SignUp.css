@@ -1,133 +1,151 @@
-.container-signup{
-    width: 100%;
-    display: flex;
+/* Container i centriranje */
+.container-signup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: white;
+  padding: 20px 0;
 }
 
-.content-signup{
-    width: 50%;
-    margin-left: 10%;
-    border-radius: 5px;
-    color:black;
-    align-items: left;
-    display: flex;
-    flex-direction: column;
+.content-signup {
+  width: 100%;
+  max-width: 450px;
 }
 
-.title-signup{
-    font-size: 60px;
-    font-weight: lighter;
-    margin-bottom: 5%;
-    margin-top: 10%;
-
+/* Kartica */
+.card-signup {
+  background: #fdfdfd;
+  border-radius: 15px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.text-signup{
-    margin-top: 50px;
-    width: 80%;
+/* Naslov */
+.title-signup {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #333;
 }
 
-.form-control{
-    border: 0px;
-    border-bottom: 1px solid gray;
-    padding: 5px;
-    width: 58%;
+/* Avatar upload */
+.avatar-upload {
+  margin-bottom: 25px;
+  position: relative;
 }
 
-.custom-button{
-    background-color: green;
-    color: white;
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #4caf50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.button-div{
-    margin-top: 50px;
+.avatar-circle:hover {
+  border-color: #43a047;
+  transform: scale(1.05);
 }
 
-.avatar{
-    display: flex;
-    align-items: center;
+.avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-
-.avatar img{
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+.avatar-input {
+  display: none;
 }
 
-.login{
-    margin-top: 2%;
+/* Form control */
+.signup-form .form-group {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
-.custom-file {
-    position: relative;
-    display: inline-block;
-    width: 50%;
-    height: calc(1.5em + .75rem + 2px);
-    margin-bottom: 0;
-    margin-left: 1%;
+.signup-form .form-control,
+.signup-form .select-role,
+.signup-form .custom-button {
+  width: 100%; 
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box; 
+  display: block;
+  transition: all 0.2s ease;
 }
 
-.custom-file-input {
-    position: relative;
-    z-index: 2;
-    width: 50%;
-    height: calc(1.5em + .75rem + 2px);
-    margin: 0;
-    opacity: 0;
+.signup-form .form-control:focus,
+.signup-form .select-role:focus,
+.signup-form .custom-button:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
 }
 
-.custom-file-label {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+.role-div {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.custom-file-input:focus ~ .custom-file-label {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+/* Buttons */
+.signup-form .custom-button {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
-.custom-file-input:lang(en) ~ .custom-file-label::after {
-    content: "Choose file";
+.signup-form .custom-button:hover {
+  background-color: #43a047;
 }
 
-.custom-file-input:lang(en):focus ~ .custom-file-label::after {
-    content: "Change file";
+/* Poruke */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }
 
-.custom-file-label::after {
-    content: "Browse";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
-    display: block;
-    padding: .375rem .75rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #e9ecef;
-    border-left: inherit;
-    border-radius: 0 .25rem .25rem 0;
+.server-message-success {
+  margin-top: 10px;
+  color: green;
+  margin-bottom: 15px;
 }
 
-
-.select-role{
-    margin-left: 5px;
-    width: 52%;
+.server-message-error {
+  margin-top: 10px;
+  color: red;
+  margin-bottom: 15px;
 }
 
-.role-div{
-    margin-bottom: 20px;
+/* Login link */
+.login {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.login a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login a:hover {
+  text-decoration: underline;
 }
