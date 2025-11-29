@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Product.css';
 import { getProducts } from '../../actions/productActons';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import Pagination from 'react-js-pagination';
 import Search from './Search';
 import Cookies from 'js-cookie';
@@ -13,6 +13,7 @@ function Product() {
   const [resPerPage, setResPerPage] = useState(0);
   const [productsCount, setProductsCount] = useState(0);
   const [filteredProductsCount, setFilteredProductsCount] = useState(0);
+  const [currentCategory, setCurrentCategory] = useState('');
 
   const categories = [
     'Vegetables',
@@ -29,28 +30,35 @@ function Product() {
 
   const { keyword } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const searchParams = new URLSearchParams(location.search);
-  const category = searchParams.get('category');
+  const categoryFromURL = searchParams.get('category');
 
   useEffect(() => {
     const fetchUserData = async () => {
       const storedUser = Cookies.get('user');
       if (storedUser) {
         const parsedUser = JSON.parse(storedUser);
-        if (parsedUser) { 
-          setUser(parsedUser);
-        } else {
-          console.error('No user ID found in stored user data.');
-        }
+        if (parsedUser) setUser(parsedUser);
       }
     };
 
     fetchUserData();
+  }, []);
 
+  useEffect(() => {
+    if (categoryFromURL) {
+      setCurrentCategory(categoryFromURL);
+    } else {
+      setCurrentCategory('');
+    }
+  }, [categoryFromURL]);
+
+  useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await getProducts(keyword, currentPage, category); 
+        const data = await getProducts(keyword, currentPage, currentCategory); 
         setProducts(data.products); 
         setResPerPage(data.resPerPage);
         setProductsCount(data.productCount);
@@ -61,15 +69,14 @@ function Product() {
     };
 
     fetchProducts(); 
-
-  }, [currentPage, keyword, category]);
+  }, [currentPage, keyword, currentCategory]);
 
   function setCurrentPageNo(pageNumber) {
     setCurrentPage(pageNumber);
   }
 
   let count = productsCount;
-  if (keyword || category) {
+  if (keyword || currentCategory) {
     count = filteredProductsCount;
   }
 
@@ -77,7 +84,7 @@ function Product() {
     <div className='container'>
 
       {/* CART */}
-      {(user === null || user.role === 'seller' || user.role === 'user' ) && (
+      {(user === null || user.role === 'seller' || user.role === 'user') && (
           <li className='nav-item'>
               <div className='cart'>
                 <Link to='/cart' className='linkkkk'>
@@ -145,21 +152,25 @@ function Product() {
               <i className="fa-solid fa-seedling"></i> Categories
             </h3>
             <div className="category-grid">
-              {categories.map(category => (
+              {categories.map(cat => (
                 <Link 
-                  key={category}
-                  to={`/product?category=${category}`} 
+                  key={cat}
+                  to={`/product?category=${cat}`} 
                   className="category-card"
                 >
                   <i className="fa-solid fa-leaf"></i>
-                  <span>{category}</span>
+                  <span>{cat}</span>
                 </Link>
               ))}
             </div>
 
             {/* All Products dugme ispod kategorija */}
             <button
-              onClick={() => window.location.href = '/product'}
+              onClick={() => {
+                setCurrentCategory('');
+                setCurrentPage(1);
+                navigate('/product');
+              }}
               className="all-products-btn all-btn"
             >
               All Products
