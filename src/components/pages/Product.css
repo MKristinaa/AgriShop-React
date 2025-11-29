@@ -133,7 +133,6 @@
 }
 
 /* BUTTONS */
-/* View Details dugmad - tamnozelena */
 .all-products-btn.view-btn {
   background-color: #046b1f;
   color: white;
@@ -156,8 +155,8 @@
 
 /* All Products dugme - neutralnija boja */
 .all-products-btn.all-btn {
-  background-color: #f0f0f0; /* svetlosiva pozadina */
-  color: #046b1f; /* tamnozelena tekst */
+  background-color: #f0f0f0;
+  color: #046b1f;
   border: 2px solid #046b1f;
   padding: 10px 16px;
   border-radius: 8px;
@@ -171,7 +170,7 @@
 }
 
 .all-products-btn.all-btn:hover {
-  background-color: #e0f2e0; /* svetlija zelena prilikom hovera */
+  background-color: #e0f2e0; 
   color: #046b1f;
   transform: translateY(-2px);
 }
