@@ -76,7 +76,7 @@ function Home() {
                 </div>
                 <div className='container-2-item'>
                     <div className='icon-1'><div className='icon'><i className="fa-solid fa-wheat-awn fa-2x"></i></div></div>
-                    <div><b>Fresh & Healthy</b></div>
+                    <div>Fresh & Healthy</div>
                 </div>
                 <div className='container-2-item'>
                     <div className='icon-1'><div className='icon'><i className="fa-solid fa-lemon fa-2x"></i></div></div>
