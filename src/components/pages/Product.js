@@ -107,7 +107,9 @@ function Product() {
                     <Link to={`/product/${product._id}`}>{product.name}</Link>
                   </h5>
                   <p className="product-price">${product.price}</p>
-                  <Link to={`/product/${product._id}`} className="view-btn">View Details</Link>
+                  <Link to={`/product/${product._id}`} className="all-products-btn view-btn">
+                    View Details
+                  </Link>
                 </div>
               </div>
             ))}
@@ -138,13 +140,6 @@ function Product() {
             <Search />
           </div>
 
-          <button
-            onClick={() => window.location.href = '/product'}
-            className="all-products-btn"
-          >
-            All Products
-          </button>
-
           <div className="categories-section">
             <h3 className='title-categories'>
               <i className="fa-solid fa-seedling"></i> Categories
@@ -161,7 +156,16 @@ function Product() {
                 </Link>
               ))}
             </div>
+
+            {/* All Products dugme ispod kategorija */}
+            <button
+              onClick={() => window.location.href = '/product'}
+              className="all-products-btn all-btn"
+            >
+              All Products
+            </button>
           </div>
+
         </div>
       </div>
     </div>

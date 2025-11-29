@@ -1,7 +1,9 @@
+/* CONTAINER */
 .container {
   width: 100%;
 }
 
+/* TOP BANNER */
 .top {
   width: 100%;
   height: 350px;
@@ -9,20 +11,26 @@
   background-image: url('../../images/top.jpg');
   background-position: center;
   background-size: cover;
+  display: flex;
   justify-content: left;
   align-items: center;
-  display: flex;
   padding: 140px;
 }
 
+.top-text {
+  font-size: 60px;
+  color: #03262c;
+}
+
+/* CART BUTTON */
 .cart {
   width: 70px;
   height: 70px;
   border-radius: 50%;
   background-color: orange;
+  display: flex;
   justify-content: center;
   align-items: center;
-  display: flex;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
   position: fixed;
   top: 110px;
@@ -37,12 +45,7 @@
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.top-text {
-  font-size: 60px;
-  color: #03262c;
-  font-weight: 700;
-}
-
+/* MAIN CONTENT */
 .content {
   width: 100%;
   display: flex;
@@ -53,7 +56,7 @@
   justify-content: space-between;
 }
 
-/* LEFT SIDE (products) */
+/* LEFT SIDE - PRODUCTS */
 .left-side {
   width: 75%;
   margin-top: 50px;
@@ -115,20 +118,48 @@
   margin-bottom: 12px;
 }
 
-.view-btn {
-  display: inline-block;
+/* BUTTONS */
+/* View Details dugmad - tamnozelena */
+.all-products-btn.view-btn {
   background-color: #046b1f;
   color: white;
-  padding: 10px 15px;
-  border-radius: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
   text-decoration: none;
-  transition: 0.3s ease;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
 }
 
-.view-btn:hover {
-  background-color: white;
-  color: #058c2c;
-  border: 1px solid #046b1f;
+.all-products-btn.view-btn:hover {
+  background-color: #058c2c;
+  transform: translateY(-2px);
+}
+
+/* All Products dugme - neutralnija boja */
+.all-products-btn.all-btn {
+  background-color: #f0f0f0; /* svetlosiva pozadina */
+  color: #046b1f; /* tamnozelena tekst */
+  border: 2px solid #046b1f;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  margin-top: 15px; 
+  transition: all 0.3s ease;
+}
+
+.all-products-btn.all-btn:hover {
+  background-color: #e0f2e0; /* svetlija zelena prilikom hovera */
+  color: #046b1f;
+  transform: translateY(-2px);
 }
 
 /* PAGINATION */
@@ -151,7 +182,7 @@
   text-decoration: none;
 }
 
-/* RIGHT SIDE (Sidebar) */
+/* RIGHT SIDE - SIDEBAR */
 .right-side {
   width: 22%;
   margin-top: 60px;
@@ -165,33 +196,11 @@
   height: fit-content;
 }
 
-
 .search-bar {
   margin-bottom: 25px;
 }
 
-/* All Products button */
-.all-products-btn {
-  background-color: #046b1f;
-  color: #fff;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 25px;
-  transition: all 0.3s ease;
-  width: 100%;
-  text-align: center;
-}
-
-.all-products-btn:hover {
-  background-color: #058c2c;
-  transform: translateY(-2px);
-}
-
-/* Categories redesigned */
+/* CATEGORIES */
 .categories-section {
   margin-top: 10px;
 }
@@ -236,4 +245,3 @@
   background-color: #e8f7e8;
   transform: translateX(4px);
 }
-
