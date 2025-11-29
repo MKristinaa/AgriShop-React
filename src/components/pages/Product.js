@@ -87,9 +87,9 @@ function Product() {
         </li>
       )}
 
-      <div className='top'>
+      {/* <div className='top'>
         <div className='top-text'>Products</div>
-      </div>
+      </div> */}
 
       <div className='content'>
         {/* SIDEBAR LEVO */}
