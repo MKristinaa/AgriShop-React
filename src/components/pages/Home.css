@@ -223,6 +223,7 @@ button:hover{
 
 .product-name {
   margin-top: 10px;
+  font-weight: 600;
 }
 
 .category-links {

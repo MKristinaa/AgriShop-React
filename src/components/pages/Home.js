@@ -72,7 +72,7 @@ function Home() {
             <div className='home-container-2'>
                 <div className='container-2-item'>
                     <div className='icon-1'><div className='icon'><i className="fa-solid fa-truck-fast fa-2x"></i></div></div>
-                    <div><b>Free Shipping</b></div>
+                    <div>Free Shipping</div>
                 </div>
                 <div className='container-2-item'>
                     <div className='icon-1'><div className='icon'><i className="fa-solid fa-wheat-awn fa-2x"></i></div></div>
@@ -80,11 +80,11 @@ function Home() {
                 </div>
                 <div className='container-2-item'>
                     <div className='icon-1'><div className='icon'><i className="fa-solid fa-lemon fa-2x"></i></div></div>
-                    <div><b>From Our Farm</b></div>
+                    <div>From Our Farm</div>
                 </div>
                 <div className='container-2-item'>
                     <div className='icon-1'><div className='icon'><i className="fa-solid fa-tractor fa-2x"></i></div></div>
-                    <div><b>Supporting Local Farmers</b></div>
+                    <div>Supporting Local Farmers</div>
                 </div>
             </div>
 
