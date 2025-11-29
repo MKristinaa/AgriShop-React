@@ -56,11 +56,24 @@
   justify-content: space-between;
 }
 
-/* LEFT SIDE - PRODUCTS */
-.left-side {
+/* LEVO - SIDEBAR */
+.sidebar-left {
+  width: 22%;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 25px 20px;
+  height: fit-content;
+}
+
+/* DESNO - PROIZVODI */
+.products-right {
   width: 75%;
   margin-top: 50px;
-  margin-left: 80px;
+  margin-right: 80px;
   margin-bottom: 100px;
 }
 
@@ -182,29 +195,7 @@
   text-decoration: none;
 }
 
-/* RIGHT SIDE - SIDEBAR */
-.right-side {
-  width: 22%;
-  margin-top: 60px;
-  margin-right: 50px;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 25px 20px;
-  height: fit-content;
-}
-
-.search-bar {
-  margin-bottom: 25px;
-}
-
 /* CATEGORIES */
-.categories-section {
-  margin-top: 10px;
-}
-
 .title-categories {
   font-size: 20px;
   font-weight: 700;

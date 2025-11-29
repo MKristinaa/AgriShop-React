@@ -36,15 +36,11 @@ function Product() {
   const categoryFromURL = searchParams.get('category');
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      const storedUser = Cookies.get('user');
-      if (storedUser) {
-        const parsedUser = JSON.parse(storedUser);
-        if (parsedUser) setUser(parsedUser);
-      }
-    };
-
-    fetchUserData();
+    const storedUser = Cookies.get('user');
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      if (parsedUser) setUser(parsedUser);
+    }
   }, []);
 
   useEffect(() => {
@@ -67,7 +63,6 @@ function Product() {
         console.error("Error fetching products:", error);
       }
     };
-
     fetchProducts(); 
   }, [currentPage, keyword, currentCategory]);
 
@@ -76,22 +71,20 @@ function Product() {
   }
 
   let count = productsCount;
-  if (keyword || currentCategory) {
-    count = filteredProductsCount;
-  }
+  if (keyword || currentCategory) count = filteredProductsCount;
 
   return (
     <div className='container'>
 
       {/* CART */}
       {(user === null || user.role === 'seller' || user.role === 'user') && (
-          <li className='nav-item'>
-              <div className='cart'>
-                <Link to='/cart' className='linkkkk'>
-                    <i className="fa-solid fa-basket-shopping"></i>
-                </Link>
-              </div>
-          </li>
+        <li className='nav-item'>
+          <div className='cart'>
+            <Link to='/cart' className='linkkkk'>
+              <i className="fa-solid fa-basket-shopping"></i>
+            </Link>
+          </div>
+        </li>
       )}
 
       <div className='top'>
@@ -99,8 +92,45 @@ function Product() {
       </div>
 
       <div className='content'>
-        <div className='left-side'>
+        {/* SIDEBAR LEVO */}
+        <div className='right-side sidebar-left'>
+          <div className='search-bar'>
+            <Search />
+          </div>
 
+          <div className="categories-section">
+            <h3 className='title-categories'>
+              <i className="fa-solid fa-seedling"></i> Categories
+            </h3>
+            <div className="category-grid">
+              {categories.map(cat => (
+                <Link 
+                  key={cat}
+                  to={`/product?category=${cat}`} 
+                  className="category-card"
+                >
+                  <i className="fa-solid fa-leaf"></i>
+                  <span>{cat}</span>
+                </Link>
+              ))}
+            </div>
+
+            {/* All Products dugme */}
+            <button
+              onClick={() => {
+                setCurrentCategory('');
+                setCurrentPage(1);
+                navigate('/product');
+              }}
+              className="all-products-btn all-btn"
+            >
+              All Products
+            </button>
+          </div>
+        </div>
+
+        {/* PROIZVODI DESNO */}
+        <div className='left-side products-right'>
           <div className="product-grid">
             {products && products.map((product) => (
               <div className="product-card" key={product._id}>
@@ -138,45 +168,6 @@ function Product() {
               />
             </div>
           )}
-      
-        </div>
-  
-
-        <div className='right-side'>
-          <div className='search-bar'>
-            <Search />
-          </div>
-
-          <div className="categories-section">
-            <h3 className='title-categories'>
-              <i className="fa-solid fa-seedling"></i> Categories
-            </h3>
-            <div className="category-grid">
-              {categories.map(cat => (
-                <Link 
-                  key={cat}
-                  to={`/product?category=${cat}`} 
-                  className="category-card"
-                >
-                  <i className="fa-solid fa-leaf"></i>
-                  <span>{cat}</span>
-                </Link>
-              ))}
-            </div>
-
-            {/* All Products dugme ispod kategorija */}
-            <button
-              onClick={() => {
-                setCurrentCategory('');
-                setCurrentPage(1);
-                navigate('/product');
-              }}
-              className="all-products-btn all-btn"
-            >
-              All Products
-            </button>
-          </div>
-
         </div>
       </div>
     </div>
