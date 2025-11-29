@@ -17,7 +17,14 @@ function Product() {
   const categories = [
     'Vegetables',
     'Fruits',
-    'Grains'
+    'Grains',
+    'Dairy Products',
+    'Meat & Poultry',
+    'Honey & Beekeeping Products',
+    'Herbs & Spices',
+    'Nuts & Seeds',
+    'Beverages',
+    'Others'
   ];
 
   const { keyword } = useParams();
@@ -40,6 +47,7 @@ function Product() {
     };
 
     fetchUserData();
+
     const fetchProducts = async () => {
       try {
         const data = await getProducts(keyword, currentPage, category); 
@@ -61,7 +69,7 @@ function Product() {
   }
 
   let count = productsCount;
-  if (keyword) {
+  if (keyword || category) {
     count = filteredProductsCount;
   }
 
@@ -77,9 +85,8 @@ function Product() {
                 </Link>
               </div>
           </li>
-          )}
+      )}
 
-          
       <div className='top'>
         <div className='top-text'>Products</div>
       </div>
@@ -87,72 +94,76 @@ function Product() {
       <div className='content'>
         <div className='left-side'>
 
-        <div className="product-grid">
-        {products && products.map((product) => (
-          <div className="product-card" key={product._id}>
-            <img
-              className="product-img"
-              src={product.image.url}
-              alt={product.name}
-              width={150}
-            />
-            <div className="product-body">
-              <h5 className="product-title">
-                <Link to={`/product/${product._id}`}>{product.name}</Link>
-              </h5>
-              <p className="product-price">${product.price}</p>
-              <Link to={`/product/${product._id}`} className="view-btn">View Details</Link>
-            </div>
+          <div className="product-grid">
+            {products && products.map((product) => (
+              <div className="product-card" key={product._id}>
+                <img
+                  className="product-img"
+                  src={product.image.url}
+                  alt={product.name}
+                />
+                <div className="product-body">
+                  <h5 className="product-title">
+                    <Link to={`/product/${product._id}`}>{product.name}</Link>
+                  </h5>
+                  <p className="product-price">${product.price}</p>
+                  <Link to={`/product/${product._id}`} className="view-btn">View Details</Link>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {resPerPage <= count && (
-        <div className='pagination'>
-          <Pagination 
-            activePage={currentPage}
-            itemsCountPerPage={resPerPage}
-            totalItemsCount={productsCount}
-            onChange={setCurrentPageNo}
-            nextPageText={'Next'}
-            prevPageText={'Prev'}
-            firstPageText={'First'}
-            lastPageText={'Last'}
-            itemClass='page-item'
-            linkClass='page-link'
-          />
+          {resPerPage < count && (
+            <div className='pagination'>
+              <Pagination 
+                activePage={currentPage}
+                itemsCountPerPage={resPerPage}
+                totalItemsCount={count}
+                onChange={setCurrentPageNo}
+                nextPageText={'Next'}
+                prevPageText={'Prev'}
+                firstPageText={'First'}
+                lastPageText={'Last'}
+                itemClass='page-item'
+                linkClass='page-link'
+              />
+            </div>
+          )}
+      
         </div>
-      )}
+  
 
-        </div>
-
-        
-        <div className='line'></div>
         <div className='right-side'>
           <div className='search-bar'>
             <Search />
           </div>
 
-          <h3 className='title-categories'>Categories</h3>
-          <ul>
-            {categories.map(category => (
-              <li
-                style={{
-                  cursor: 'pointer',
-                  listStyleType: 'none'
-                }}
-                key={category}
-              >
-                <Link to={`/product?category=${category}`} className="category">
-                  {category}
+          <button
+            onClick={() => window.location.href = '/product'}
+            className="all-products-btn"
+          >
+            All Products
+          </button>
+
+          <div className="categories-section">
+            <h3 className='title-categories'>
+              <i className="fa-solid fa-seedling"></i> Categories
+            </h3>
+            <div className="category-grid">
+              {categories.map(category => (
+                <Link 
+                  key={category}
+                  to={`/product?category=${category}`} 
+                  className="category-card"
+                >
+                  <i className="fa-solid fa-leaf"></i>
+                  <span>{category}</span>
                 </Link>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-
-      
     </div>
   );
 }
