@@ -12,17 +12,33 @@ const categories = [
     { name: 'Dairy Products', img: require('../../images/dairy.png') },
     { name: 'Meat & Poultry', img: require('../../images/meat3.png') },
     { name: 'Honey & Beekeeping Products', img: require('../../images/med3.png') },
-    { name: 'Herbs & Spices', img: require('../../images/herbs.png') }, // nova
-    { name: 'Nuts & Seeds', img: require('../../images/nuts.png') }, // nova
-    { name: 'Beverages', img: require('../../images/beverages.png') }, // nova
-    { name: 'Others', img: require('../../images/other.png') } // promenjeno ime sa "Other" na "Others"
+    { name: 'Herbs & Spices', img: require('../../images/herbs.png') },
+    { name: 'Nuts & Seeds', img: require('../../images/nuts.png') },
+    { name: 'Beverages', img: require('../../images/beverages.png') },
+    { name: 'Others', img: require('../../images/other.png') }
 ];
-
 
 function Home() {
     const [user, setUser] = useState(null);
     const [startIndex, setStartIndex] = useState(0);
-    const visibleCount = 4;
+    const [visibleCount, setVisibleCount] = useState(4); // ✅ dinamičan broj vidljivih proizvoda
+
+    // 🧠 Promena broja vidljivih proizvoda po veličini ekrana
+    useEffect(() => {
+        const updateVisibleCount = () => {
+            if (window.innerWidth <= 600) {
+                setVisibleCount(1);
+            } else if (window.innerWidth <= 992) {
+                setVisibleCount(2);
+            } else {
+                setVisibleCount(4);
+            }
+        };
+
+        updateVisibleCount();
+        window.addEventListener('resize', updateVisibleCount);
+        return () => window.removeEventListener('resize', updateVisibleCount);
+    }, []);
 
     const handlePrev = () => setStartIndex(prev => Math.max(prev - 1, 0));
     const handleNext = () => setStartIndex(prev => Math.min(prev + 1, categories.length - visibleCount));
@@ -112,7 +128,10 @@ function Home() {
                 <p>Discover our selection of fresh, locally-sourced products that bring the farm to your table.</p>
 
                 <div className="carousel-wrapper">
-                    <button className="carousel-arrow left" onClick={handlePrev} disabled={startIndex === 0}>&#10094;</button>
+                    <button className="carousel-arrow left" onClick={handlePrev} disabled={startIndex === 0}>
+                        &#10094;
+                    </button>
+
                     <div className="products">
                         {visibleCategories.map((cat, idx) => (
                             <Link key={idx} to={`/product?category=${cat.name}`} className="container-2-item category-links">
@@ -123,7 +142,14 @@ function Home() {
                             </Link>
                         ))}
                     </div>
-                    <button className="carousel-arrow right" onClick={handleNext} disabled={startIndex >= categories.length - visibleCount}>&#10095;</button>
+
+                    <button
+                        className="carousel-arrow right"
+                        onClick={handleNext}
+                        disabled={startIndex >= categories.length - visibleCount}
+                    >
+                        &#10095;
+                    </button>
                 </div>
             </div>
         </>
