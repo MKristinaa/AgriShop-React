@@ -318,7 +318,54 @@ button:hover{
 }
 
 /* TELEFONI (max širina 600px) */
+/* TELEFONI (max širina 600px) */
 @media (max-width: 600px) {
+  /* HOME CONTENT */
+  .home-content {
+    width: 90%;
+    margin-left: 0;
+    padding: 10px;
+    margin-top: 30px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-title {
+    font-size: 35px; /* manji naslov */
+    margin-bottom: 8px;
+  }
+
+  .home-text-1 {
+    width: auto;
+    font-size: 16px;
+    padding: 6px;
+    margin: 5px auto;
+  }
+
+  .home-text-2 {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .order-button {
+    width: 140px;
+    font-size: 16px;
+  }
+
+  /* HOME ABOUT */
+  .home-about {
+    flex-direction: column;
+    padding: 40px 20px;
+    height: auto;
+  }
+
+  .about-containt {
+    width: 95%;
+    text-align: center;
+  }
+
+  /* CAROUSEL */
   .carousel-wrapper {
     display: flex;
     align-items: center;
@@ -329,21 +376,21 @@ button:hover{
 
   .products {
     display: flex;
-    gap: 15px; /* manji razmak između proizvoda */
+    gap: 15px; 
     overflow: hidden;
     flex: 1;
   }
 
   .container-2-item {
-    width: 70%;        /* malo smanjena kartica */
-    min-width: 220px;  /* ne dozvoljava da bude premala */
+    width: 70%;        
+    min-width: 220px;
     height: auto;
     margin: 0 auto;
-    flex-shrink: 0;    /* ne dozvoljava da se kartica dodatno smanji */
+    flex-shrink: 0;    
   }
 
   .product-img img {
-    width: 100%;       /* slika popunjava karticu */
+    width: 100%;       
     height: auto;
     object-fit: cover;
   }
@@ -366,10 +413,10 @@ button:hover{
   }
 
   .carousel-arrow.left {
-    left: 5px; /* strelica sa leve strane */
+    left: 5px; 
   }
 
   .carousel-arrow.right {
-    right: 5px; /* strelica sa desne strane */
+    right: 5px; 
   }
 }
