@@ -4,11 +4,12 @@
   justify-content: flex-start;
   margin-top: 20px;
   gap: 10px;
+  width: 100%; /* da container koristi punu širinu */
 }
 
 .search-container input {
-  width: 100%;
-  width: 300px;
+  width: 100%;        /* pun width da bude fleksibilno */
+  max-width: 300px;   /* maksimalna širina na većim ekranima */
   height: 40px;
   padding: 0 15px;
   font-size: 16px;
@@ -16,6 +17,7 @@
   border-radius: 20px;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* da padding ne prelazi širinu */
 }
 
 .search-container input:focus {
@@ -32,4 +34,22 @@
 
 .search-container img:hover {
   transform: scale(1.2);
+}
+
+/* ===== RESPONZIV ===== */
+@media (max-width: 600px) {
+  .search-container {
+    gap: 8px;
+  }
+
+  .search-container input {
+    font-size: 14px;
+    height: 35px;
+    padding: 0 10px;
+  }
+
+  .search-container img {
+    width: 20px;
+    height: 20px;
+  }
 }

@@ -262,7 +262,7 @@
   .sidebar-left {
     position: fixed;
     top: 0;
-    left: -100%;
+    left: -102%;
     height: 100vh;
     width: 22%; /* 👈 ista širina kao desktop */
     min-width: 350px; /* osiguraj minimalnu širinu */
