@@ -5,16 +5,12 @@
 
 /* TOP BANNER */
 .top {
-  width: 100%;
-  height: 350px;
-  background-image: url('../../images/top.jpg');
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  justify-content: flex-start; /* levo */
-  align-items: flex-start;     /* odozgo */
-  padding: 80px 50px 0 50px;  /* gornji padding veći, donji 0 */
-  box-sizing: border-box;
+  background-image: url('../../images/home.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    width: 100%;
+    display: flex;
 }
 
 .top-text {
@@ -35,15 +31,15 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
   position: fixed;
   top: 110px;
-  right: 70px; 
+  right: 70px;
   z-index: 1000;
-  border: none; 
+  border: none;
 }
 
 .cart i {
   color: orangered;
   font-size: 45px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
 /* MAIN CONTENT */
@@ -53,8 +49,9 @@
   flex-direction: row;
   padding: 0;
   margin: 0;
-  align-items: flex-start; 
+  align-items: flex-start;
   justify-content: space-between;
+  transition: all 0.3s ease;
 }
 
 /* LEVO - SIDEBAR */
@@ -138,7 +135,6 @@
   color: white;
   padding: 10px 16px;
   border-radius: 8px;
-  text-decoration: none;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
@@ -164,12 +160,12 @@
   cursor: pointer;
   width: 100%;
   text-align: center;
-  margin-top: 15px; 
+  margin-top: 15px;
   transition: all 0.3s ease;
 }
 
 .all-products-btn.all-btn:hover {
-  background-color: #e0f2e0; 
+  background-color: #e0f2e0;
   color: #046b1f;
   transform: translateY(-2px);
 }
@@ -236,35 +232,60 @@
   transform: translateX(4px);
 }
 
+/* HAMBURGER BUTTON */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 35px;
+  height: 25px;
+  position: fixed;
+  top: 360px; /* ispod top diva */
+  left: 20px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  height: 4px;
+  background: #046b1f;
+  border-radius: 2px;
+}
+
 /* ===== RESPONSIVE ===== */
 
 /* TABLET (max 992px) */
 @media (max-width: 992px) {
-  .top {
-    height: auto;
-    min-height: 250px;
-    padding: 60px 40px 0 40px;
-    align-items: flex-start;
+
+  .hamburger {
+    display: flex;
   }
 
-  .top-text {
-    font-size: clamp(36px, 5vw, 50px);
+  .sidebar-left {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    height: 100%;
+    z-index: 1200;
+    transition: left 0.3s ease;
+    width: 260px;
+    background-color: #fff;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  }
+
+  .content.sidebar-active .sidebar-left {
+    left: 0;
+  }
+
+  .products-right {
+    width: 100%;
+    margin: 0;
   }
 
   .content {
     flex-direction: column;
     align-items: center;
-  }
-
-  .sidebar-left {
-    width: 90%;
-    margin: 0 0 30px 0;
-    padding: 20px;
-  }
-
-  .products-right {
-    width: 95%;
-    margin: 0 0 50px 0;
   }
 
   .product-grid {
@@ -275,36 +296,24 @@
   .pagination {
     margin-top: 20px;
   }
-
-  .cart {
-    top: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-  }
-
-  .cart i {
-    font-size: 30px;
-  }
 }
+
 
 /* MOBILE (max 600px) */
 @media (max-width: 600px) {
-  .top {
-    height: auto;
-    min-height: 200px;
-    padding: 40px 20px 0 20px;
-    align-items: flex-start;
-  }
-
+  
   .top-text {
     font-size: clamp(28px, 6vw, 36px);
   }
 
   .sidebar-left {
     width: 100%;
-    margin: 0 0 20px 0;
     padding: 15px;
+    left: -260px;
+  }
+
+  .content.sidebar-active .sidebar-left {
+    left: 0;
   }
 
   .products-right {
@@ -322,27 +331,7 @@
     gap: 8px;
   }
 
-  .product-title {
-    font-size: 16px;
-  }
-
-  .product-price {
-    font-size: 14px;
-  }
-
-  .all-products-btn.view-btn, .all-products-btn.all-btn {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
-
-  .cart {
-    top: 15px;
-    right: 15px;
-    width: 55px;
-    height: 55px;
-  }
-
-  .cart i {
-    font-size: 28px;
+  .hamburger {
+    top: 320px; /* za manji ekran pomeri burger */
   }
 }

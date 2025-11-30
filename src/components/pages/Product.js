@@ -14,7 +14,7 @@ function Product() {
   const [productsCount, setProductsCount] = useState(0);
   const [filteredProductsCount, setFilteredProductsCount] = useState(0);
   const [currentCategory, setCurrentCategory] = useState('');
-  const [sidebarOpen, setSidebarOpen] = useState(false); // kontrola sidebar-a
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const categories = [
     'Vegetables',
@@ -32,7 +32,6 @@ function Product() {
   const { keyword } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-
   const searchParams = new URLSearchParams(location.search);
   const categoryFromURL = searchParams.get('category');
 
@@ -45,18 +44,15 @@ function Product() {
   }, []);
 
   useEffect(() => {
-    if (categoryFromURL) {
-      setCurrentCategory(categoryFromURL);
-    } else {
-      setCurrentCategory('');
-    }
+    if (categoryFromURL) setCurrentCategory(categoryFromURL);
+    else setCurrentCategory('');
   }, [categoryFromURL]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await getProducts(keyword, currentPage, currentCategory); 
-        setProducts(data.products); 
+        const data = await getProducts(keyword, currentPage, currentCategory);
+        setProducts(data.products);
         setResPerPage(data.resPerPage);
         setProductsCount(data.productCount);
         setFilteredProductsCount(data.filteredProductsCount);
@@ -64,7 +60,7 @@ function Product() {
         console.error("Error fetching products:", error);
       }
     };
-    fetchProducts(); 
+    fetchProducts();
   }, [currentPage, keyword, currentCategory]);
 
   function setCurrentPageNo(pageNumber) {
@@ -76,7 +72,6 @@ function Product() {
 
   return (
     <div className='container'>
-
       {/* CART */}
       {(user === null || user.role === 'seller' || user.role === 'user') && (
         <li className='nav-item'>
@@ -88,18 +83,19 @@ function Product() {
         </li>
       )}
 
-      {/* TOP BANNER */}
+      {/* TOP DIV */}
       <div className='top'>
         <div className='top-text'>Products</div>
       </div>
 
-      {/* HAMBURGER dugme */}
-      <div className={`hamburger ${sidebarOpen ? 'open' : ''}`} onClick={() => setSidebarOpen(!sidebarOpen)}>
+      {/* HAMBURGER */}
+      <div className='hamburger' onClick={() => setSidebarOpen(!sidebarOpen)}>
         <span></span>
         <span></span>
         <span></span>
       </div>
 
+      {/* MAIN CONTENT */}
       <div className={`content ${sidebarOpen ? 'sidebar-active' : ''}`}>
         {/* SIDEBAR LEVO */}
         <div className='right-side sidebar-left'>
@@ -117,7 +113,7 @@ function Product() {
                   key={cat}
                   to={`/product?category=${cat}`} 
                   className="category-card"
-                  onClick={() => setSidebarOpen(false)} // zatvori sidebar kad klikneš
+                  onClick={() => setSidebarOpen(false)}
                 >
                   <i className="fa-solid fa-leaf"></i>
                   <span>{cat}</span>
@@ -125,6 +121,7 @@ function Product() {
               ))}
             </div>
 
+            {/* All Products dugme */}
             <button
               onClick={() => {
                 setCurrentCategory('');
