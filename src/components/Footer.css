@@ -2,28 +2,64 @@
     background-image: url('../images/footer3.png');
     background-position: center;
     background-size: cover;
-    height: 180px;
+    height: auto;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end; /* spušta tekst ka dnu */
     align-items: center;
     flex-direction: column;
     bottom: 0;
     z-index: 999;
     color: white;
     font-weight: lighter;
-    padding-top: 50px;
+    padding: 60px 20px 20px 20px; /* više prostora na vrhu, manji dole */
+    text-align: center;
 }
 
-.containt{
+.containt {
     justify-content: center;
     align-items: center;
     display: flex;
     padding: 20px;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px; /* veći gap na desktopu */
 }
 
-.item{
-    margin-right: 100px;
+.item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
 }
 
+/* TABLET (max 992px) */
+@media (max-width: 992px) {
+    .footer {
+        padding: 50px 20px 20px 20px; /* spusti tekst ka dnu */
+    }
 
+    .containt {
+        flex-direction: column;
+        gap: 20px; /* manji gap */
+    }
+
+    .item {
+        font-size: 15px;
+    }
+}
+
+/* MOBILNI (max 600px) */
+@media (max-width: 600px) {
+    .footer {
+        padding: 40px 10px 10px 10px; /* još više spustiti tekst i smanjiti padding */
+    }
+
+    .containt {
+        flex-direction: column;
+        gap: 10px; /* još manji gap između stavki */
+    }
+
+    .item {
+        font-size: 14px; /* manji tekst */
+    }
+}
