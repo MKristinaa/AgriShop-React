@@ -23,6 +23,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 /* Naslov */
@@ -31,6 +32,7 @@
   font-weight: 600;
   margin-bottom: 25px;
   color: #333;
+  text-align: center;
 }
 
 /* Avatar upload */
@@ -148,4 +150,61 @@
 
 .login a:hover {
   text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .card-signup {
+    padding: 30px 20px;
+  }
+
+  .title-signup {
+    font-size: 28px;
+  }
+
+  .avatar-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .signup-form .form-control,
+  .signup-form .select-role,
+  .signup-form .custom-button {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .role-div label {
+    font-size: 14px;
+  }
+
+  .login {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-signup {
+    padding: 25px 15px;
+  }
+
+  .title-signup {
+    font-size: 24px;
+  }
+
+  .avatar-circle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .signup-form .form-control,
+  .signup-form .select-role,
+  .signup-form .custom-button {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .login {
+    font-size: 12px;
+  }
 }
