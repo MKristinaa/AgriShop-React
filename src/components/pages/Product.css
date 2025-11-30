@@ -241,7 +241,22 @@
   border-radius: 2px;
 }
 
+@media (max-width: 1400px) {
+  .top {
+    height: 200px;
+    margin-top: -10%;
+  }
+
+}
 @media (max-width: 992px) {
+  .top {
+    height: 200px;
+    margin-top: -10%;
+  }
+
+  .top-text {
+    font-size: clamp(20px, 5vw, 50px);
+  }
   .hamburger {
     display: flex;
   }
@@ -279,8 +294,21 @@
     align-items: center;
   }
 }
+@media (max-width: 800px) {
+  .top {
+    height: 200px;
+    margin-top: -15%;
+  }
+
+}
 
 @media (max-width: 600px) {
+  .top {
+    height: 200px;
+    margin-top: -24%;
+  }
+
+
   .top-text {
     font-size: clamp(28px, 6vw, 36px);
   }
