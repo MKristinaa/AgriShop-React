@@ -381,10 +381,10 @@ button:hover{
   }
 
   .cart {
-    width: 52px;
-    height: 52px;
-    top: 30px;
-    /* right: 10px; */
+    width: 55px;
+    height: 55px;
+    top: 20px;
+    right: 20px;
   }
 
   .cart i {

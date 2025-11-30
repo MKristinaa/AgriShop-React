@@ -15,7 +15,6 @@
   align-items: flex-start;     /* odozgo */
   padding: 80px 50px 0 50px;  /* gornji padding veći, donji 0 */
   box-sizing: border-box;
-  margin-top: -12%;
 }
 
 .top-text {
@@ -246,7 +245,6 @@
     min-height: 250px;
     padding: 60px 40px 0 40px;
     align-items: flex-start;
-    margin-top: -15%;
   }
 
   .top-text {
