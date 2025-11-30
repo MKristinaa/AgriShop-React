@@ -1,171 +1,170 @@
+/* ====== HERO SEKCIJA ====== */
 .home-container {
-    background-image: url('../../images/home.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    width: 100%;
-    margin-top: -5.5%;
-    display: flex;
-    justify-content: center; 
-    flex-direction: column;
+  background-image: url('../../images/home.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
+  margin-top: -5.5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .home-content {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-content: center;
-    margin-left: 120px;
-    padding: 20px;
-    margin-top: 50px;
-    position: relative; 
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-content: center;
+  margin-left: 120px;
+  padding: 20px;
+  margin-top: 50px;
+  position: relative;
 }
 
 .cart {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: orange;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-    position: fixed; 
-    top: 110px; 
-    right: 70px; 
-    z-index: 1000; 
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: orange;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 110px;
+  right: 70px;
+  z-index: 1000;
 }
 
 .cart i {
-    color: orangered;
-    font-size: 45px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  color: orangered;
+  font-size: 45px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-
-
-
-.home-title{
-    /* color:#262d27; */
-    color: rgba(3,38,44,255);
-    font-size: 70px;
-    margin-bottom: 10px;
-    
+.home-title {
+  color: rgba(3, 38, 44, 255);
+  font-size: 70px;
+  margin-bottom: 10px;
 }
 
-.home-text-1{
-    width: 260px;
-    /* background-color:#262d27; */
-    background-color:rgba(3,38,44,255);
-    font-size: 20px;
-    padding: 8px;
-    color: white;
-    font-weight: bold;
-    margin-bottom: 10px;
-    /* opacity: 0.9; */
+.home-text-1 {
+  background-color: rgba(3, 38, 44, 255);
+  font-size: 20px;
+  padding: 8px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 10px;
+  width: fit-content;
 }
 
-.home-text-2{
-    width: 60%;
-    color: black;
-    /* font-size: 20px; */
-    margin-bottom: 50px;
+.home-text-2 {
+  max-width: 600px;
+  color: black;
+  margin-bottom: 50px;
 }
 
-.order-button{
-    width: 170px;
-    /* background-color: red;   */
-    background-color: rgb(43, 147, 43);
-    border: 1px solid rgb(43, 147, 43);
-    border: none;
-    border-radius: 25px;
-    font-size: 20px;
-    padding: 8px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+.order-button {
+  width: 170px;
+  background-color: rgb(43, 147, 43);
+  border: none;
+  border-radius: 25px;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-button:hover{
-    background-color: whitesmoke;
-    border: 1px solid rgb(43, 147, 43);
-    color: rgb(43, 147, 43);
+button:hover {
+  background-color: whitesmoke;
+  border: 1px solid rgb(43, 147, 43);
+  color: rgb(43, 147, 43);
 }
 
-.home-container-2{
-    width: 100%;
-    height: 450px;
-    padding: 30px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+/* ====== IKONICE (CONTAINER 2) ====== */
+.home-container-2 {
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 20px;
 }
 
-.container-2-item{
-    width: 240px;
-    height: 270px;
-    border:3px solid whitesmoke;
-    border-radius: 2px;
-    margin-right: 20px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    color: black;
-    font-size: 18px;
+.container-2-item {
+  width: 220px;
+  height: 250px;
+  border: 3px solid whitesmoke;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  font-size: 18px;
+  text-align: center;
+  background-color: #fdfdfd;
 }
 
-.icon{
-    width: 60px;
-    height: 60px;
-    border: 3px solid whitesmoke;
-    border-radius: 50px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    color: green;
-    background-color: whitesmoke;
+.icon {
+  width: 60px;
+  height: 60px;
+  border: 3px solid whitesmoke;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: green;
+  background-color: whitesmoke;
 }
 
-.icon-1{
-    width: 80px;
-    height: 80px;
-    border: 3px solid whitesmoke;
-    border-radius: 50px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    margin-bottom: 20px;
+.icon-1 {
+  width: 80px;
+  height: 80px;
+  border: 3px solid whitesmoke;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 20px;
 }
 
-.home-about{
-    width: 100%;
-    height: 650px;
-    background-image: url('../../images/about.jpg');
-    background-position: center;
-    background-size: cover;
-    justify-content: left;
-    align-items: center;
-    display: flex;
-    padding: 90px;
+/* ====== ABOUT ====== */
+.home-about {
+  width: 100%;
+  background-image: url('../../images/about.jpg');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  padding: 80px 40px;
+  justify-content: center;
 }
 
-.about-containt{
-    width: 40%;
+.about-containt {
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 10px;
 }
 
-.home-products{
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    padding: 80px;
+/* ====== PRODUCTS / CAROUSEL ====== */
+.home-products {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px;
 }
 
 .home-products h1 {
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .home-products p {
@@ -174,22 +173,12 @@ button:hover{
   max-width: 800px;
 }
 
-.products{
-    height: 330px;
-}
-
-.category-links{
-    color: black;
-    text-decoration: none;
-}
-
-
-/* Carousel */
 .carousel-wrapper {
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 1200px;
+  flex-wrap: nowrap;
 }
 
 .products {
@@ -197,38 +186,36 @@ button:hover{
   gap: 20px;
   overflow: hidden;
   flex: 1;
-}
-
-.container-2-item {
-  width: 240px;
-  height: 270px;
-  border: 3px solid whitesmoke;
-  border-radius: 2px;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  color: black;
-  font-size: 18px;
-  background-color: #fdfdfd;
-  text-align: center;
-}
-
-.product-img img {
-  width: 170px;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.product-name {
-  margin-top: 10px;
-  font-weight: 600;
 }
 
 .category-links {
   color: black;
   text-decoration: none;
+}
+
+.container-2-item {
+  background-color: #fdfdfd;
+}
+
+.product-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+}
+
+.product-img img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.product-name {
+  margin-top: 10px;
+  font-weight: 600;
 }
 
 .carousel-arrow {
@@ -251,17 +238,116 @@ button:hover{
   background-color: #43a047;
 }
 
-.product-img {
-    display: flex;
-    justify-content: center; /* horizontalno centriranje */
-    align-items: center;     /* vertikalno centriranje */
-    width: 100%;
-    height: 170px;           /* ili visinu koju želiš za karticu */
-    overflow: hidden;        /* da ne izlazi van */
+/* ====== RESPONSIVE ====== */
+
+/* TABLETI */
+@media (max-width: 992px) {
+  .home-content {
+    width: 70%;
+    margin-left: 40px;
+  }
+
+  .home-title {
+    font-size: 50px;
+  }
+
+  .home-text-2 {
+    width: 90%;
+  }
+
+  .home-about {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .about-containt {
+    width: 90%;
+  }
+
+  .home-container-2 {
+    gap: 15px;
+  }
 }
 
-.product-img img {
+/* TELEFONI */
+@media (max-width: 600px) {
+  .home-container {
+    padding: 20px;
+    align-items: flex-start;
+  }
+
+  .home-content {
     width: 100%;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .home-title {
+    font-size: 36px;
+  }
+
+  .home-text-1 {
+    font-size: 16px;
+  }
+
+  .home-text-2 {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .order-button {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .cart {
+    width: 55px;
+    height: 55px;
+    top: 20px;
+    right: 20px;
+  }
+
+  .cart i {
+    font-size: 28px;
+  }
+
+  .home-container-2 {
+    flex-direction: column;
     height: auto;
-    object-fit: contain;     /* slika neće biti isečena */
+  }
+
+  .container-2-item {
+    width: 80%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .home-about {
+    background-position: right;
+  }
+
+  .about-containt {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .carousel-wrapper {
+    flex-direction: column;
+  }
+
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    margin: 10px 0;
+  }
+
+  .products {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .product-img img {
+    width: 120px;
+  }
 }
