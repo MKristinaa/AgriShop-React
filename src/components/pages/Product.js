@@ -14,6 +14,7 @@ function Product() {
   const [productsCount, setProductsCount] = useState(0);
   const [filteredProductsCount, setFilteredProductsCount] = useState(0);
   const [currentCategory, setCurrentCategory] = useState('');
+  const [sidebarOpen, setSidebarOpen] = useState(false); // kontrola sidebar-a
 
   const categories = [
     'Vegetables',
@@ -87,11 +88,19 @@ function Product() {
         </li>
       )}
 
+      {/* TOP BANNER */}
       <div className='top'>
         <div className='top-text'>Products</div>
       </div>
 
-      <div className='content'>
+      {/* HAMBURGER dugme */}
+      <div className={`hamburger ${sidebarOpen ? 'open' : ''}`} onClick={() => setSidebarOpen(!sidebarOpen)}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div className={`content ${sidebarOpen ? 'sidebar-active' : ''}`}>
         {/* SIDEBAR LEVO */}
         <div className='right-side sidebar-left'>
           <div className='search-bar'>
@@ -108,6 +117,7 @@ function Product() {
                   key={cat}
                   to={`/product?category=${cat}`} 
                   className="category-card"
+                  onClick={() => setSidebarOpen(false)} // zatvori sidebar kad klikneš
                 >
                   <i className="fa-solid fa-leaf"></i>
                   <span>{cat}</span>
@@ -115,12 +125,12 @@ function Product() {
               ))}
             </div>
 
-            {/* All Products dugme */}
             <button
               onClick={() => {
                 setCurrentCategory('');
                 setCurrentPage(1);
                 navigate('/product');
+                setSidebarOpen(false);
               }}
               className="all-products-btn all-btn"
             >
