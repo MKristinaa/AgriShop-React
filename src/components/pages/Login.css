@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   min-height: 67vh;
+  padding: 20px 0;
 }
 
 /* Kartica */
@@ -19,6 +20,7 @@
   padding: 40px 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 /* Naslov */
@@ -107,4 +109,47 @@
 
 .link-sign-up a:hover {
   text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .login-content {
+    padding: 30px 20px;
+  }
+
+  .title-login {
+    font-size: 32px;
+    margin-bottom: 25px;
+  }
+
+  .login-form .form-control,
+  .login-form .custom-button-login {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .link-sign-up {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-content {
+    padding: 25px 15px;
+  }
+
+  .title-login {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .login-form .form-control,
+  .login-form .custom-button-login {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .link-sign-up {
+    font-size: 12px;
+  }
 }
