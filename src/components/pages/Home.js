@@ -21,14 +21,20 @@ const categories = [
 function Home() {
     const [user, setUser] = useState(null);
     const [startIndex, setStartIndex] = useState(0);
-    const [visibleCount, setVisibleCount] = useState(4);
+    const [visibleCount, setVisibleCount] = useState(4); // ✅ dinamičan broj vidljivih proizvoda
 
+    // 🧠 Promena broja vidljivih proizvoda po veličini ekrana
     useEffect(() => {
         const updateVisibleCount = () => {
-            if (window.innerWidth <= 600) setVisibleCount(1);
-            else if (window.innerWidth <= 992) setVisibleCount(2);
-            else setVisibleCount(4);
+            if (window.innerWidth <= 600) {
+                setVisibleCount(1);
+            } else if (window.innerWidth <= 992) {
+                setVisibleCount(2);
+            } else {
+                setVisibleCount(4);
+            }
         };
+
         updateVisibleCount();
         window.addEventListener('resize', updateVisibleCount);
         return () => window.removeEventListener('resize', updateVisibleCount);
@@ -49,6 +55,7 @@ function Home() {
         };
         fetchUserData();
 
+        // Testna greška za Sentry
         try { throw new Error("Test greška u Home.js za Sentry"); } 
         catch (error) { Sentry.captureException(error); }
     }, []);
@@ -120,12 +127,12 @@ function Home() {
                 <h1>Category Of Our Products</h1>
                 <p>Discover our selection of fresh, locally-sourced products that bring the farm to your table.</p>
 
-                <div className="carousel-wrapper category-carousel">
+                <div className="carousel-wrapper">
                     <button className="carousel-arrow left" onClick={handlePrev} disabled={startIndex === 0}>
                         &#10094;
                     </button>
 
-                    <div className="products category-products">
+                    <div className="products">
                         {visibleCategories.map((cat, idx) => (
                             <Link key={idx} to={`/product?category=${cat.name}`} className="container-2-item category-links">
                                 <div className="product-img">
