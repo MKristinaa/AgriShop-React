@@ -38,7 +38,7 @@ const Search = () => {
           type="text"
           onChange={(e) => setSearch(e.target.value)}
           value={search}
-          placeholder="Search product or brand"
+          placeholder="Search product"
         />
       </div>
     </form>

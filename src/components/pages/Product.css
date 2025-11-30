@@ -264,7 +264,7 @@
     top: 0;
     left: -105%;
     height: 100vh;
-    width: 21%; /* 👈 ista širina kao desktop */
+    width: 18%; /* 👈 ista širina kao desktop */
     min-width: 350px; /* osiguraj minimalnu širinu */
     background-color: #fff;
     box-shadow: 3px 0 10px rgba(0,0,0,0.3);
