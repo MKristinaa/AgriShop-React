@@ -80,14 +80,14 @@ function Navbar() {
 
           <li className='nav-item'>
             <Link to='/product' className='nav-links' onClick={closeMobileMenu}>
-              Products
+              Catalog
             </Link>
           </li>
 
           {user && user.role === 'seller'  && (
           <li className='nav-item'>
             <Link to='/seller/products' className='nav-links' onClick={closeMobileMenu}>
-              MyProducts
+              My Listings
             </Link>
           </li>
           )}
@@ -125,21 +125,21 @@ function Navbar() {
                   )}
                   {user && user.role !== 'admin' && (
                     <Link className='dropdown-item' to='/orders/me'>
-                      Orders
+                      My Orders
                     </Link>
                   )}
                   <Link className='dropdown-item' to='/me'>
-                    Profile
+                    Account
                   </Link>
                   <Link className='dropdown-item text-danger' to='/' onClick={logoutHandler}>
-                    Logout
+                    Sign Out
                   </Link>
                 </div>
               </div>
             ) : (
               
               <Link to='/sign-up' className='nav-links' onClick={closeMobileMenu}>
-                Sign Up
+                Register
               </Link>
             )}
 

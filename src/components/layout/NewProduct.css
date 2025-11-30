@@ -1,61 +1,48 @@
-.new-product-top{
-    margin-top: 50px;
-}
-
-.new-product-title {
-    font-size: 30px;
-}
-
-.new-product-row {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.new-product-content {
-    background-color: white;
+.new-product-container {
+    margin: 20px auto;
+    max-width: 600px;
     padding: 20px;
+    border: 1px solid #ccc;
     border-radius: 10px;
-    width: 500px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: white;
 }
 
-.new-product-form-wrapper {
-    margin: 0 auto;
+.new-product-card {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
 }
 
-.new-product-form-container {
+.new-product-header {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.new-product-form {
     display: flex;
     flex-direction: column;
 }
 
 .new-product-form-group {
     margin-bottom: 15px;
-    display: block; /* Promeni u block da bi elementi išli jedan ispod drugog */
+    display: flex;
+    flex-direction: column;
 }
 
 .new-product-form-group label {
     font-weight: bold;
-    margin-bottom: 5px; /* Dodaj malo razmaka ispod labela */
-    display: block;
+    margin-bottom: 5px;
 }
 
-.custom-file-label{
-    width: 100%;
-    cursor: pointer;
-}
-
-.new-product-form-group-image-preview{
-    width: 60px;
-}
-
-.new-product-form-group input[type="text"],
-.new-product-form-group input[type="number"],
+.new-product-form-group input,
+.new-product-form-group select,
 .new-product-form-group textarea,
-.new-product-form-group select {
-    width: 100%;
+.custom-file-input-upload {
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
+    border: 1px solid #ccc;
     font-size: 16px;
 }
 
@@ -64,33 +51,39 @@
 }
 
 .new-product-button {
-    background-color: #4CAF50;
+    background-color: #28a745;
     color: white;
-    padding: 10px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    margin-top: 40px;
+    margin-top: 20px;
+    transition: 0.3s;
 }
 
 .new-product-button:hover {
-    border: 1px solid #4CAF50;
-    color: #4CAF50;
-    background-color: white;
+    background-color: #218838;
+    color: white;
+    border: 1px solid #218838;
 }
-
 
 .error-message {
     color: red;
     font-size: 0.875rem;
     margin-top: 4px;
-    margin-bottom: 10px;
-    display: block;
 }
 
-.new-top{
-    margin-top: 50px;
+/* Preview slike ispod inputa */
+.image-preview-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 
+.image-preview {
+    width: 200px;  /* fiksna širina */
+    height: auto;  /* visina automatski */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    object-fit: contain;
+}
