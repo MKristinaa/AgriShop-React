@@ -368,7 +368,7 @@ button:hover{
   }
 
   .carousel-wrapper {
-    flex-direction: column;
+    padding: 10%;
   }
 
   .carousel-arrow {
@@ -394,4 +394,9 @@ button:hover{
   .cart i {
     font-size: 28px;
   }
+
+  .home-products {
+    padding: 10px;
+  }
+
 }
