@@ -15,18 +15,11 @@ function Product() {
   const [filteredProductsCount, setFilteredProductsCount] = useState(0);
   const [currentCategory, setCurrentCategory] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [columns, setColumns] = useState(4); // default 4 kolone
 
   const categories = [
-    'Vegetables',
-    'Fruits',
-    'Grains',
-    'Dairy Products',
-    'Meat & Poultry',
-    'Honey & Beekeeping Products',
-    'Herbs & Spices',
-    'Nuts & Seeds',
-    'Beverages',
-    'Others'
+    'Vegetables', 'Fruits', 'Grains', 'Dairy Products', 'Meat & Poultry',
+    'Honey & Beekeeping Products', 'Herbs & Spices', 'Nuts & Seeds', 'Beverages', 'Others'
   ];
 
   const { keyword } = useParams();
@@ -35,6 +28,7 @@ function Product() {
   const searchParams = new URLSearchParams(location.search);
   const categoryFromURL = searchParams.get('category');
 
+  // Postavljanje user-a iz cookies
   useEffect(() => {
     const storedUser = Cookies.get('user');
     if (storedUser) {
@@ -43,11 +37,13 @@ function Product() {
     }
   }, []);
 
+  // Postavljanje kategorije iz URL-a
   useEffect(() => {
     if (categoryFromURL) setCurrentCategory(categoryFromURL);
     else setCurrentCategory('');
   }, [categoryFromURL]);
 
+  // Fetch proizvoda
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -62,6 +58,21 @@ function Product() {
     };
     fetchProducts();
   }, [currentPage, keyword, currentCategory]);
+
+  // Dinamički broj kolona po širini ekrana
+  const updateColumns = () => {
+    const width = window.innerWidth;
+    if (width >= 1200) setColumns(4);
+    else if (width >= 900) setColumns(3);
+    else if (width >= 600) setColumns(2);
+    else setColumns(1);
+  };
+
+  useEffect(() => {
+    updateColumns(); // inicijalno
+    window.addEventListener('resize', updateColumns);
+    return () => window.removeEventListener('resize', updateColumns);
+  }, []);
 
   function setCurrentPageNo(pageNumber) {
     setCurrentPage(pageNumber);
@@ -138,14 +149,13 @@ function Product() {
 
         {/* PROIZVODI DESNO */}
         <div className='left-side products-right'>
-          <div className="product-grid">
+          <div 
+            className="product-grid"
+            style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
+          >
             {products && products.map((product) => (
               <div className="product-card" key={product._id}>
-                <img
-                  className="product-img"
-                  src={product.image.url}
-                  alt={product.name}
-                />
+                <img className="product-img" src={product.image.url} alt={product.name} />
                 <div className="product-body">
                   <h5 className="product-title">
                     <Link to={`/product/${product._id}`}>{product.name}</Link>

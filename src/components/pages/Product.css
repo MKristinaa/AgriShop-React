@@ -1,9 +1,7 @@
-/* CONTAINER */
 .container {
   width: 100%;
 }
 
-/* TOP BANNER */
 .top {
   background-image: url('../../images/home.jpg');
   background-size: cover;
@@ -19,7 +17,6 @@
   margin: 0;
 }
 
-/* CART BUTTON */
 .cart {
   width: 70px;
   height: 70px;
@@ -42,7 +39,6 @@
   text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
-/* MAIN CONTENT */
 .content {
   width: 100%;
   display: flex;
@@ -54,7 +50,6 @@
   transition: all 0.3s ease;
 }
 
-/* SIDEBAR LEVO */
 .sidebar-left {
   width: 22%;
   margin-left: 50px;
@@ -67,7 +62,6 @@
   height: fit-content;
 }
 
-/* PROIZVODI DESNO */
 .products-right {
   width: 75%;
   margin-top: 50px;
@@ -77,7 +71,6 @@
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
   margin-top: 20px;
 }
@@ -129,7 +122,6 @@
   margin-bottom: 12px;
 }
 
-/* BUTTONS */
 .all-products-btn.view-btn {
   background-color: #046b1f;
   color: white;
@@ -170,7 +162,6 @@
   transform: translateY(-2px);
 }
 
-/* PAGINATION */
 .pagination {
   display: flex;
   justify-content: center;
@@ -190,7 +181,6 @@
   text-decoration: none;
 }
 
-/* CATEGORIES */
 .title-categories {
   font-size: 20px;
   font-weight: 700;
@@ -232,7 +222,6 @@
   transform: translateX(4px);
 }
 
-/* HAMBURGER */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -252,20 +241,18 @@
   border-radius: 2px;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
   .hamburger {
     display: flex;
   }
 
-  /* Sidebar se ponaša isto kao na desktopu, samo ga krijemo i otvaramo */
   .sidebar-left {
     position: fixed;
     top: 0;
     left: -105%;
     height: 100vh;
-    width: 18%; /* 👈 ista širina kao desktop */
-    min-width: 350px; /* osiguraj minimalnu širinu */
+    width: 21%;
+    min-width: 350px;
     background-color: #fff;
     box-shadow: 3px 0 10px rgba(0,0,0,0.3);
     border-radius: 0;
@@ -276,11 +263,11 @@
   }
 
   .content.sidebar-active .sidebar-left {
-  left: 0;
-  padding: 30px 25px;     
-  border-radius: 12px;    
-  box-shadow: 4px 0 12px rgba(0,0,0,0.3); 
-}
+    left: 0;
+    padding: 30px 25px;     
+    border-radius: 12px;    
+    box-shadow: 4px 0 12px rgba(0,0,0,0.3); 
+  }
 
   .products-right {
     width: 100%;
@@ -291,32 +278,21 @@
     flex-direction: column;
     align-items: center;
   }
-
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-  }
 }
 
-/* MOBILE (max 600px) */
 @media (max-width: 600px) {
   .top-text {
     font-size: clamp(28px, 6vw, 36px);
   }
 
   .sidebar-left {
-    width: 22%; /* ista proporcija */
-    min-width: 350px; /* uvek minimum širine */
+    width: 22%;
+    min-width: 350px;
   }
 
   .products-right {
     width: 100%;
     margin: 0;
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr;
-    grid-gap: 15px;
   }
 
   .hamburger {
