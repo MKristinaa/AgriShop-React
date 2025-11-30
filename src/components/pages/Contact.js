@@ -72,7 +72,7 @@ function Contact() {
               <div className='info-1'>
                 <p>Any Questions? Email Us</p>
                 <i className="fa-solid fa-envelope fa-2x"></i> 
-                agrishop@gmail.com
+                agrishop.organic@gmail.com
               </div>
               
             </div>
