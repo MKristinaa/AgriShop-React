@@ -1,24 +1,35 @@
+/* Spoljašnji container sa borderom i senkom (sivo-beli efekat) */
 .update-profile-container {
   margin: 20px auto;
   max-width: 600px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; /* border oko cele kartice */
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0; /* sivi deo */
 }
 
+.avatar-upload {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center; /* centriranje horizontalno */
+}
+
+/* Beli unutrašnji deo kartice */
 .update-profile-card {
-  background-color: #f9f9f9;
+  background-color: #fff; /* beli deo */
   padding: 30px;
   border-radius: 8px;
 }
 
+/* Naslov */
 .update-profile-header {
   text-align: center;
   margin-bottom: 30px;
   color: #333;
 }
 
+/* Form grupacije */
 .update-profile-form-group {
   margin-bottom: 15px;
 }
@@ -42,17 +53,42 @@
   padding: 5px;
 }
 
-.update-profile-avatar {
+/* Avatar upload */
+.update-profile-avatar-upload {
+  margin-bottom: 1rem;
   display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+  justify-content: center;
 }
 
-.update-profile-avatar img {
+.avatar-circle {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  margin-right: 10px;
+  overflow: hidden;
+  border: 2px solid #4caf50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
+.avatar-circle:hover {
+  border-color: #43a047;
+  transform: scale(1.05);
+}
+
+.avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-input {
+  display: none;
+}
+
+/* Dugme za update */
 .update-profile-button {
   background-color: #28a745;
   color: #fff;
@@ -67,52 +103,9 @@
   background-color: #218838;
 }
 
-.update-profile-avatar-upload {
-  margin-bottom: 1rem;
-}
-
-.update-profile-avatar-container {
-  display: flex;
-  align-items: center;
-}
-
-.update-profile-avatar-preview {
-  margin-right: 1rem;
-}
-
-.update-profile-avatar-image-preview {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-}
-
-.update-profile-custom-file-upload {
-  position: relative;
-}
-
-.update-profile-custom-file-input-upload {
-  display: none;
-}
-
-.update-profile-custom-file-label-upload {
-  cursor: pointer;
-  background-color: #f8f9fa;
-  border: 1px solid #ced4da;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  transition: background-color 0.3s;
-}
-
-.update-profile-custom-file-label-upload:hover {
-  background-color: #e2e6ea;
-}
-
-.avatar_upload {
-  font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .update-profile-container {
-      padding: 10px;
+@media (max-width: 480px) {
+  .avatar-circle {
+    width: 80px;
+    height: 80px;
   }
 }

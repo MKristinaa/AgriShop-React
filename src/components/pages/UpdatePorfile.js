@@ -5,7 +5,7 @@ import './UpdateProfile.css';
 import { useNavigate } from 'react-router-dom';
 
 function UpdateProfile() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [userId, setUserId] = useState(null);
   const [name, setName] = useState('');
@@ -13,7 +13,6 @@ function UpdateProfile() {
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState(''); 
   const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg');
-  const [oldAvatar, setOldAvatar] = useState('/images/default_avatar.jpg');
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -22,7 +21,6 @@ function UpdateProfile() {
         const parsedUser = JSON.parse(storedUser);
         try {
           const userData = await loadUser(parsedUser._id);
-          console.log(userData)
           setUser(userData.user); 
           setUserId(userData.user._id);
           setName(userData.user.name);
@@ -37,8 +35,6 @@ function UpdateProfile() {
     };
 
     fetchUserData();
-    
-    
   }, []);
 
   const convertToBase64 = async (url) => {
@@ -60,7 +56,6 @@ function UpdateProfile() {
     e.preventDefault();
 
     let avatarData = avatar;
-
     if (avatar && !avatar.startsWith('data:image')) {
       try {
         avatarData = await convertToBase64(avatar);
@@ -71,18 +66,17 @@ function UpdateProfile() {
     }
 
     const data = {
-      "name": name,
-      "lastname": lastname,
-      "email": email,
-      "user": userId,
-      "avatar": avatarData
-    }
-    console.log(data);
+      name,
+      lastname,
+      email,
+      user: userId,
+      avatar: avatarData
+    };
 
     try {
-      const response = await updateProfile(data);
+      await updateProfile(data);
       alert('Profile updated successfully!');
-      navigate('/me')
+      navigate('/me');
     } catch (error) {
       console.error('Error updating profile:', error);
     }
@@ -94,7 +88,7 @@ function UpdateProfile() {
     reader.onload = () => {
       if (reader.readyState === 2) {
         setAvatarPreview(reader.result);
-        setAvatar(reader.result); 
+        setAvatar(reader.result);
       }
     };
     if (file) {
@@ -104,76 +98,67 @@ function UpdateProfile() {
 
   return (
     <div className="update-profile-container">
-  <div className="update-profile-card">
-    <form className="shadow-lg" onSubmit={submitHandler}>
-      <h1 className="update-profile-header">Update Profile</h1>
-      <div className="update-profile-form-group">
-        <label htmlFor="name_field">Name</label>
-        <input
-          type="text"
-          id="name_field"
-          className="form-control"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div className="update-profile-form-group">
-        <label htmlFor="lastname_field">Lastname</label>
-        <input
-          type="text"
-          id="lastname_field"
-          className="form-control"
-          name="lastname"
-          value={lastname}
-          onChange={(e) => setLastname(e.target.value)}
-        />
-      </div>
-      <div className="update-profile-form-group">
-        <label htmlFor="email_field">Email</label>
-        <input
-          type="email"
-          id="email_field"
-          className="form-control"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
+      <div className="update-profile-card">
+        <form onSubmit={submitHandler}>
+          <h1 className="update-profile-header">Update Profile</h1>
 
-    <div className="update-profile-avatar-upload">
-    <label className="avatar_upload">Avatar</label>
-    <div className="update-profile-avatar-container d-flex align-items-center">
-      <div>
-        <figure className="update-profile-avatar-preview mr-3 item-rtl">
-          {avatarPreview && <img src={avatarPreview} className="rounded-circle update-profile-avatar-image-preview" alt="Avatar Preview" />}
-        </figure>
+          {/* Avatar upload iznad polja za ime */}
+          <div className="avatar-upload">
+            <label htmlFor="avatarInput" className="avatar-circle">
+              <img src={avatarPreview} alt="Avatar Preview" />
+            </label>
+            <input
+              type="file"
+              id="avatarInput"
+              name="avatar"
+              accept="image/*"
+              onChange={onChange}
+              className="avatar-input"
+            />
+          </div>
+
+          <div className="update-profile-form-group">
+            <label htmlFor="name_field">Name</label>
+            <input
+              type="text"
+              id="name_field"
+              className="form-control"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+
+          <div className="update-profile-form-group">
+            <label htmlFor="lastname_field">Lastname</label>
+            <input
+              type="text"
+              id="lastname_field"
+              className="form-control"
+              name="lastname"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+            />
+          </div>
+
+          <div className="update-profile-form-group">
+            <label htmlFor="email_field">Email</label>
+            <input
+              type="email"
+              id="email_field"
+              className="form-control"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <button type="submit" className="update-profile-button">
+            Update
+          </button>
+        </form>
       </div>
-      <div className="update-profile-custom-file-upload">
-        <input
-          type="file"
-          name="avatar"
-          className="update-profile-custom-file-input-upload"
-          id="customFile"
-          accept="image/*"
-          onChange={onChange}
-        />
-        <label className="update-profile-custom-file-label-upload" htmlFor="customFile">
-          Choose Avatar
-        </label>
     </div>
-  </div>
-</div>
-
-
-
-      <button type="submit" className="update-profile-button">
-        Update
-      </button>
-    </form>
-  </div>
-</div>
-
   );
 }
 
