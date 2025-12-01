@@ -1,114 +1,73 @@
-.profile-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
+.container {
+  width: 100%;
+}
+
+.top {
+  background-image: url('../../images/home.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+}
+
+.top-text {
+  font-size: 60px;
+  color: #03262c;
+  margin: 0;
+}
+
+.cart {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 110px;
+  right: 70px;
+  z-index: 1000;
+  border: none;
+}
+
+.cart i {
+  color: orangered;
+  font-size: 45px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  transition: all 0.3s ease;
 }
 
 .left-side {
-  width: 80%;
+  width: 75%;
   margin-top: 50px;
-  margin-left: 100px;
+  margin-left: 80px;
   margin-bottom: 100px;
-  margin-right: 100px;
-}
-
-.profile-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.profile-header h2 {
-  font-size: 2rem;
-  color: #333;
-}
-
-.user-info {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.avatar-profile {
-  text-align: center;
-}
-
-.avatar-profile img {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border: 2px solid #ddd;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 1rem;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  color: white;
-}
-
-.btn-danger:hover {
-  background-color: #c82333;
-}
-
-.user-details {
-  margin-left: 20px;
-}
-
-.user-details h4 {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.user-details p {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 10px;
-}
-
-.register-link {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.register-link p {
-  font-size: 1rem;
-}
-
-.register-link a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.register-link a:hover {
-  text-decoration: underline;
 }
 
 .right-side {
-  width: 20%;
-  padding: 1%;
-  margin-top: 40px;
+  width: 22%;
+  margin-top: 50px;
+  margin-right: 50px;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 25px 20px;
+  height: fit-content;
 }
 
 .search-bar {
@@ -117,37 +76,72 @@
 
 .line {
   width: 1px;
-  height: 350px;
   background-color: black;
   margin-top: 70px;
 }
 
 .title-categories {
-  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #03262c;
+  text-transform: uppercase;
+  margin-bottom: 15px;
 }
 
 .category {
   text-decoration: none;
-  color: black;
+  color: #333;
+  display: block;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+}
+
+.category:hover {
+  color: #046b1f;
+  transform: translateX(4px);
+}
+
+.add-div {
+  margin-top: 30px;
+}
+
+.add-link {
+  background-color: #046b1f;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.add-link:hover {
+  background-color: white;
+  border: 2px solid #046b1f;
+  color: #046b1f;
+  transform: translateY(-2px);
 }
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 40px;
+  grid-gap: 30px;
   margin-top: 20px;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .product-card {
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .product-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-6px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
 }
 
 .product-img {
@@ -158,6 +152,7 @@
 
 .product-body {
   padding: 15px;
+  text-align: center;
 }
 
 .product-title {
@@ -168,67 +163,43 @@
 
 .product-title a {
   text-decoration: none;
-  color: #333;
+  color: #03262c;
 }
 
 .product-title a:hover {
-  color: rgba(3, 38, 44, 255);
-}
-
-.ratings {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.rating-outer {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 12px;
-  background-color: #ccc;
-}
-
-.rating-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 12px;
-  background-color: #ffcc00;
-}
-
-#no_of_reviews {
-  margin-left: 10px;
-  font-size: 12px;
-  color: #888;
+  color: #046b1f;
 }
 
 .product-price {
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 10px;
+  color: #333;
+  margin-bottom: 12px;
 }
 
 .view-btn {
-  display: inline-block;
-  background-color: yellowgreen;
+  background-color: #046b1f;
   color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
   text-align: center;
+  transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .view-btn:hover {
-  background-color: white;
-  color: yellowgreen;
-  border: 1px solid yellowgreen;
+  background-color: #058c2c;
+  transform: translateY(-2px);
 }
 
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .page-item {
@@ -238,26 +209,42 @@
 
 .page-link {
   padding: 8px 12px;
-  background-color: rgba(3, 38, 44, 255);
+  background-color: #03262c;
   color: white;
   border-radius: 4px;
   text-decoration: none;
 }
 
-.add-link {
-  background-color: green;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
+@media (max-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.add-link:hover {
-  background-color: white;
-  border: 1px solid green;
-  color: green;
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .right-side {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
 }
 
-.add-div {
-  margin-top: 50px;
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .top-text {
+    font-size: clamp(28px, 6vw, 36px);
+  }
+  .left-side {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }

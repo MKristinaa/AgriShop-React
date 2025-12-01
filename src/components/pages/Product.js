@@ -15,7 +15,7 @@ function Product() {
   const [filteredProductsCount, setFilteredProductsCount] = useState(0);
   const [currentCategory, setCurrentCategory] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [columns, setColumns] = useState(4); // default 4 kolone
+  const [columns, setColumns] = useState(4);
 
   const categories = [
     'Vegetables', 'Fruits', 'Grains', 'Dairy Products', 'Meat & Poultry',
@@ -28,7 +28,7 @@ function Product() {
   const searchParams = new URLSearchParams(location.search);
   const categoryFromURL = searchParams.get('category');
 
-  // Postavljanje user-a iz cookies
+  // Load user from cookies
   useEffect(() => {
     const storedUser = Cookies.get('user');
     if (storedUser) {
@@ -69,7 +69,7 @@ function Product() {
   };
 
   useEffect(() => {
-    updateColumns(); // inicijalno
+    updateColumns();
     window.addEventListener('resize', updateColumns);
     return () => window.removeEventListener('resize', updateColumns);
   }, []);
@@ -119,31 +119,37 @@ function Product() {
               <i className="fa-solid fa-seedling"></i> Categories
             </h3>
             <div className="category-grid">
+              {/* All kategorija kao prva */}
+              <Link 
+                to="/product"
+                className="category-card"
+                onClick={() => {
+                  setCurrentCategory('');
+                  setCurrentPage(1);
+                  setSidebarOpen(false);
+                }}
+              >
+                <i className="fa-solid fa-leaf"></i>
+                <span>All</span>
+              </Link>
+
+              {/* Ostale kategorije */}
               {categories.map(cat => (
                 <Link 
-                  key={cat}
+                  key={cat} 
                   to={`/product?category=${cat}`} 
                   className="category-card"
-                  onClick={() => setSidebarOpen(false)}
+                  onClick={() => {
+                    setCurrentCategory(cat);
+                    setCurrentPage(1);
+                    setSidebarOpen(false);
+                  }}
                 >
                   <i className="fa-solid fa-leaf"></i>
                   <span>{cat}</span>
                 </Link>
               ))}
             </div>
-
-            {/* All Products dugme */}
-            <button
-              onClick={() => {
-                setCurrentCategory('');
-                setCurrentPage(1);
-                navigate('/product');
-                setSidebarOpen(false);
-              }}
-              className="all-products-btn all-btn"
-            >
-              All Products
-            </button>
           </div>
         </div>
 
