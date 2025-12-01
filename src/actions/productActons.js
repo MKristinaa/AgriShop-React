@@ -54,15 +54,15 @@ export const deleteProduct = async (id) => {
     }
 }
 
+
 export const newProduct = async (productData) => {
     try {
         const config = {
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'multipart/form-data',
             },
         };
 
-        // const { data } = await axios.post(`https://agrishop-nodejs.onrender.com/api/product/new`, productData, config);
         const { data } = await axios.post(`http://localhost:4000/api/product/new`, productData, config);
 
         return {
@@ -70,13 +70,13 @@ export const newProduct = async (productData) => {
             data,
         };
     } catch (error) {
-        
         return {
             success: false,
             message: error.response?.data?.message || 'An error occurred',
         };
     }
 };
+
 
 export const updateProduct = async (id, productData) => {
     try {
