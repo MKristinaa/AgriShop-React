@@ -7,7 +7,6 @@ import Cookies from 'js-cookie';
 import { getUserDetails } from '../../actions/userActions';
 
 function ProductDetails() {
-  
   const [userId, setUserId] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState(null);
@@ -24,15 +23,14 @@ function ProductDetails() {
       if (storedUser) {
         const parsedUser = JSON.parse(storedUser);
         if (parsedUser) { 
-          setUser(parsedUser)
+          setUser(parsedUser);
           setUserId(parsedUser._id);
-        } else {
-          console.error('No user ID found in stored user data.');
         }
       }
     };
 
     fetchUserData();
+
     const fetchProduct = async () => {
       try {
         const data = await getProductDetails(id);
@@ -50,14 +48,13 @@ function ProductDetails() {
 
   const deleteProductHandler = async (id) => {
     const response = await deleteProduct(id);
-    console.log(response);
 
     if (response.success) {
-      setMessage('Korisnik je uspešno obrisan!');
+      setMessage('Proizvod je uspešno obrisan!');
       const productsData = await getProducts();
       setProducts(productsData.products);
     } else {
-      setMessage('Greška prilikom brisanja korisnika.'); 
+      setMessage('Greška prilikom brisanja proizvoda.'); 
     }
   };
 
@@ -80,95 +77,87 @@ function ProductDetails() {
     setQuantity(prevQty => prevQty - 1);
   };
 
-  const handleBackButton = () => {
-    navigate(-1); 
-  };
-
   if (!product) return <div>Loading...</div>;
 
   return (
-    <div className='container'>
-      {/* <button onClick={handleBackButton} className="back-button"><b>Back</b></button> */}
+    <div className='pd-container'>
+      {/* CART */}
+            {(user === null || user.role === 'seller' || user.role === 'user') && (
+              <li className='nav-item'>
+                <div className='cart'>
+                  <Link to='/cart' className='linkkkk'>
+                    <i className="fa-solid fa-basket-shopping"></i>
+                  </Link>
+                </div>
+              </li>
+            )}
+      <div className="pd-product-card">
+        <div className="pd-product-details">
+          <div className="pd-product-image">
+            <img key={product.image.public_id} src={product.image.url} alt={product.name} />
+          </div>
 
-      
-      <div className="product-details">
-        <div className="product-image">
-          <img key={product.image.public_id} src={product.image.url} alt={product.name} />
-          
-        </div>
-
-
-        <div className="product-info">
-
-        {(userId === product.user) ? (
-            <div className="my-product-section">
-              <p className='my-product-title'>My Product</p>
-              <div className="my-product-actions">
-                <Link to={`/admin/product/${product._id}`} className="btn btn-primary py-1 px-2 update-btn">
-                  <i className="fa fa-pencil"></i> Update
-                </Link>
-                <button className="btn btn-danger py-1 px-2 delete-btn" onClick={() => deleteProductHandler(product._id)}>
-                  <i className="fa fa-trash"></i> Delete
-                </button>
+          <div className="pd-product-info">
+            {(userId === product.user) ? (
+              <div className="pd-my-product-section">
+                <p className='pd-my-product-title'>My Product</p>
+                <div className="pd-my-product-actions">
+                  <Link to={`/admin/product/${product._id}`} className="pd-btn-update">
+                    <i className="fa fa-pencil"></i> Update
+                  </Link>
+                  <button className="pd-btn-delete" onClick={() => deleteProductHandler(product._id)}>
+                    <i className="fa fa-trash"></i> Delete
+                  </button>
+                </div>
               </div>
-            </div>
-          
-          ) : (
-            <div id="product_seller" className="seller-container">
-              {seller ? (
-                <>
-                  <div className="seller-info">
+            ) : (
+              <div className="pd-seller-container">
+                {seller ? (
+                  <div className="pd-seller-info">
                     {seller.avatar && (
-                      <img src={seller.avatar.url} alt="Seller" className="seller-image" />
+                      <img src={seller.avatar.url} alt="Seller" className="pd-seller-image" />
                     )}
-                    <p className="seller-name">{seller.name} {seller.lastname}</p>
+                    <p className="pd-seller-name">{seller.name} {seller.lastname}</p>
                   </div>
-                </>
-              ) : (
-                <p>Loading seller information...</p>
-              )}
-            </div>
+                ) : (
+                  <p>Loading seller information...</p>
+                )}
+              </div>
+            )}
 
-          )}<br></br>
+            <p className='pd-name'>{product.name}</p>
 
-          <p className='name'>{product.name}</p><br></br>
+            <h4>Description:</h4>
+            <p className='pd-description'>{product.description}</p>
 
-          <h4 className="mt-2">Description:</h4>
-          <p className='description'>{product.description}</p><br></br>
+            <h4>Price:</h4>
+            <p className='pd-price'>{product.price}€</p>
 
-          <h4 className="mt-2">Price:</h4>
-          <p id="product_price">${product.price}</p><br></br>
+            <hr className='pd-border' />
 
+            <p>Status: 
+              <span className={`pd-stock-status ${product.stocks > 0 ? 'pd-green' : 'pd-red'}`}>
+                {product.stocks > 0 ? 'In Stock' : 'Out of Stock'}
+              </span>
+            </p>
 
-          <hr className='border' />
-
-
-          <p>Status: <span id="stock_status" className={product.stocks > 0 ? 'greenColor' : 'redColor'}>{product.stocks > 0 ? 'In Stock' : 'Out of Stock'}</span></p>
-          
-          
-      {(user === null || user.role === 'seller' || user.role === 'user' ) && (
-          <>
-            <div className="stockCounter">
-              <button className="btn minus" onClick={decreaseQty}><i className="fas fa-minus"></i></button>
-              <input type="number" className="form-control count" value={quantity} readOnly />
-              <button className="btn plus" onClick={increaseQty}><i className="fas fa-plus"></i></button>
-            </div>
-            <button type="button" id="cart_btn" className="btn add-to-cart" disabled={product.stocks === 0} onClick={addToCart}>Add to Cart</button>
-          </>
-        )}
+            {(user === null || user.role === 'seller' || user.role === 'user' ) && (
+              <>
+                <div className="pd-stockCounter">
+                  <button className="pd-btn-minus" onClick={decreaseQty}><i className="fas fa-minus"></i></button>
+                  <input type="number" className="pd-count" value={quantity} readOnly />
+                  <button className="pd-btn-plus" onClick={increaseQty}><i className="fas fa-plus"></i></button>
+                </div>
+                <button type="button" className="pd-add-to-cart" disabled={product.stocks === 0} onClick={addToCart}>
+                  Add to Cart
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
-      {/* CART */}
-      {(user === null || user.role === 'seller' || user.role === 'user' ) && (
-          <li className='nav-item'>
-              <div className='cart'>
-                <Link to='/cart' className='linkkkk'>
-                    <i className="fa-solid fa-basket-shopping"></i>
-                </Link>
-              </div>
-          </li>
-          )}
 
+      
     </div>
   );
 }

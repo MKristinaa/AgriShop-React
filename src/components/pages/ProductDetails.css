@@ -1,202 +1,196 @@
-.container {
-    width: 100%;
+.pd-container {
+  width: 100%;
+  padding: 20px;
 }
 
-
-.product-details {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
-    padding: 2%;
+.pd-product-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1100px;
 }
 
-.product-image {
-    width: 40%;
-    justify-content: center;
+.pd-product-details {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.pd-product-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pd-product-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.pd-product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-name {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.pd-description {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.pd-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #046b1f;
+}
+
+.pd-border {
+  margin: 15px 0;
+  border-top: 1px solid #ddd;
+}
+
+.pd-stock-status {
+  font-weight: bold;
+}
+
+.pd-green {
+  color: green;
+}
+
+.pd-red {
+  color: red;
+}
+
+/* My Product Section */
+.pd-my-product-section {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.pd-my-product-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.pd-my-product-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pd-btn-update {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.pd-btn-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pd-btn-update:hover, .pd-btn-delete:hover {
+  opacity: 0.9;
+}
+
+/* Seller info */
+.pd-seller-container {
+  margin-bottom: 20px;
+}
+
+.pd-seller-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pd-seller-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.pd-seller-name {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Stock counter */
+.pd-stockCounter {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  gap: 10px;
+}
+
+.pd-btn-minus, .pd-btn-plus {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pd-btn-minus:hover, .pd-btn-plus:hover {
+  background-color: #333;
+}
+
+.pd-count {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.pd-add-to-cart {
+  background-color: #046b1f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.pd-add-to-cart:hover {
+  background-color: #058c2c;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pd-product-details {
+    flex-direction: column;
     align-items: center;
-    display: flex;
+  }
+
+  .pd-product-image img {
+    max-width: 300px;
+  }
+
+  .pd-name {
+    font-size: 28px;
+  }
 }
-
-.product-image img {
-    width: 100%;
-    max-width: 400px; 
-    height: auto;
-}
-
-.product-info {
-    flex: 1;
-    padding: 20px;
-}
-
-.rating-outer {
-    display: inline-block;
-    width: 60px;
-    height: 12px;
-    background-color: #ccc;
-    position: relative;
-}
-
-.rating-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 12px;
-    background-color: #ffcc00;
-}
-
-.stockCounter {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    width: 170px;
-}
-
-.btn {
-    cursor: pointer;
-    border: none;
-    padding: 10px 15px;
-    margin: 0 5px;
-    border-radius: 5px;
-}
-
-.minus {
-    background-color: gray;
-    color: white;
-}
-
-.minus:hover {
-    background-color: white;
-    color: red;
-    border: 1px solid red;
-}
-
-.plus {
-    background-color: gray;
-    color: white;
-}
-
-.add-to-cart {
-    background-color: green;
-    color: white;
-    margin-top: 10px;
-}
-
-.greenColor {
-    color: green;
-}
-
-.redColor {
-    color: red;
-}
-
-.border{
-    margin-bottom: 20px;
-    margin-top: 10px;
-    width: 500px;
-}
-
-.back-button {
-    display: inline-block;
-    margin-left: 20px; 
-    width: 50px;
-    height: 30px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .back-button::before {
-    content: '';
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-top: 3px solid black;
-    border-left: 3px solid black;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%) rotate(-45deg);
-  }
-  
-  .back-button:hover::before {
-    border-color: gray; 
-  }
-  
-  .seller-image{
-    width: 60px;
-    height: 60px;
-    border-radius: 100px;
-  }
-
-  .seller-container {
-    text-align: left;
-  }
-  
-  .seller-info {
-    display: flex;
-    justify-content: left; 
-    align-items: center;    
-    gap: 10px; 
-  }
-  
-  .seller-image {
-    width: 50px; 
-    height: 50px; 
-    border-radius: 50%; 
-  }
-  
-  .seller-name {
-    font-size: 18px;
-    display: inline-block;
-    vertical-align: middle;
-  }
-  
-  .name{
-    font-size: 40px;
-    font-weight: bold;
-  }
-
-  .description{
-    width: 500px;
-  }
-
-
-  .my-product-section {
-    width: 75%;
-    background-color: #f9f9f9; 
-    padding: 15px;
-    border: 1px solid #ccc; 
-    border-radius: 8px; 
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .my-product-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .my-product-actions {
-    display: flex;
-    justify-content: center;
-    gap: 10px; 
-  }
-  
-  .update-btn {
-    background-color: #007bff; 
-    color: white;
-  }
-  
-  .delete-btn {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .update-btn:hover, .delete-btn:hover {
-    opacity: 0.9;
-  }
-  
