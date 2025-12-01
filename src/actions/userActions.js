@@ -25,28 +25,30 @@ export const login = async (email, password) => {
   }
 }
 
+
 export const register = async (formData) => {
   try {
     const config = {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'multipart/form-data', // ✅ umesto application/json
       },
+      withCredentials: true, // (opciono) ako koristiš cookies za sesiju
     };
 
     const { data } = await axios.post('http://localhost:4000/api/register', formData, config);
     return data;
-    
+
   } catch (error) {
-    // Hvata backend poruku ako postoji
     const message =
       error.response && error.response.data && error.response.data.message
         ? error.response.data.message
         : 'An unexpected error occurred. Please try again later.';
-    
-    // Vrati objekat u istom formatu koji frontend očekuje
+
     return { success: false, message };
   }
 };
+
+
 
 
 export const loadUser = async (id) => {

@@ -14,46 +14,47 @@ function SignUp({ history }) {
 
   const { name, lastname, email, password, role } = user;
 
-  const [avatar, setAvatar] = useState('');
+  const [avatarFile, setAvatarFile] = useState(null); // ✅ pravi fajl
   const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg');
   const [errors, setErrors] = useState({});
   const [serverMessage, setServerMessage] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // ✅ Validacija forme
   const validateForm = () => {
     const newErrors = {};
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!name) newErrors.name = 'First name is required.';
     if (!lastname) newErrors.lastname = 'Last name is required.';
-    if (!email) {
-      newErrors.email = 'Email is required.';
-    } else if (!emailPattern.test(email)) {
-      newErrors.email = 'Email is not valid.';
-    }
-    if (!password) {
-      newErrors.password = 'Password is required.';
-    } else if (password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters long.';
-    }
-    if (!avatar) newErrors.avatar = 'Avatar is required.';
+    if (!email) newErrors.email = 'Email is required.';
+    else if (!emailPattern.test(email)) newErrors.email = 'Email is not valid.';
+    if (!password) newErrors.password = 'Password is required.';
+    else if (password.length < 6) newErrors.password = 'Password must be at least 6 characters long.';
+    if (!avatarFile) newErrors.avatar = 'Avatar is required.';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // ✅ Slanje forme
   const submitHandler = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     const formData = new FormData();
-    formData.set('name', name);
-    formData.set('lastname', lastname);
-    formData.set('email', email);
-    formData.set('password', password);
-    formData.set('avatar', avatar);
-    formData.set('role', role);
+    formData.append('name', name);
+    formData.append('lastname', lastname);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('role', role);
+    formData.append('avatar', avatarFile); // ✅ fajl, ne base64
+
+    // 🔍 Log radi provere
+    console.log('📦 FormData koji se šalje:');
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
 
     const data = await register(formData);
 
@@ -62,33 +63,29 @@ function SignUp({ history }) {
 
     if (data.success) {
       setUser({ name: '', lastname: '', email: '', password: '', role: 'user' });
-      setAvatar('');
+      setAvatarFile(null);
       setAvatarPreview('/images/default_avatar.jpg');
       setErrors({});
     }
   };
 
+  // ✅ Promene u input poljima
   const onChange = (e) => {
-    // briše server poruku kad korisnik ponovo kuca
     if (serverMessage) {
       setServerMessage('');
       setIsSuccess(false);
     }
 
-    // briše grešku za polje dok korisnik kuca
     if (errors[e.target.name]) {
       setErrors((prev) => ({ ...prev, [e.target.name]: '' }));
     }
 
     if (e.target.name === 'avatar') {
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setAvatarPreview(reader.result);
-          setAvatar(reader.result);
-        }
-      };
-      reader.readAsDataURL(e.target.files[0]);
+      const file = e.target.files[0];
+      if (file) {
+        setAvatarFile(file); // ✅ čuvamo fajl
+        setAvatarPreview(URL.createObjectURL(file)); // prikaz slike
+      }
     } else {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
@@ -97,10 +94,14 @@ function SignUp({ history }) {
   return (
     <div className='container-signup'>
       <div className='content-signup'>
-        <form className='card-signup signup-form' onSubmit={submitHandler} encType='multipart/form-data'>
+        <form
+          className='card-signup signup-form'
+          onSubmit={submitHandler}
+          encType='multipart/form-data'
+        >
           <h1 className='title-signup'>SIGN UP</h1>
 
-          {/* Avatar upload kao prvi element */}
+          {/* Avatar upload */}
           <div className='avatar-upload'>
             <label htmlFor='avatarInput' className='avatar-circle'>
               <img src={avatarPreview} alt='Avatar Preview' />
@@ -117,28 +118,62 @@ function SignUp({ history }) {
           </div>
 
           <div className='form-group'>
-            <input type='text' placeholder='NAME' className='form-control' name='name' value={name} onChange={onChange} />
+            <input
+              type='text'
+              placeholder='NAME'
+              className='form-control'
+              name='name'
+              value={name}
+              onChange={onChange}
+            />
             {errors.name && <p className='error-message'>{errors.name}</p>}
           </div>
 
           <div className='form-group'>
-            <input type='text' placeholder='LASTNAME' className='form-control' name='lastname' value={lastname} onChange={onChange} />
+            <input
+              type='text'
+              placeholder='LASTNAME'
+              className='form-control'
+              name='lastname'
+              value={lastname}
+              onChange={onChange}
+            />
             {errors.lastname && <p className='error-message'>{errors.lastname}</p>}
           </div>
 
           <div className='form-group'>
-            <input type='email' placeholder='EMAIL' className='form-control' name='email' value={email} onChange={onChange} />
+            <input
+              type='email'
+              placeholder='EMAIL'
+              className='form-control'
+              name='email'
+              value={email}
+              onChange={onChange}
+            />
             {errors.email && <p className='error-message'>{errors.email}</p>}
           </div>
 
           <div className='form-group'>
-            <input type='password' placeholder='PASSWORD' className='form-control' name='password' value={password} onChange={onChange} />
+            <input
+              type='password'
+              placeholder='PASSWORD'
+              className='form-control'
+              name='password'
+              value={password}
+              onChange={onChange}
+            />
             {errors.password && <p className='error-message'>{errors.password}</p>}
           </div>
 
           <div className='form-group role-div'>
             <label htmlFor='role_field'>Role:</label>
-            <select id='role_field' className='select-role' name='role' value={role} onChange={onChange}>
+            <select
+              id='role_field'
+              className='select-role'
+              name='role'
+              value={role}
+              onChange={onChange}
+            >
               <option value='user'>User</option>
               <option value='seller'>Seller</option>
               <option value='admin'>Admin</option>
@@ -149,9 +184,10 @@ function SignUp({ history }) {
             REGISTER
           </button>
 
-
           {serverMessage && (
-            <p className={isSuccess ? 'server-message-success' : 'server-message-error'}>{serverMessage}</p>
+            <p className={isSuccess ? 'server-message-success' : 'server-message-error'}>
+              {serverMessage}
+            </p>
           )}
 
           <div className='login'>
@@ -162,8 +198,6 @@ function SignUp({ history }) {
         </form>
       </div>
     </div>
-
-    
   );
 }
 
