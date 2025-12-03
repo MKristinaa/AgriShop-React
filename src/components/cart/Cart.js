@@ -78,7 +78,7 @@ const Cart = () => {
                                             </div>
 
                                             <div className="cart-item-price">
-                                                <p>${item.price}</p>
+                                                <p>{item.price}€</p>
                                             </div>
 
                                             <div className="cart-item-quantity">
@@ -106,7 +106,7 @@ const Cart = () => {
                                 <h4>Order Summary</h4>
                                 <hr />
                                 <p>Subtotal: <span className="summary-value">{cartItems.reduce((acc, item) => (acc + Number(item.quantity)), 0)} (Units)</span></p>
-                                <p>Est. total: <span className="summary-value">${cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0).toFixed(2)}</span></p>
+                                <p>Est. total: <span className="summary-value">{cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0).toFixed(2)}€</span></p>
                                 <hr />
                                 <button className="checkout-btn" onClick={checkoutHandler}>Check out</button>
                             </div>

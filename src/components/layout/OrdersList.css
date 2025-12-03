@@ -1,6 +1,6 @@
 .orderslist-container {
     display: flex;
-    height: 436px;
+    min-height: 66vh;
 }
 
 .sidebar-container {
@@ -50,7 +50,7 @@
     color: #721c24;
 }
 
-.view-btn {
+.view-btn-mm {
     background-color: #007bff;
     color: white;
     padding: 5px 10px;

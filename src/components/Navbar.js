@@ -106,6 +106,7 @@ function Navbar() {
           )} */}
           
           <li className='nav-item'>
+            <div className='user-dropdown'>
             {user ? (
               <div className='dropdown'>
                 <button className='dropbtn'>
@@ -142,7 +143,7 @@ function Navbar() {
                 Register
               </Link>
             )}
-
+</div>
           </li>
         </ul>
       </div>

@@ -166,7 +166,7 @@ function Product() {
                   <h5 className="product-title">
                     <Link to={`/product/${product._id}`}>{product.name}</Link>
                   </h5>
-                  <p className="product-price">${product.price}</p>
+                  <p className="product-price">{product.price}€</p>
                   <Link to={`/product/${product._id}`} className="all-products-btn view-btn">
                     View Details
                   </Link>

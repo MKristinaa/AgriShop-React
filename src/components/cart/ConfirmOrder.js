@@ -23,9 +23,9 @@ const ConfirmOrder = ({ history }) => {
     }, []);
 
     const itemsPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const shippingPrice = itemsPrice > 200 ? 0 : 25;
-    const taxPrice = Number((0.05 * itemsPrice).toFixed(2));
-    const totalPrice = (itemsPrice + shippingPrice + taxPrice).toFixed(2);
+    const shippingPrice = 5;
+    const taxPrice = Number((0.2 * itemsPrice).toFixed(2));
+    const totalPrice = (itemsPrice + shippingPrice ).toFixed(2);
 
     useEffect(() => {
         const getUserIdFromCookie = () => {
@@ -99,7 +99,7 @@ const ConfirmOrder = ({ history }) => {
                             <div className="confirm-order-cart-item">
                                 <img src={item.image} alt={item.name} />
                                 <Link to={`/product/${item.product}`}>{item.name}</Link>
-                                <p className="confirm-order-item-total">{item.quantity} x ${item.price} = <b>${(item.quantity * item.price).toFixed(2)}</b></p>
+                                <p className="confirm-order-item-total">{item.quantity} x {item.price}€ = <b>{(item.quantity * item.price).toFixed(2)}€</b></p>
 
                             </div>
                             <hr />
@@ -110,11 +110,11 @@ const ConfirmOrder = ({ history }) => {
                 <div className="confirm-order-summary-section">
                     <h4>Order Summary</h4>
                     <hr />
-                    <p>Subtotal: <span className="confirm-order-summary-value">${itemsPrice}</span></p>
-                    <p>Shipping: <span className="confirm-order-summary-value">${shippingPrice}</span></p>
-                    <p>Tax: <span className="confirm-order-summary-value">${taxPrice}</span></p>
+                    <p>Subtotal: <span className="confirm-order-summary-value">{itemsPrice}€</span></p>
+                    <p>Shipping: <span className="confirm-order-summary-value">{shippingPrice}€</span></p>
+                    {/* <p>Tax: <span className="confirm-order-summary-value">{taxPrice}€</span></p> */}
                     <hr />
-                    <p>Total: <span className="confirm-order-summary-value">${totalPrice}</span></p>
+                    <p>Total: <span className="confirm-order-summary-value">{totalPrice}€</span></p>
                     <button className="confirm-order-checkout-btn" onClick={processToPayment}>Confirm Order</button>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 
 .userslist-page-container {
     display: flex;
-    height: 436px;
+    min-height: 67vh;
 }
 
 .userslist-sidebar-container {

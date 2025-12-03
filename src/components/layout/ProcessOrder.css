@@ -75,9 +75,23 @@
     margin-top: 40px;
 }
 
-.process-order-status-select {
-    margin-bottom: 20px;
+.process-order-status-select select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
+
+.process-order-status-select select:focus {
+  border-color: #046b1f;
+  outline: none;
+  background-color: #fff;
+}
+
 
 .process-order-update-btn {
     background-color: #007bff;

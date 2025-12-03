@@ -14,6 +14,7 @@ function ProductDetails() {
   const [products, setProducts] = useState([]);
   const [seller, setSeller] = useState(null);
   const [user, setUser] = useState(null);
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate(); 
 
@@ -36,15 +37,25 @@ function ProductDetails() {
         const data = await getProductDetails(id);
         setProduct(data.product);
 
+        // Učitavanje prodavca
         const userData = await getUserDetails(data.product.user);
         setSeller(userData.user);
+
+        // Učitavanje sličnih proizvoda iz iste kategorije
+        const allProducts = await getProducts();
+        const filtered = allProducts.products.filter(
+          p => p.category === data.product.category && p._id !== data.product._id
+        );
+        setRelatedProducts(filtered);
       } catch (error) {
         console.error("Error fetching product:", error);
       }
     };
 
+    fetchUserData();
     fetchProduct();
   }, [id]);
+
 
   const deleteProductHandler = async (id) => {
     const response = await deleteProduct(id);
@@ -91,6 +102,8 @@ function ProductDetails() {
                 </div>
               </li>
             )}
+
+            
       <div className="pd-product-card">
         <div className="pd-product-details">
           <div className="pd-product-image">
@@ -137,7 +150,7 @@ function ProductDetails() {
 
             <p>Status: 
               <span className={`pd-stock-status ${product.stocks > 0 ? 'pd-green' : 'pd-red'}`}>
-                {product.stocks > 0 ? 'In Stock' : 'Out of Stock'}
+                {product.stocks > 0 ? ' In Stock' : ' Out of Stock'}
               </span>
             </p>
 
@@ -157,6 +170,20 @@ function ProductDetails() {
         </div>
       </div>
 
+      {relatedProducts.length > 0 && (
+        <div className="pd-related-products">
+          <h3>You may also like</h3>
+          <div className="pd-related-grid">
+            {relatedProducts.map(p => (
+              <Link to={`/product/${p._id}`} key={p._id} className="pd-related-card">
+                <img src={p.image.url} alt={p.name} />
+                <p className="pd-related-name">{p.name}</p>
+                <p className="pd-related-price">{p.price}€</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
       
     </div>
   );

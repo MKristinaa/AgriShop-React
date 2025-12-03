@@ -61,7 +61,7 @@ const ListOrders = () => {
             data.rows.push({
                 id: order._id,
                 numOfItems: order.orderItems.length,
-                amount: `$${order.totalPrice}`,
+                amount: `${order.totalPrice}€`,
                 status: order.orderStatus && String(order.orderStatus).includes('Delivered')
                     ? <p className='order-status-success'>{order.orderStatus}</p>
                     : <p className='order-status-failed'>{order.orderStatus}</p>,

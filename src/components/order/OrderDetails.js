@@ -64,7 +64,7 @@ const OrderDetails = () => {
                         <div key={item.product} className="order-item">
                             <img src={item.image} alt={item.name} className="order-item-image" />
                             <Link to={`/product/${item.product}`} className="order-item-name">{item.name}</Link>
-                            <p className="order-item-price">${item.price}</p>
+                            <p className="order-item-price">{item.price}€</p>
                             <p className="order-item-quantity">{item.quantity} Piece(s)</p>
                         </div>
                     ))}

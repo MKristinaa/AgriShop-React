@@ -109,7 +109,7 @@ const ProcessOrder = () => {
                                                 </div>
 
                                                 <div className="process-order-item-price">
-                                                    <p>${item.price}</p>
+                                                    <p>{item.price}€</p>
                                                 </div>
 
                                                 <div className="process-order-item-quantity">

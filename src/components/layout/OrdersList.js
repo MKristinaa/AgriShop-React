@@ -48,13 +48,13 @@ const OrdersList = () => {
         return orders.map(order => ({
             id: order._id,
             numofItems: order.orderItems.length,
-            amount: `$${order.totalPrice}`,
+            amount: `${order.totalPrice}€`,
             status: order.orderStatus && String(order.orderStatus).includes('Delivered')
                 ? <p className="order-status delivered">{order.orderStatus}</p>
                 : <p className="order-status pending">{order.orderStatus}</p>,
             actions: (
                 <Fragment>
-                    <Link to={`/admin/order/${order._id}`} className="view-btn">
+                    <Link to={`/admin/order/${order._id}`} className="view-btn-mm">
                         <i className="fa fa-eye"></i>
                     </Link>
                     <button className="delete-btn" onClick={() => deleteOrderHandler(order._id)}>
