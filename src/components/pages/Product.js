@@ -96,7 +96,7 @@ function Product() {
 
       {/* TOP DIV */}
       <div className='top'>
-        <div className='top-text'>Products</div>
+        <div className='top-text'>Catalog</div>
       </div>
 
       {/* HAMBURGER */}
