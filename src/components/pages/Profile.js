@@ -44,56 +44,59 @@ function Profile() {
 
   return (
     <div className='position'>
-    <div className="profile-container">
-      <div className="card profile-card">
-        <div className="card-body">
-          <div className="user-info">
-            {/* Leva kolona sa slikom i dugmetom */}
-            <div className="avatar-column">
-              <div className="avatar-profile">
-                <img
-                  src={user.avatar ? user.avatar.url : 'default-avatar.png'}
-                  alt={user.name || 'User Avatar'}
-                />
-              </div>
+      <div className="profile-container">
+        <div className="card profile-card">
+          <div className="card-body">
+            <div className="user-info">
 
-              <div className="edit-profile-btn">
-                <Link to="/me/update" className="btn btn-primary mt-3">
-                  Edit Profile
-                </Link>
-              </div>
-            </div>
+              {/* Leva kolona sa slikom i dugmetom */}
+              <div className="avatar-section">
+                <div className="profile-avatar-wrapper">
+                  <img
+                    src={user.avatar ? user.avatar.url : 'default-avatar.png'}
+                    alt={user.name || 'User Avatar'}
+                    className="profile-avatar-image"
+                  />
+                </div>
 
-            {/* Desna kolona sa podacima o korisniku */}
-            <div className="user-details-column">
-              <div className="user-details">
-                <h4>First Name</h4>
-                <p>{user.name || 'N/A'}</p>
-
-                <h4>Last Name</h4>
-                <p>{user.lastname || 'N/A'}</p>
-
-                <h4>Email Address</h4>
-                <p>{user.email || 'N/A'}</p>
-
-                <h4>Joined On</h4>
-                <p>{user.createdAt ? String(user.createdAt).substring(0, 10) : 'N/A'}</p>
-
-                {user.role !== 'admin' && (
-                  <Link to="/orders/me" className="btn btn-danger mt-3">
-                    My Orders
+                <div className="edit-profile-btn">
+                  <Link to="/me/update" className="btn btn-primary mt-3">
+                    Edit Profile
                   </Link>
-                )}
-
-                <Link to="/password/update" className="btn btn-primary mt-3">
-                  Change Password
-                </Link>
+                </div>
               </div>
+
+              {/* Desna kolona sa podacima o korisniku */}
+              <div className="user-details-column">
+                <div className="user-details">
+                  <h4>First Name</h4>
+                  <p>{user.name || 'N/A'}</p>
+
+                  <h4>Last Name</h4>
+                  <p>{user.lastname || 'N/A'}</p>
+
+                  <h4>Email Address</h4>
+                  <p>{user.email || 'N/A'}</p>
+
+                  <h4>Joined On</h4>
+                  <p>{user.createdAt ? String(user.createdAt).substring(0, 10) : 'N/A'}</p>
+
+                  {user.role !== 'admin' && (
+                    <Link to="/orders/me" className="btn btn-danger mt-3">
+                      My Orders
+                    </Link>
+                  )}
+
+                  <Link to="/password/update" className="btn btn-primary mt-3">
+                    Change Password
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }
