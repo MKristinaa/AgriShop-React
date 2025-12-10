@@ -37,15 +37,8 @@ const OrderDetails = () => {
                     <p><strong>Country:</strong> {shippingInfo && shippingInfo.country}</p>
                     <p><strong>City:</strong> {shippingInfo && shippingInfo.city}</p>
                     <p><strong>Postal Code:</strong> {shippingInfo && shippingInfo.postalCode}</p>
-                    <p><strong>Amount:</strong> ${totalPrice}</p>
+                    <p><strong>Amount:</strong> {totalPrice}€</p>
                 </div>
-{/* 
-                <hr />
-
-                <div className="payment-info card-section">
-                    <h4>Payment</h4>
-                    <p className={isPaid ? "status-paid" : "status-not-paid"}><strong>{isPaid ? "PAID" : "NOT PAID"}</strong></p>
-                </div> */}
 
                 <hr />
 

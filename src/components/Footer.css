@@ -4,14 +4,14 @@
     background-size: cover;
     height: auto;
     display: flex;
-    justify-content: flex-end; /* spušta tekst ka dnu */
+    justify-content: flex-end;
     align-items: center;
     flex-direction: column;
     bottom: 0;
     z-index: 999;
     color: white;
     font-weight: lighter;
-    padding: 60px 20px 20px 20px; /* više prostora na vrhu, manji dole */
+    padding: 60px 20px 20px 20px; 
     text-align: center;
 }
 
@@ -22,7 +22,7 @@
     padding: 20px;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 40px; /* veći gap na desktopu */
+    gap: 40px; 
 }
 
 .item {
@@ -32,15 +32,15 @@
     font-size: 16px;
 }
 
-/* TABLET (max 992px) */
+
 @media (max-width: 992px) {
     .footer {
-        padding: 50px 20px 20px 20px; /* spusti tekst ka dnu */
+        padding: 50px 20px 20px 20px; 
     }
 
     .containt {
         flex-direction: column;
-        gap: 20px; /* manji gap */
+        gap: 20px; 
     }
 
     .item {
@@ -48,18 +48,18 @@
     }
 }
 
-/* MOBILNI (max 600px) */
+
 @media (max-width: 600px) {
     .footer {
-        padding: 40px 10px 10px 10px; /* još više spustiti tekst i smanjiti padding */
+        padding: 40px 10px 10px 10px;
     }
 
     .containt {
         flex-direction: column;
-        gap: 10px; /* još manji gap između stavki */
+        gap: 10px;
     }
 
     .item {
-        font-size: 14px; /* manji tekst */
+        font-size: 14px;
     }
 }

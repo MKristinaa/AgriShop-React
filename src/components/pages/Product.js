@@ -28,7 +28,7 @@ function Product() {
   const searchParams = new URLSearchParams(location.search);
   const categoryFromURL = searchParams.get('category');
 
-  // Load user from cookies
+  
   useEffect(() => {
     const storedUser = Cookies.get('user');
     if (storedUser) {
@@ -37,13 +37,13 @@ function Product() {
     }
   }, []);
 
-  // Postavljanje kategorije iz URL-a
+  
   useEffect(() => {
     if (categoryFromURL) setCurrentCategory(categoryFromURL);
     else setCurrentCategory('');
   }, [categoryFromURL]);
 
-  // Fetch proizvoda
+  
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -59,7 +59,7 @@ function Product() {
     fetchProducts();
   }, [currentPage, keyword, currentCategory]);
 
-  // Dinamički broj kolona po širini ekrana
+  
   const updateColumns = () => {
     const width = window.innerWidth;
     if (width >= 1200) setColumns(4);
@@ -83,7 +83,7 @@ function Product() {
 
   return (
     <div className='container'>
-      {/* CART */}
+      
       {(user === null || user.role === 'seller' || user.role === 'user') && (
         <li className='nav-item'>
           <div className='cart'>
@@ -94,21 +94,21 @@ function Product() {
         </li>
       )}
 
-      {/* TOP DIV */}
+
       <div className='top'>
         <div className='top-text'>Catalog</div>
       </div>
 
-      {/* HAMBURGER */}
+
       <div className='hamburger' onClick={() => setSidebarOpen(!sidebarOpen)}>
         <span></span>
         <span></span>
         <span></span>
       </div>
 
-      {/* MAIN CONTENT */}
+
       <div className={`content ${sidebarOpen ? 'sidebar-active' : ''}`}>
-        {/* SIDEBAR LEVO */}
+        
         <div className='right-side sidebar-left'>
           <div className='search-bar'>
             <Search />
@@ -119,7 +119,7 @@ function Product() {
               <i className="fa-solid fa-seedling"></i> Categories
             </h3>
             <div className="category-grid">
-              {/* All kategorija kao prva */}
+              
               <Link 
                 to="/product"
                 className="category-card"
@@ -133,7 +133,7 @@ function Product() {
                 <span>All</span>
               </Link>
 
-              {/* Ostale kategorije */}
+
               {categories.map(cat => (
                 <Link 
                   key={cat} 
@@ -153,7 +153,7 @@ function Product() {
           </div>
         </div>
 
-        {/* PROIZVODI DESNO */}
+
         <div className='left-side products-right'>
           <div 
             className="product-grid"

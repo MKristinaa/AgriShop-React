@@ -9,7 +9,7 @@ const NewProduct = () => {
 
     const [name, setName] = useState('');
     const [user, setUser] = useState(0);
-    const [imageFile, setImageFile] = useState(null); // čuvamo fajl
+    const [imageFile, setImageFile] = useState(null); 
     const [imagePreview, setImagePreview] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
@@ -56,10 +56,10 @@ const NewProduct = () => {
         formData.append("category", category);
         formData.append("stocks", stocks);
         formData.append("user", user);
-        formData.append("image", imageFile); // pravi fajl
+        formData.append("image", imageFile); 
 
         try {
-            await newProduct(formData); // backend očekuje FormData
+            await newProduct(formData); 
             alert("Product successfully created!");
             navigate('/seller/products', { state: { productName: name } });
         } catch (error) {
@@ -75,7 +75,7 @@ const NewProduct = () => {
             const reader = new FileReader();
             reader.onload = () => {
                 if (reader.readyState === 2) {
-                    setImagePreview(reader.result); // samo za preview
+                    setImagePreview(reader.result); 
                 }
             };
             reader.readAsDataURL(file);
@@ -122,7 +122,7 @@ const NewProduct = () => {
                             {errors.stocks && <p className="error-message">{errors.stocks}</p>}
                         </div>
 
-                        {/* File upload */}
+
                         <div className="new-product-form-group">
                             <label>Product Image</label>
                             <input 

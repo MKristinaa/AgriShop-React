@@ -90,7 +90,7 @@ const ConfirmOrder = ({ history }) => {
                     <h1 className='confirm-order-title'>Shipping Info</h1>
                     <p><b>Name:</b> {user && user.name}</p>
                     <p><b>Phone:</b> {shippingInfo.phoneNo}</p>
-                    <p><b>Address:</b> {`${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.postalCode}, ${shippingInfo.country}`}</p>
+                    <p><b>Address:</b> {`${shippingInfo.address}, ${shippingInfo.city} ${shippingInfo.postalCode}, ${shippingInfo.country}`}</p>
 
                     <hr />
                     <h4>Your Cart Items:</h4>

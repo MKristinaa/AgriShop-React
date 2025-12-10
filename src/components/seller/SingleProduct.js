@@ -89,7 +89,7 @@ function SingleProduct() {
           <hr className='border' />
 
           <h4 className="mt-2">Price:</h4>
-          <p id="product_price">${product.price}</p>
+          <p id="product_price">{product.price}€</p>
           <hr className='border' />
 
           <p>Status: <span id="stock_status" className={product.stocks > 0 ? 'greenColor' : 'redColor'}>{product.stocks > 0 ? 'In Stock' : 'Out of Stock'}</span></p>

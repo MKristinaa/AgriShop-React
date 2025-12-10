@@ -73,7 +73,6 @@
     margin-top: 4px;
 }
 
-/* Preview slike ispod inputa */
 .image-preview-container {
     margin-top: 10px;
     display: flex;
@@ -81,8 +80,8 @@
 }
 
 .image-preview {
-    width: 200px;  /* fiksna širina */
-    height: auto;  /* visina automatski */
+    width: 200px; 
+    height: auto;
     border: 1px solid #ccc;
     border-radius: 5px;
     object-fit: contain;

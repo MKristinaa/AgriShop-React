@@ -73,7 +73,7 @@
   color: red;
 }
 
-/* Stock counter */
+
 .pd-stockCounter {
   display: flex;
   align-items: center;
@@ -119,7 +119,7 @@
   background-color: #058c2c;
 }
 
-/* My Product Section */
+
 .pd-my-product-section {
   background-color: #f9f9f9;
   padding: 15px;
@@ -160,7 +160,7 @@
   opacity: 0.9;
 }
 
-/* Seller info */
+
 .pd-seller-container {
   margin-bottom: 20px;
 }
@@ -184,7 +184,7 @@
   font-weight: 500;
 }
 
-/* Responsive */
+
 @media (max-width: 900px) {
   .pd-product-details {
     flex-direction: column;
@@ -200,7 +200,7 @@
   }
 }
 
-/* 🆕 Similar Products / You may also like */
+
 .pd-related-products {
   margin-top: 40px;
   margin: 0 10%;
@@ -213,17 +213,17 @@
   color: #03262c;
 }
 
-/* Flexbox grid za slične proizvode */
+
 .pd-related-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start; /* Početak od leve ivice */
+  justify-content: flex-start; 
   padding-bottom: 30px;
 }
 
 .pd-related-card {
-  flex: 1 1 180px; /* fleksibilna širina kartice */
+  flex: 1 1 180px; 
   max-width: 200px;
   display: flex;
   flex-direction: column;
@@ -261,7 +261,7 @@
   font-weight: bold;
 }
 
-/* Responsive slični proizvodi */
+
 @media (max-width: 600px) {
   .pd-related-card {
     flex: 1 1 140px;

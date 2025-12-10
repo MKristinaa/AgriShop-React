@@ -84,12 +84,9 @@ const ProcessOrder = () => {
                                     <p><b>Country: </b> {order.shippingInfo && order.shippingInfo.country}</p>
                                     <p><b>City: </b> {order.shippingInfo && order.shippingInfo.city}</p>
                                     <p  className="process-order-address"><b>Postal Code:</b> {order.shippingInfo && order.shippingInfo.postalCode}</p>
-                                    <p><b>Amount:</b> ${order.totalPrice}</p>
+                                    <p><b>Amount:</b> {order.totalPrice}€</p>
 
                                     <hr />
-
-                                    {/* <h4 className="process-order-heading">Payment</h4>
-                                    <p className={isPaid ? "process-order-paid" : "process-order-not-paid"}><b>{isPaid ? "PAID" : "NOT PAID"}</b></p> */}
 
                                     <h4 className="process-order-heading">Order Status:</h4>
                                     <p className={order.orderStatus && order.orderStatus.includes('Delivered') ? "process-order-delivered" : "process-order-pending"} ><b>{order.orderStatus}</b></p>

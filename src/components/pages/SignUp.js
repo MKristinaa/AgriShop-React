@@ -14,13 +14,13 @@ function SignUp({ history }) {
 
   const { name, lastname, email, password, role } = user;
 
-  const [avatarFile, setAvatarFile] = useState(null); // ✅ pravi fajl
+  const [avatarFile, setAvatarFile] = useState(null); 
   const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg');
   const [errors, setErrors] = useState({});
   const [serverMessage, setServerMessage] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
 
-  // ✅ Validacija forme
+  
   const validateForm = () => {
     const newErrors = {};
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,7 +37,7 @@ function SignUp({ history }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  // ✅ Slanje forme
+  
   const submitHandler = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -48,9 +48,9 @@ function SignUp({ history }) {
     formData.append('email', email);
     formData.append('password', password);
     formData.append('role', role);
-    formData.append('avatar', avatarFile); // ✅ fajl, ne base64
+    formData.append('avatar', avatarFile); 
 
-    // 🔍 Log radi provere
+    
     console.log('📦 FormData koji se šalje:');
     for (let [key, value] of formData.entries()) {
       console.log(key, value);
@@ -69,7 +69,7 @@ function SignUp({ history }) {
     }
   };
 
-  // ✅ Promene u input poljima
+  
   const onChange = (e) => {
     if (serverMessage) {
       setServerMessage('');
@@ -83,8 +83,8 @@ function SignUp({ history }) {
     if (e.target.name === 'avatar') {
       const file = e.target.files[0];
       if (file) {
-        setAvatarFile(file); // ✅ čuvamo fajl
-        setAvatarPreview(URL.createObjectURL(file)); // prikaz slike
+        setAvatarFile(file);
+        setAvatarPreview(URL.createObjectURL(file));
       }
     } else {
       setUser({ ...user, [e.target.name]: e.target.value });
@@ -101,7 +101,7 @@ function SignUp({ history }) {
         >
           <h1 className='title-signup'>SIGN UP</h1>
 
-          {/* Avatar upload */}
+
           <div className='avatar-upload'>
             <label htmlFor='avatarInput' className='avatar-circle'>
               <img src={avatarPreview} alt='Avatar Preview' />

@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
 
-// Mockuj login funkciju
+
 jest.mock('../../actions/userActions', () => ({
   login: jest.fn(() => Promise.resolve({ success: true })),
 }));

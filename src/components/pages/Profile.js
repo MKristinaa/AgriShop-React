@@ -49,7 +49,7 @@ function Profile() {
           <div className="card-body">
             <div className="user-info">
 
-              {/* Leva kolona sa slikom i dugmetom */}
+
               <div className="avatar-section">
                 <div className="profile-avatar-wrapper">
                   <img
@@ -66,7 +66,7 @@ function Profile() {
                 </div>
               </div>
 
-              {/* Desna kolona sa podacima o korisniku */}
+
               <div className="user-details-column">
                 <div className="user-details">
                   <h4>First Name</h4>

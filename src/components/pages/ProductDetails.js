@@ -37,11 +37,11 @@ function ProductDetails() {
         const data = await getProductDetails(id);
         setProduct(data.product);
 
-        // Učitavanje prodavca
+        
         const userData = await getUserDetails(data.product.user);
         setSeller(userData.user);
 
-        // Učitavanje sličnih proizvoda iz iste kategorije
+        
         const allProducts = await getProducts();
         const filtered = allProducts.products.filter(
           p => p.category === data.product.category && p._id !== data.product._id
@@ -92,16 +92,16 @@ function ProductDetails() {
 
   return (
     <div className='pd-container'>
-      {/* CART */}
-            {(user === null || user.role === 'seller' || user.role === 'user') && (
-              <li className='nav-item'>
-                <div className='cart'>
-                  <Link to='/cart' className='linkkkk'>
-                    <i className="fa-solid fa-basket-shopping"></i>
-                  </Link>
-                </div>
-              </li>
-            )}
+
+      {(user === null || user.role === 'seller' || user.role === 'user') && (
+          <li className='nav-item'>
+            <div className='cart'>
+                <Link to='/cart' className='linkkkk'>
+                  <i className="fa-solid fa-basket-shopping"></i>
+                </Link>
+            </div>
+          </li>
+      )}
 
             
       <div className="pd-product-card">

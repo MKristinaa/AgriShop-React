@@ -13,7 +13,7 @@ const Search = () => {
     if (query) {
       navigate(`/search/${query}`);
     } else {
-      navigate('/product'); // vraća sve proizvode ako je input prazan
+      navigate('/product');
     }
   };
 

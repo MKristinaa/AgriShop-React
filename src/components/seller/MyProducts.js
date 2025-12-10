@@ -15,8 +15,7 @@ function MyProducts() {
   const [filteredProductsCount, setFilteredProductsCount] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [columns, setColumns] = useState(4);
-  const [selectedCategory, setSelectedCategory] = useState(''); // trenutno odabrana kategorija
-
+  const [selectedCategory, setSelectedCategory] = useState(''); 
   const categories = ['Vegetables', 'Fruits', 'Grains', 'Legumes', 'Dairy', 'Meat', 'Beverages', 'Spices'];
 
   const { keyword } = useParams();
@@ -27,12 +26,12 @@ function MyProducts() {
   const loggedInUser = storedUser ? JSON.parse(storedUser) : null;
   const userId = loggedInUser ? loggedInUser._id : null;
 
-  // Load user from cookies
+  
   useEffect(() => {
     if (loggedInUser) setUser(loggedInUser);
   }, [storedUser]);
 
-  // Fetch user products
+  
   useEffect(() => {
     const fetchUserProducts = async () => {
       try {
@@ -50,7 +49,7 @@ function MyProducts() {
     fetchUserProducts();
   }, [userId, currentPage, selectedCategory]);
 
-  // Update columns based on screen width
+  
   const updateColumns = () => {
     const width = window.innerWidth;
     if (width >= 1200) setColumns(4);
@@ -74,7 +73,7 @@ function MyProducts() {
 
   return (
     <div className='container'>
-      {/* CART */}
+      
       {(user === null || user.role === 'seller' || user.role === 'user') && (
         <li className='nav-item'>
           <div className='cart'>
@@ -85,21 +84,21 @@ function MyProducts() {
         </li>
       )}
 
-      {/* TOP DIV */}
+
       <div className='top'>
         <div className='top-text'>My Products</div>
       </div>
 
-      {/* HAMBURGER */}
+
       <div className='hamburger' onClick={() => setSidebarOpen(!sidebarOpen)}>
         <span></span>
         <span></span>
         <span></span>
       </div>
 
-      {/* MAIN CONTENT */}
+
       <div className={`content ${sidebarOpen ? 'sidebar-active' : ''}`}>
-        {/* SIDEBAR LEVO */}
+        
         <div className='right-side sidebar-left'>
           <div className='search-bar'>
             <Search />
@@ -110,20 +109,20 @@ function MyProducts() {
               <i className="fa-solid fa-seedling"></i> Categories
             </h3>
             <div className="category-grid">
-              {/* "All" kategorija */}
+              
               <Link 
                 to="/products"
                 className="category-card"
                 onClick={() => {
                   setSidebarOpen(false);
                   setCurrentPage(1);
-                  setSelectedCategory(''); // prikaz svih proizvoda
+                  setSelectedCategory('');
                 }}
               >
                 <i className="fa-solid fa-leaf"></i> <span>All</span>
               </Link>
 
-              {/* Ostale kategorije */}
+
               {categories.map(cat => (
                 <Link 
                   key={cat} 
@@ -132,7 +131,7 @@ function MyProducts() {
                   onClick={() => {
                     setSidebarOpen(false);
                     setCurrentPage(1);
-                    setSelectedCategory(cat); // filtriranje po kategoriji
+                    setSelectedCategory(cat);
                   }}
                 >
                   <i className="fa-solid fa-leaf"></i> <span>{cat}</span>
@@ -140,7 +139,7 @@ function MyProducts() {
               ))}
             </div>
 
-            {/* Add Product Button */}
+
             <button
               onClick={() => navigate('/admin/product')}
               className="all-products-btn all-btn"
@@ -151,7 +150,7 @@ function MyProducts() {
           </div>
         </div>
 
-        {/* PROIZVODI DESNO */}
+
         <div className='left-side products-right'>
           <div 
             className="product-grid"

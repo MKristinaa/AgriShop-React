@@ -1,4 +1,3 @@
-/* Container i centriranje */
 .container-signup {
   width: 100%;
   display: flex;
@@ -14,7 +13,7 @@
   max-width: 450px;
 }
 
-/* Kartica */
+
 .card-signup {
   background: #fdfdfd;
   border-radius: 15px;
@@ -26,7 +25,7 @@
   transition: all 0.3s ease;
 }
 
-/* Naslov */
+
 .title-signup {
   font-size: 36px;
   font-weight: 600;
@@ -35,7 +34,7 @@
   text-align: center;
 }
 
-/* Avatar upload */
+
 .avatar-upload {
   margin-bottom: 25px;
   position: relative;
@@ -69,7 +68,7 @@
   display: none;
 }
 
-/* Form control */
+
 .signup-form .form-group {
   width: 100%;
   margin-bottom: 15px;
@@ -101,7 +100,7 @@
   margin-bottom: 20px;
 }
 
-/* Buttons */
+
 .signup-form .custom-button {
   background-color: #4caf50;
   color: white;
@@ -116,7 +115,7 @@
   background-color: #43a047;
 }
 
-/* Poruke */
+
 .error-message {
   color: red;
   font-size: 14px;
@@ -135,7 +134,7 @@
   margin-bottom: 15px;
 }
 
-/* Login link */
+
 .login {
   margin-top: 15px;
   font-size: 14px;
@@ -152,7 +151,7 @@
   text-decoration: underline;
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 768px) {
   .card-signup {
     padding: 30px 20px;

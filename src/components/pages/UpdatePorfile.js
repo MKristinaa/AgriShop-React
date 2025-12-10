@@ -102,7 +102,7 @@ function UpdateProfile() {
         <form onSubmit={submitHandler}>
           <h1 className="update-profile-header">Update Profile</h1>
 
-          {/* Avatar upload iznad polja za ime */}
+
           <div className="avatar-upload">
             <label htmlFor="avatarInput" className="avatar-circle">
               <img src={avatarPreview} alt="Avatar Preview" />

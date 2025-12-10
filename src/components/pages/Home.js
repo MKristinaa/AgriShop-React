@@ -21,9 +21,9 @@ const categories = [
 function Home() {
     const [user, setUser] = useState(null);
     const [startIndex, setStartIndex] = useState(0);
-    const [visibleCount, setVisibleCount] = useState(4); // ✅ dinamičan broj vidljivih proizvoda
+    const [visibleCount, setVisibleCount] = useState(4); 
 
-    // 🧠 Promena broja vidljivih proizvoda po veličini ekrana
+    
     useEffect(() => {
         const updateVisibleCount = () => {
             if (window.innerWidth <= 600) {
